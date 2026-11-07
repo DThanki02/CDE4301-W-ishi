@@ -16,3 +16,9 @@ p {
   text-align: justify;
   font-size: 1.1rem;
 }
+
+/* W-ishi report tables */
+.wishi-table { width: 100%; border-collapse: collapse; margin: 1rem 0 0.4rem; font-size: 0.9rem; text-align: left; }
+.wishi-table th { background: #1f2933; color: #fff; padding: 8px 10px; }
+.wishi-table td { border-bottom: 1px solid #d5dbe5; padding: 7px 10px; vertical-align: top; }
+blockquote { margin: 1rem 2rem; padding-left: 1rem; border-left: 4px solid #1e5aa8; font-style: italic; }

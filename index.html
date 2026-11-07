@@ -1,232 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CDE4301 Wishi</title>
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" />
-  <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
-
-  <link rel="stylesheet" href="./index.css">
-
-  <link rel="stylesheet" href="./components/team-member/team-member.css">
-  <script type="module" src="./components/team-member/team-member.js"></script>
-
-  <link rel="stylesheet" href="./components/table-of-content/table-of-content.css">
-
-  <script type="module" src="./components/image/image-component.js"></script>
-
-  <script type="module" src="./components/video/video.js"></script>
-
-  <link rel="stylesheet" href="./components/references/references.css">
-
-  <link rel="stylesheet" href="./components/scroll-to-top/scroll-to-top.css">
-  <script src="./components/scroll-to-top/scroll-to-top.js"></script>
-
-  <script src="./components/table-component/table-component.js"></script>
-
-  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  <title></title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1E3A8A',
+            redAlert: '#DC2626',
+            tealMed: '#0D9488',
+            offWhite: '#F8FAFC',
+            pureWhite: '#FFFFFF',
+            charcoal: '#0F172A',
+            slateMuted: '#475569',
+            greenSafe: '#16A34A'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="bg-slate-100 text-charcoal min-h-screen flex flex-col items-center justify-center p-2 sm:p-6 select-none">
 
-<body>
-  <div class="content">
-    <h1>Project Title</h1>
-
-    <!-- This is the team member component use to display details about your team members -->
-    <div class="team-member-wrapper">
-      <team-member avatar="assets/blackranger.png" name="Black" department="Mechanical Engineering"
-        year="1993"></team-member>
-      <team-member avatar="assets/yellowranger.png" name="Yellow" department="Computer Engineering"
-        year="1993"></team-member>
-      <team-member avatar="assets/redranger.png" name="Red" department="Electrical Engineering"
-        year="1993"></team-member>
-      <team-member avatar="assets/pinkranger.png" name="Pink" department="Biomedical Engineering"
-        year="1993"></team-member>
-      <team-member avatar="assets/blueranger.png" name="Blue" department="Chemical Engineering"
-        year="1993"></team-member>
+  <!-- Desktop Header & Viewport Controls -->
+  <header class="w-full max-w-4xl mb-4 flex items-center justify-end px-2">
+    <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-slate-200 text-xs">
+      <span class="text-slateMuted font-medium">Display Mode:</span>
+      <button id="btnFrameToggle" class="px-3 py-1 rounded-full font-semibold transition-all bg-navy text-white shadow-sm flex items-center gap-1.5">
+        <i data-lucide="smartphone" class="w-3.5 h-3.5"></i> Phone Shell
+      </button>
+      <button id="btnFullToggle" class="px-3 py-1 rounded-full font-semibold transition-all text-slateMuted hover:bg-slate-100 flex items-center gap-1.5">
+        <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Expanded
+      </button>
     </div>
+  </header>
 
-    <!-- This is a divide from the shoelace library for aesthetic purpose -->
-    <sl-divider></sl-divider>
-
-    <!-- This is the table-of-content component use to define all of the link directly to each section -->
-    <div class="table-of-content">
-      <h2>Table of Contents</h2>
-      <sl-tree>
-        <sl-tree-item expanded>
-          <a href="#section-header-1">1. Section Header 1</a>
-          <sl-tree-item>
-            <a href="#sub-section-1-header-1">1.1. Sub-section Header 1</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-1-header-2">1.2. Sub-section Header 2</a>
-          </sl-tree-item>
-        </sl-tree-item>
-
-        <sl-tree-item expanded>
-          <a href="#section-header-2">2. Section Header 1</a>
-          <sl-tree-item>
-            <a href="#sub-section-2-header-1">2.1. Sub-section Header 1</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#sub-section-2-header-2">2.2. Sub-section Header 2</a>
-          </sl-tree-item>
-        </sl-tree-item>
-
-        <sl-tree-item>
-          <a href="#references">References</a>
-        </sl-tree-item>
-      </sl-tree>
-    </div>
-    <sl-divider></sl-divider>
-
-    <div>
-
-      <!-- This is an example of what a section might look like -->
-      <div id="section-header-1">
-        <h2> 1. Section Header 1 </h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna
-          aliqua. Tincidunt ornare massa eget egestas. At tellus at urna condimentum mattis pellentesque id nibh tortor.
-          Elementum sagittis vitae et leo duis ut diam. Morbi tristique senectus et netus et malesuada fames.
-          Suspendisse
-          ultrices gravida dictum fusce ut placerat orci. Risus nullam eget felis eget nunc lobortis mattis aliquam
-          faucibus
-          (Brody, 2007). Eget sit amet tellus cras adipiscing enim eu turpis egestas. Aliquet nibh praesent tristique
-          magna
-          sit amet purus. Adipiscing bibendum est ultricies integer quis auctor elit sed. Fermentum et sollicitudin ac
-          orci
-          phasellus egestas tellus rutrum. At in tellus integer feugiat scelerisque varius morbi enim nunc. Volutpat
-          blandit
-          aliquam etiam erat velit scelerisque in. Id diam maecenas ultricies mi eget mauris pharetra et. Nec dui nunc
-          mattis
-          enim ut tellus elementum sagittis vitae.
-        </p>
-      </div>
-
-      <div id="sub-section-1-header-1">
-        <h3>1.1 Sub-section Header 1</h3>
-        <p>
-          Ultrices dui sapien eget mi. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Dolor purus non enim
-          praesent elementum facilisis. Lacus vestibulum sed arcu non odio euismod lacinia at. Metus aliquam eleifend mi
-          in nulla. Lacus sed viverra tellus in hac habitasse platea. Varius quam quisque id diam vel quam elementum
-          pulvinar. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Diam ut venenatis tellus in metus
-          vulputate. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Venenatis lectus magna
-          fringilla
-          urna. In nisl nisi scelerisque eu ultrices. Velit egestas dui id ornare arcu odio ut sem nulla. Quam id leo in
-          vitae. Egestas congue quisque egestas diam in arcu cursus euismod quis. Porttitor leo a diam sollicitudin
-          tempor
-          id eu nisl.
-        </p>
-      </div>
-
-      <div id="sub-section-1-header-2">
-        <h3>1.2 Sub-section Header 2</h3>
-        <p>
-          Fermentum dui faucibus in ornare quam viverra orci. Donec ultrices tincidunt arcu non sodales. A diam maecenas
-          sed enim ut sem viverra. Semper viverra nam libero justo laoreet sit. Mi sit amet mauris commodo quis. Auctor
-          augue mauris augue neque gravida in fermentum et. Auctor elit sed vulputate mi sit amet. Maecenas pharetra
-          convallis posuere morbi leo urna. Sem nulla pharetra diam sit amet nisl. Id nibh tortor id aliquet lectus.
-          Nibh
-          nisl condimentum id venenatis a condimentum vitae sapien. Convallis posuere morbi leo urna molestie at
-          elementum.
-        </p>
-
-        <!-- This is an example of how you might use the image component -->
-        <image-component tag="image" source="assets/requirement.png"
-          subtitle="Image 1: iDP suggested pathway"></image-component>
+  <!-- Main Container / Phone Mockup Wrapper -->
+  <main id="appContainer" class="phone-frame w-full max-w-[430px] bg-offWhite shadow-2xl rounded-[40px] overflow-hidden border-[8px] border-slate-800 flex flex-col relative transition-all duration-300">
+    
+    <!-- Phone Top Status Bar -->
+    <div class="w-full bg-navy text-white px-6 pt-3 pb-2 flex justify-between items-center text-xs tracking-wider font-semibold z-20">
+      <span>9:41 AM</span>
+      <div class="w-24 h-4 bg-slate-900 rounded-full mx-auto -mt-1 opacity-90 hidden sm:block"></div>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-charging" class="w-4 h-4"></i>
       </div>
     </div>
 
-
-    <br />
-    <br />
-    <sl-divider></sl-divider>
-    <div>
-      <div id="section-header-2">
-        <h2>2. Section Header 2</h2>
-        <p>
-          Ornare arcu dui vivamus arcu felis bibendum ut tristique et. Mi proin sed libero enim sed faucibus turpis in
-          eu. Odio ut sem nulla pharetra diam sit. Nibh cras pulvinar mattis nunc sed blandit libero. Lacus sed viverra
-          tellus in hac habitasse platea dictumst vestibulum. At augue eget arcu dictum varius duis. Mauris ultrices
-          eros in cursus turpis massa (Lindberg, 1967). Libero nunc consequat interdum varius sit amet mattis. Ut ornare
-          lectus sit amet est placerat in egestas erat. Elementum curabitur vitae nunc sed. Proin nibh nisl condimentum
-          id venenatis a condimentum vitae sapien (Chamberlin et al., 2008). Vitae tempus quam pellentesque nec nam
-          aliquam sem.
-        </p>
+    <!-- App Top Navigation Bar -->
+    <div class="bg-navy text-white px-5 py-3 shadow-md flex items-center justify-between z-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-teal-200 font-bold block"></span>
+        <h2 id="pageTitle" class="text-xl font-bold text-white flex items-center gap-2">
+          <span>Preferred Contacts</span>
+        </h2>
       </div>
-
-      <div id="sub-section-2-header-1">
-        <h3>2.1. Sub-section Header 1</h3>
-        <p>
-          Pellentesque nec nam aliquam sem et tortor consequat. Et netus et malesuada fames ac turpis egestas maecenas.
-          Eu tincidunt tortor aliquam nulla facilisi. Nunc aliquet bibendum enim facilisis gravida. Elementum pulvinar
-          etiam non quam lacus (Moll et al., 2011; Parker & Fox, 2010). Blandit cursus risus at ultrices mi. Arcu dui
-          vivamus arcu felis bibendum ut tristique. Porttitor rhoncus dolor purus non enim praesent elementum facilisis.
-          Mauris in aliquam sem fringilla. Non quam lacus suspendisse faucibus. Tristique senectus et netus et malesuada
-          fames ac. <a href="#image">Link to the image above</a>
-        </p>
-
-        <!-- This is an example of how you might use the video component -->
-        <video-component tag="rick" source="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          subtitle="Video: Never gonna give you up?"></video-component>
-      </div>
-
-      <div id="sub-section-2-header-2">
-        <h3>2.2. Sub-section Header 2</h3>
-        <p>
-          Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque viverra. Dignissim convallis aenean et tortor at
-          risus viverra adipiscing. Facilisi nullam vehicula ipsum a arcu cursus. Adipiscing elit pellentesque
-          habitant
-          morbi tristique senectus et netus. Turpis massa tincidunt dui ut ornare lectus. Suspendisse sed nisi lacus
-          sed. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Ut ornare lectus sit amet est
-          placerat in egestas. Magna fringilla urna porttitor rhoncus. Imperdiet dui accumsan sit amet.
-        </p>
-
-        <!-- This is an example of how you might use the table component -->
-        <table-component subtitle="Table: Demo table">
-          <div id="table-1"></div>
-        </table-component>
+      <div class="flex items-center gap-2">
+        <button id="btnOpenAddModal" class="px-3 py-1.5 bg-tealMed hover:bg-teal-700 text-white rounded-xl text-xs font-bold flex items-center gap-1 shadow transition">
+          <i data-lucide="user-plus" class="w-4 h-4"></i> Add
+        </button>
       </div>
     </div>
 
-    <!-- This is an example of how you can use the references component to create references -->
-    <div id="references" class="references">
-      <sl-divider></sl-divider>
-      <h2>References</h2>
-      <ul>
-        <li>
-          Brody, J. E. (2007, December 11). Mental reserves keep brain agile. The New York Times. Retrieved from
-          http://www.dowjones.com/factiva/
-        </li>
-        <li>
-          Chamberlin, J., Novotney, A., Packard, E., & Price, M. (2008, May). Enhancing worker well-being: Occupational
-          health psychologists convene to share their research on work, stress, and health. Monitor on Psychology,
-          39(5), 26-29.
-        </li>
-        <li>
-          Jones, T. J., & Fields, N. (2003). Emotional quotient and personality. E-Journal of Applied Psychology, 2(2),
-          38-45. Retrieved from http://ejournalappliedpsyc/index.php/ejap
-        </li>
-      </ul>
+    <!-- Push Notification Simulation Banner (Slides from top) -->
+    <div id="simulatedPushBanner" class="hidden absolute top-14 left-3 right-3 z-50 transform -translate-y-4 transition-all duration-300">
+      <div id="pushBannerCard" class="bg-white rounded-2xl p-4 shadow-2xl border-2 cursor-pointer flex flex-col gap-2">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center gap-2">
+            <div id="pushIconBox" class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs">
+              <i id="pushIcon" data-lucide="bell" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span id="pushAppName" class="text-xs font-bold uppercase tracking-wider text-slateMuted">W-ishi Alert</span>
+              <h4 id="pushTitle" class="text-sm font-bold text-charcoal">Notification Title</h4>
+            </div>
+          </div>
+          <span class="text-[10px] text-slateMuted font-mono">now</span>
+        </div>
+        <p id="pushBody" class="text-xs text-charcoal/90 pl-10 leading-relaxed font-medium">Notification message preview...</p>
+        <div id="pushActions" class="pl-10 pt-1 flex items-center gap-2">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- This is the code to display the scroll to top button for ergonomic -->
-  <!-- You can leave it as it is, or if you don't like its aesthetics you can also just delete it, -->
-  <!-- but it might reduce the user experience. -->
-  <sl-button class="scroll-to-top" variant="primary" size="medium" circle onclick="scrollToTop()">
-    <sl-icon name="arrow-up" label="Settings"></sl-icon>
-  </sl-button>
+    <!-- Scrollable Tab Content Viewport -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-4 pb-24" id="scrollContent">
 
-  <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
-  <script type="module" src="./components/table-component/table-component.js"></script>
+      <!-- Active Emergency (shown on every tab until acknowledged or resolved) -->
+      <div id="activeAlertCard" hidden></div>
+
+      <!-- ================= TAB 1: PREFERRED CONTACTS ================= -->
+      <section id="tabContacts" class="space-y-4">
+        
+        <!-- Senior Greeting Card -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div id="seniorInitials" class="w-12 h-12 rounded-full bg-slate-100 border-2 border-navy overflow-hidden flex items-center justify-center text-navy font-bold text-lg"></div>
+            <div>
+              <h3 id="seniorName" class="font-bold text-charcoal text-base"></h3>
+              <p id="seniorDetails" class="text-xs text-slateMuted"></p>
+            </div>
+          </div>
+          <button id="btnEditProfile" title="Edit profile" class="w-8 h-8 rounded-full hover:bg-blue-50 hover:text-navy text-slate-400 flex items-center justify-center transition">
+            <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+
+        <!-- Filter / Search Row -->
+        <div class="flex items-center justify-between gap-2">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-slateMuted"></i>
+            <input type="text" id="contactSearch" placeholder="Search name, role, phone..."
+              class="w-full bg-white text-xs pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal">
+          </div>
+          <button id="btnFilterTier" title="Cycle tier filter" class="px-3 py-2.5 bg-white border border-slate-200 text-xs font-semibold rounded-xl text-slateMuted flex items-center gap-1.5 hover:bg-slate-50">
+            <i data-lucide="filter" class="w-3.5 h-3.5"></i> <span id="filterTierLabel">All Tiers</span>
+          </button>
+        </div>
+
+        <!-- Device Sync Status & Tier Settings -->
+        <div class="flex items-center justify-between gap-2">
+          <p id="deviceSyncStatus" class="text-[11px] font-semibold flex items-center gap-1.5 text-slateMuted"></p>
+          <button id="btnEditTiers" class="flex-shrink-0 px-2.5 py-1.5 bg-white border border-slate-200 hover:bg-slate-50 text-charcoal rounded-xl text-[11px] font-bold flex items-center gap-1 transition">
+            <i data-lucide="settings-2" class="w-3.5 h-3.5"></i> Edit Tiers
+          </button>
+        </div>
+
+        <!-- Tier Sections (names, timeouts and members are user-defined) -->
+        <div id="tierSections" class="space-y-4">
+          <!-- Dynamically populated -->
+        </div>
+
+      </section>
+
+      <!-- ================= TAB 2: TONE COMPARATOR & SHOWCASE ================= -->
+      <section id="tabSimulator" class="space-y-4 hidden">
+        
+        <!-- Header Info -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-navy text-base flex items-center gap-2">
+              <i data-lucide="volume-2" class="w-5 h-5 text-tealMed"></i>
+              Alert Tone Selection
+            </h3>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slateMuted font-mono">5 Tones</span>
+          </div>
+          <p class="text-xs text-slateMuted mt-1 leading-relaxed">
+            Select the alarm tone that plays when an emergency occurs.
+          </p>
+        </div>
+
+        <!-- 5 Tones List Container -->
+        <div id="impactTonesList" class="space-y-2.5">
+          <!-- Dynamically populated 5 tone cards -->
+        </div>
+
+        <!-- Escalation Timeline Demo -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-sm text-navy flex items-center gap-1.5">
+              <i data-lucide="git-branch" class="w-4 h-4 text-tealMed"></i> Escalation Timeline Demo
+            </h4>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200">SPED UP</span>
+          </div>
+          <p class="text-xs text-slateMuted leading-snug">
+            Walks through the alert chain using your current tiers. Each wait is shortened to 5 seconds. Tap Acknowledge on the notification to stop escalation.
+          </p>
+          <ol id="escalationTimeline" class="space-y-2">
+            <!-- Dynamically populated -->
+          </ol>
+          <div class="grid grid-cols-2 gap-2">
+            <button id="btnRunEscalation" class="w-full py-2 px-3 rounded-xl bg-redAlert hover:bg-red-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition">
+              <i data-lucide="play" class="w-3.5 h-3.5"></i> Run Escalation
+            </button>
+            <button id="btnStopEscalation" class="w-full py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-charcoal font-bold text-xs flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="square" class="w-3.5 h-3.5"></i> Reset
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================= TAB 3: ALERT HISTORY ================= -->
+      <section id="tabHistory" class="space-y-3 hidden">
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-between gap-3">
+          <div>
+            <h3 class="font-bold text-navy text-base flex items-center gap-2">
+              <i data-lucide="history" class="w-5 h-5 text-tealMed"></i> Alert History
+            </h3>
+            <p class="text-xs text-slateMuted mt-0.5">Everything the device has reported, newest first.</p>
+          </div>
+          <button id="btnClearHistory" class="flex-shrink-0 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slateMuted rounded-xl text-[11px] font-bold flex items-center gap-1 transition">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear
+          </button>
+        </div>
+        <div id="historyList" class="space-y-2">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Phone Bottom Navigation Bar -->
+    <nav class="bg-white border-t border-slate-200 px-3 py-3 flex justify-around items-center absolute bottom-0 left-0 right-0 z-30">
+      <button id="navContacts" class="nav-btn active flex-1 flex flex-col items-center gap-1.5 text-navy font-bold transition">
+        <i data-lucide="users" class="w-6 h-6"></i>
+        <span class="text-xs tracking-tight">Preferred Contacts</span>
+      </button>
+      <div class="w-px h-7 bg-slate-200"></div>
+      <button id="navSimulator" class="nav-btn flex-1 flex flex-col items-center gap-1.5 text-slateMuted hover:text-navy font-semibold transition">
+        <i data-lucide="bell-ring" class="w-6 h-6"></i>
+        <span class="text-xs tracking-tight">Tone Select</span>
+      </button>
+      <div class="w-px h-7 bg-slate-200"></div>
+      <button id="navHistory" class="nav-btn relative flex-1 flex flex-col items-center gap-1.5 text-slateMuted hover:text-navy font-semibold transition">
+        <i data-lucide="history" class="w-6 h-6"></i>
+        <span class="text-xs tracking-tight">History</span>
+        <span id="navHistoryDot" hidden class="absolute top-0 right-1/3 w-2.5 h-2.5 rounded-full bg-redAlert border-2 border-white"></span>
+      </button>
+    </nav>
+
+    <!-- First-Run Setup (also reused to edit the senior's profile) -->
+    <div id="setupOverlay" class="hidden absolute inset-0 bg-white z-50 flex flex-col">
+      <div class="bg-navy text-white px-5 pt-5 pb-4 space-y-3">
+        <h3 id="setupTitle" class="text-xl font-bold">Set up W-ishi</h3>
+        <div id="setupProgress" class="flex gap-1.5">
+          <span data-setup-dot="0"></span><span data-setup-dot="1"></span><span data-setup-dot="2"></span><span data-setup-dot="3"></span>
+        </div>
+      </div>
+
+      <div id="setupBody" class="flex-1 overflow-y-auto p-5 text-xs space-y-4">
+        <!-- Step 0: Welcome -->
+        <div data-setup-step="0" class="space-y-4 pt-4 text-center">
+          <div class="w-16 h-16 mx-auto rounded-full bg-blue-50 text-navy flex items-center justify-center">
+            <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+          </div>
+          <h4 class="text-lg font-bold text-charcoal">Set up W-ishi for someone you care for</h4>
+          <p class="text-slateMuted leading-relaxed">
+            W-ishi alerts the people you choose if the wearer falls, stops moving, or presses the emergency button.
+            This takes about two minutes: tell us who wears the device, then choose who gets alerted and in what order.
+          </p>
+        </div>
+
+        <!-- Step 1: Senior profile -->
+        <div data-setup-step="1" class="space-y-3.5">
+          <div>
+            <h4 class="text-base font-bold text-charcoal">Who are you looking after?</h4>
+            <p class="text-slateMuted">This is the person who wears the W-ishi device.</p>
+          </div>
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Full Name</label>
+            <input type="text" id="setupFullName" required maxlength="60" placeholder="e.g. Tan Bee Lian"
+              class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+          </div>
+          <div>
+            <label class="block font-bold text-charcoal mb-1">What should alerts call them? <span class="font-normal text-slateMuted">(optional)</span></label>
+            <input type="text" id="setupCallName" maxlength="30" placeholder="e.g. Mdm Tan, Grandma"
+              class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+          </div>
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Address / Unit <span class="font-normal text-slateMuted">(optional)</span></label>
+            <input type="text" id="setupAddress" maxlength="80" placeholder="e.g. Blk 123 #07-14"
+              class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+            <span class="text-[10px] text-slateMuted mt-1 block">Helps responders who check in person.</span>
+          </div>
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Living Situation</label>
+            <select id="setupLiving" class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+              <option value="">Prefer not to say</option>
+              <option value="Living Alone">Living alone</option>
+              <option value="Lives with Family">Lives with family</option>
+              <option value="Lives with Helper">Lives with a helper</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 2: Tiers -->
+        <div data-setup-step="2" class="space-y-3">
+          <div>
+            <h4 class="text-base font-bold text-charcoal">Who gets alerted, in what order?</h4>
+            <p class="text-slateMuted leading-snug">
+              Tier 1 is alerted first. If nobody acknowledges in time, the next tier is alerted. Tiers with no
+              contacts are skipped. You'll add the actual people next.
+            </p>
+          </div>
+          <div id="setupTierRows" class="space-y-3"></div>
+        </div>
+
+        <!-- Step 3: Done -->
+        <div data-setup-step="3" class="space-y-4">
+          <div>
+            <h4 class="text-base font-bold text-charcoal">All set</h4>
+            <p class="text-slateMuted">You can change any of this later.</p>
+          </div>
+          <div id="setupSummary" class="p-3 rounded-xl border border-slate-200 bg-slate-50"></div>
+          <div class="p-3 rounded-xl bg-teal-50 border border-teal-200 text-charcoal leading-snug flex gap-2">
+            <i data-lucide="send" class="w-4 h-4 text-tealMed flex-shrink-0 mt-0.5"></i>
+            <span><b>Next:</b> add contacts to each tier, then tap the send icon on each one to invite them so their phone gets alerts.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-slate-100 flex gap-2 text-xs">
+        <button type="button" id="btnSetupBack" class="w-1/3 py-3 bg-slate-100 hover:bg-slate-200 text-slateMuted font-bold rounded-xl transition">Back</button>
+        <button type="button" id="btnSetupNext" class="flex-1 py-3 bg-navy hover:bg-blue-900 text-white font-bold rounded-xl shadow transition">Next</button>
+      </div>
+    </div>
+
+    <!-- Modal: Send Alert Invite (fallback when the phone has no share sheet) -->
+    <div id="inviteModal" class="hidden absolute inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
+      <div class="bg-white w-full max-w-sm rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto space-y-4 text-xs">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-tealMed text-white flex items-center justify-center">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-navy text-base">Invite <span id="inviteModalName"></span></h3>
+          </div>
+          <button id="btnCloseInviteModal" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slateMuted flex items-center justify-center transition">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <p id="inviteMessagePreview" class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-charcoal whitespace-pre-line leading-snug select-text"></p>
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="sendInviteVia('whatsapp')" class="py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+          </button>
+          <button onclick="sendInviteVia('sms')" class="py-2.5 bg-navy hover:bg-blue-900 text-white font-bold rounded-xl flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="message-square" class="w-3.5 h-3.5"></i> SMS
+          </button>
+          <button onclick="sendInviteVia('copy')" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-charcoal font-bold rounded-xl flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Add / Invite Preferred Contact -->
+    <div id="addContactModal" class="hidden absolute inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
+      <div class="bg-white w-full max-w-sm rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto space-y-4">
+        
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">
+              <i data-lucide="user-plus" class="w-4 h-4"></i>
+            </div>
+            <h3 id="contactModalTitle" class="font-bold text-navy text-base">Add Preferred Contact</h3>
+          </div>
+          <button id="btnCloseModal" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slateMuted flex items-center justify-center transition">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <form id="contactForm" class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Full Name</label>
+            <input type="text" id="inputName" required placeholder="e.g. David Tan"
+              class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+          </div>
+
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Mobile Number (Singapore)</label>
+            <input type="tel" id="inputPhone" required placeholder="+65 9123 4567" 
+              class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+          </div>
+
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Relationship / Role</label>
+            <select id="inputRole" class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+              <option value="Family">Family member</option>
+              <option value="Spouse / Partner">Spouse / Partner</option>
+              <option value="Private Caregiver">Private caregiver / helper</option>
+              <option value="Friend">Friend</option>
+              <option value="Neighbour">Neighbour</option>
+              <option value="Care Staff">Care staff (e.g. AAC)</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="text-[10px] text-slateMuted mt-1 block">Role is just a label. It does not decide the tier.</span>
+          </div>
+
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Escalation Tier</label>
+            <div id="tierRadioGroup" class="grid grid-cols-3 gap-1.5 text-center">
+              <!-- Dynamically populated with current tier names -->
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-charcoal mb-1">Availability Note <span class="font-normal text-slateMuted">(optional)</span></label>
+            <input type="text" id="inputStatus" maxlength="40" placeholder="e.g. On duty 9am - 6pm"
+              class="w-full bg-offWhite p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-navy text-charcoal font-medium">
+          </div>
+
+          <div class="pt-2 flex gap-2">
+            <button type="button" id="btnCancelModal" class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slateMuted font-bold rounded-xl transition">
+              Cancel
+            </button>
+            <button type="submit" class="w-1/2 py-2.5 bg-navy hover:bg-blue-900 text-white font-bold rounded-xl shadow transition">
+              Save Contact
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Modal: Edit Escalation Tiers -->
+    <div id="tierSettingsModal" class="hidden absolute inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
+      <div class="bg-white w-full max-w-sm rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center">
+              <i data-lucide="settings-2" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-navy text-base">Edit Escalation Tiers</h3>
+          </div>
+          <button id="btnCloseTierModal" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slateMuted flex items-center justify-center transition">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <form id="tierSettingsForm" class="space-y-3 text-xs">
+          <p class="text-slateMuted leading-snug">
+            Name each tier after whoever is in it, e.g. "Neighbours" as Tier 1 if they live closest. Leave blank to just show the tier number.
+          </p>
+          <div id="tierSettingsRows" class="space-y-3">
+            <!-- Dynamically populated -->
+          </div>
+          <p class="text-[10px] text-slateMuted leading-snug">
+            The last tier with contacts stays active until someone acknowledges. Changes are sent to the device automatically.
+          </p>
+          <div class="pt-2 flex gap-2">
+            <button type="button" id="btnCancelTierModal" class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slateMuted font-bold rounded-xl transition">
+              Cancel
+            </button>
+            <button type="submit" class="w-1/2 py-2.5 bg-navy hover:bg-blue-900 text-white font-bold rounded-xl shadow transition">
+              Save Tiers
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="mt-4 text-center text-xs text-slateMuted max-w-md">
+    <p></p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
-
 </html>
