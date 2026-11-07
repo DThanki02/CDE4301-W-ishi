@@ -220,3 +220,14 @@ blockquote p { font-size: inherit; line-height: inherit; color: inherit; text-al
   .w-hero img { animation: none; }
   dialog.w-modal { transition: none; }
 }
+
+.w-breakdown { margin-top: 26px; }
+.w-breakdown .bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: #e8e8ed; }
+.w-breakdown .bar i { display: block; height: 100%; transition: width .4s var(--ease); }
+.w-breakdown ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px 26px; }
+.w-breakdown li { display: flex; align-items: center; gap: 8px; font-size: .88rem; line-height: 1.5; }
+.w-breakdown li b { margin-left: auto; font-weight: 600; color: var(--ink); }
+.w-breakdown li em { font-style: normal; color: var(--ink-2); width: 40px; text-align: right; }
+.w-breakdown .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.w-calc .note { font-size: .8rem; color: #b26a00; display: block; margin-top: 4px; }
+.w-calc input:disabled + * , .w-calc label:has(input:disabled) { color: var(--ink-2); }

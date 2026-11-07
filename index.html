@@ -461,7 +461,7 @@
 <div class="grid">
 <label>Motion sensor<select name="sensor"><option value="lsm">LSM6DSO, low-power wake-up</option><option value="mpu">MPU-6050, always on (3.9 mA)</option></select></label>
 <label><input checked="" name="modem" type="checkbox"/> Modem switched off between alerts</label>
-<label><input checked="" name="sleep" type="checkbox"/> Microcontroller in deep sleep</label>
+<label><input checked="" name="sleep" type="checkbox"/> Microcontroller in deep sleep<span class="note" data-note="sleep" hidden="">Not possible with the MPU-6050: it has to be polled for every sample.</span></label>
 <label>Battery capacity: <span class="val" data-show="cap"></span> mAh<input max="1000" min="200" name="cap" step="50" type="range" value="500"/></label>
 <label>Hours of movement per day: <span class="val" data-show="hours"></span><input max="12" min="0" name="hours" step="1" type="range" value="3"/></label>
 <label>Check-ins per day: <span class="val" data-show="checkins"></span><input max="24" min="0" name="checkins" step="1" type="range" value="1"/></label>
@@ -469,7 +469,7 @@
 </div>
 <div class="w-meter"><i></i></div>
 <div class="w-meter-legend"><span>0.05 mA</span><span>0.5 mA goal</span><span>2.4 mA requirement</span><span>50 mA</span></div>
-<div class="out"><div><b data-out="i"></b><span>average current</span></div><div><b data-out="d"></b><span>battery life (80% usable)</span></div><div><b data-out="v" style="font-size:1.05rem;margin-top:12px"></b><span>against the targets</span></div></div>
+<div class="w-breakdown"></div><div class="out"><div><b data-out="i"></b><span>average current</span></div><div><b data-out="d"></b><span>battery life (80% usable)</span></div><div><b data-out="v" style="font-size:1.05rem;margin-top:12px"></b><span>against the targets</span></div></div>
 </div>
 <p><strong>Should the target change?</strong> Lowering the target would in principle allow a smaller battery, but the battery size is set by the modem’s 2 A transmission bursts as well as by the average current. Table 6.9 shows the trade-off.</p>
 <table-component subtitle="Table 6.9. Battery size against peak current and seven-day average current.">

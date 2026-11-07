@@ -131,15 +131,23 @@
   if (calc) {
     const f = n => calc.querySelector(`[name=${n}]`);
     const out = n => calc.querySelector(`[data-out=${n}]`);
-    function compute() {
-      const cap = +f("cap").value, sensor = f("sensor").value, modemOff = f("modem").checked, sleep = f("sleep").checked;
+    function compute(e) {
+      const cap = +f("cap").value, sensor = f("sensor").value, modemOff = f("modem").checked;
+      // The MPU-6050 has to be polled for every sample, so the microcontroller cannot deep sleep with it.
+      const sl = f("sleep");
+      if (sensor === "mpu") { sl.checked = false; sl.disabled = true; }
+      else { if (sl.disabled && (!e || e.target === f("sensor"))) sl.checked = true; sl.disabled = false; }
+      calc.querySelector("[data-note=sleep]").hidden = sensor !== "mpu";
+      const sleep = sl.checked;
       const hrs = +f("hours").value, chk = +f("checkins").value, alerts = +f("alerts").value;
-      let I = 0.01;                                    // protection, regulators, charger
-      I += sleep ? 0.014 + 0.01 : 9.5;                 // MCU deep sleep + wake-ups, or awake
-      I += sensor === "lsm" ? 0.02 + 0.55 * hrs / 24 : 3.9;
-      I += modemOff ? 0.003 : 17.6;
-      I += chk * 0.0417;                               // ~30 s at ~120 mA per check-in
-      I += alerts * 0.0119;                            // ~2 mAh per alert, per week
+      const parts = [
+        ["Microcontroller", sleep ? 0.014 + 0.01 : 9.5, "#1e5aa8"],
+        ["Motion sensor", sensor === "lsm" ? 0.02 + 0.55 * hrs / 24 : 3.9, "#8e6cc9"],
+        ["Modem between alerts", modemOff ? 0.003 : 17.6, "#2e9e8f"],
+        ["Check-ins", chk * 0.0417, "#e8a33d"],
+        ["Alerts", alerts * 0.0119, "#d32f2f"],
+        ["Regulators, protection, charger", 0.01, "#9aa5b1"]];
+      const I = parts.reduce((t, p) => t + p[1], 0);
       const usable = cap * 0.8, days = usable / I / 24;
       calc.querySelectorAll("[data-show]").forEach(s => s.textContent = f(s.dataset.show).value);
       out("i").textContent = I < 1 ? I.toFixed(2) + " mA" : I.toFixed(1) + " mA";
@@ -149,6 +157,9 @@
       out("v").style.color = goal ? C.green : ok ? "#b26a00" : C.red;
       const pct = Math.min(100, Math.log10(Math.max(I, 0.05) / 0.05) / Math.log10(50 / 0.05) * 100);
       const m = calc.querySelector(".w-meter i"); m.style.width = pct + "%"; m.style.background = goal ? C.green : ok ? C.amber : C.red;
+      const bd = calc.querySelector(".w-breakdown");
+      bd.innerHTML = '<div class="bar">' + parts.map(p => `<i style="width:${100 * p[1] / I}%;background:${p[2]}" title="${p[0]}"></i>`).join("") + "</div>" +
+        '<ul>' + parts.map(p => `<li><span class="dot" style="background:${p[2]}"></span>${p[0]}<b>${p[1] < 0.1 ? p[1].toFixed(3) : p[1] < 1 ? p[1].toFixed(2) : p[1].toFixed(1)} mA</b><em>${(100 * p[1] / I).toFixed(0)}%</em></li>`).join("") + "</ul>";
     }
     calc.addEventListener("input", compute);
     calc.querySelectorAll("[data-preset]").forEach(b => b.addEventListener("click", () => {
