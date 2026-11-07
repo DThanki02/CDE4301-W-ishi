@@ -1,0 +1,205 @@
+/* W-ishi report interactivity: progress bar, scroll spy, reveal, count-up,
+   charts, power calculator, alert flow demo and figure placeholders. */
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const C = { dark: "#1f2933", blue: "#1e5aa8", red: "#d32f2f", amber: "#e8a33d", green: "#2e7d32", grey: "#9aa5b1" };
+
+  /* ---------- reading progress + scroll spy ---------- */
+  const bar = document.createElement("div"); bar.id = "w-progress"; document.body.appendChild(bar);
+  const links = $$(".w-side a[href^='#']");
+  const targets = links.map(a => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
+  function onScroll() {
+    const h = document.documentElement;
+    bar.style.width = (100 * h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) + "%";
+    let current = null;
+    for (const t of targets) if (t.getBoundingClientRect().top < 140) current = t.id;
+    links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+  }
+  document.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* ---------- reveal + count-up ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in");
+    if (e.target.dataset.count !== undefined) countUp(e.target);
+    io.unobserve(e.target);
+  }), { threshold: 0, rootMargin: "0px 0px -8% 0px" });
+  $$(".w-main > div, .w-stat, .w-card, .w-chart, .w-calc, .w-flow").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
+  $$("[data-count]").forEach(el => io.observe(el));
+  function countUp(el) {
+    const end = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length;
+    const pre = el.dataset.pre || "", suf = el.dataset.suf || "";
+    if (reduce) { el.textContent = pre + end.toFixed(dec) + suf; return; }
+    const t0 = performance.now(), dur = 1100;
+    (function step(t) {
+      const k = Math.min(1, (t - t0) / dur), v = end * (1 - Math.pow(1 - k, 3));
+      el.textContent = pre + v.toFixed(dec) + suf;
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  /* ---------- figure placeholders for images not yet uploaded ---------- */
+  customElements.whenDefined("image-component").then(() => setTimeout(() => {
+    $$("image-component").forEach(ic => {
+      const img = ic.shadowRoot && ic.shadowRoot.querySelector("img");
+      if (!img) return;
+      const swap = () => {
+        const ph = document.createElement("div"); ph.className = "w-figph";
+        ph.innerHTML = "<strong>Figure coming soon</strong><br><span style='font-size:.85rem'>" + (ic.getAttribute("subtitle") || "") + "</span>";
+        ic.replaceWith(ph);
+      };
+      if (img.complete && img.naturalWidth === 0) swap(); else img.addEventListener("error", swap);
+    });
+  }, 300));
+
+  /* ---------- charts ---------- */
+  function whenChart(cb) { if (window.Chart) cb(); else window.addEventListener("load", () => window.Chart && cb()); }
+  const bands = {
+    id: "bands",
+    beforeDatasetsDraw(chart, _, opt) {
+      const { ctx, chartArea: a, scales } = chart; if (!opt || !opt.list) return;
+      opt.list.forEach(b => {
+        const y1 = scales.y.getPixelForValue(b.to), y2 = scales.y.getPixelForValue(b.from);
+        ctx.save(); ctx.fillStyle = b.color; ctx.fillRect(a.left, y1, a.right - a.left, y2 - y1);
+        ctx.fillStyle = b.text; ctx.font = "600 11px Poppins, sans-serif"; ctx.textAlign = "left";
+        ctx.fillText(b.label, a.left + 8, y1 + 14); ctx.restore();
+      });
+    }
+  };
+  const line = {
+    id: "hline",
+    afterDatasetsDraw(chart, _, opt) {
+      if (!opt || opt.value === undefined) return;
+      const { ctx, chartArea: a, scales } = chart, y = scales.y.getPixelForValue(opt.value);
+      ctx.save(); ctx.strokeStyle = opt.color || C.red; ctx.setLineDash([6, 4]); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(a.left, y); ctx.lineTo(a.right, y); ctx.stroke();
+      ctx.fillStyle = opt.color || C.red; ctx.font = "600 11px Poppins, sans-serif"; ctx.fillText(opt.label, a.left + 6, y - 6); ctx.restore();
+    }
+  };
+
+  whenChart(() => {
+    Chart.defaults.font.family = "Poppins, sans-serif"; Chart.defaults.color = "#4a5563";
+    const make = (id, cfg) => { const el = document.getElementById(id); if (el) new Chart(el, cfg); };
+
+    make("w-chart-prefs", {
+      type: "bar",
+      data: {
+        labels: ["Feel safe without being watched", "Family, not staff, as first contact", "Rely on peers and neighbours", "Manual control over alerts", "Hesitate to pay while healthy"],
+        datasets: [{ data: [16, 14, 8, 7, 6], backgroundColor: ["#00a156", "#004aad", "#7a8aa3", "#e00000", "#5e3c38"], borderRadius: 6 }]
+      },
+      options: {
+        indexAxis: "y", maintainAspectRatio: false, plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: c => `${c.raw} of 40 residents (${Math.round(c.raw / 40 * 100)}%)` } } },
+        scales: { x: { max: 20, title: { display: true, text: "Residents (n = 40)" } } }
+      }
+    });
+
+    const fall = { labels: ["Walking", "Bag fall", "Pocket fall", "Sitting down", "Stick fall"], med: [1.3, 2.4, 2.6, 3.8, 7.2],
+      res: ["1/15 flagged", "13/15 caught", "15/15 caught", "2/15 flagged", "13/15 caught"], fall: [false, true, true, false, true] };
+    const fallCfg = id => make(id, {
+      type: "bar",
+      data: { labels: fall.labels, datasets: [{ data: fall.med, backgroundColor: fall.fall.map((f, i) => f ? (i === 4 ? "#1e5aa8" : "#d32f2f") : "#9aa5b1"), borderRadius: 6 }] },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: c => `Median peak ${c.raw} g · ${fall.res[c.dataIndex]}` } },
+          bands: { list: [
+            { from: 1.5, to: 3, color: "rgba(211,47,47,.10)", text: "#c62828", label: "WINDOW A · 1.5–3 g" },
+            { from: 5, to: 10, color: "rgba(30,90,168,.10)", text: "#1e5aa8", label: "WINDOW B · 5–10 g" }] } },
+        scales: { y: { min: 0, max: 10, title: { display: true, text: "Median peak acceleration (g)" } } }
+      },
+      plugins: [bands]
+    });
+    fallCfg("w-chart-windows"); fallCfg("w-chart-fall");
+
+    make("w-chart-gnss", {
+      type: "bar",
+      data: { labels: ["Open space (5/5 fixes)", "Covered corridor (2/5)", "Inside the lab (0/5)"],
+        datasets: [{ data: [5.04, 13.46, 0], backgroundColor: [C.green, C.red, "#c9ced6"], borderRadius: 6 }] },
+      options: { maintainAspectRatio: false,
+        plugins: { legend: { display: false }, hline: { value: 10, label: "Target ≤ 10 m", color: C.red },
+          tooltip: { callbacks: { label: c => c.dataIndex === 2 ? "No fix obtained" : `Mean error ${c.raw} m` } } },
+        scales: { y: { min: 0, max: 16, title: { display: true, text: "Mean error (m)" } } } },
+      plugins: [line]
+    });
+  });
+
+  /* ---------- power calculator ---------- */
+  const calc = $("#w-calc");
+  if (calc) {
+    const f = n => calc.querySelector(`[name=${n}]`);
+    const out = n => calc.querySelector(`[data-out=${n}]`);
+    function compute() {
+      const cap = +f("cap").value, sensor = f("sensor").value, modemOff = f("modem").checked, sleep = f("sleep").checked;
+      const hrs = +f("hours").value, chk = +f("checkins").value, alerts = +f("alerts").value;
+      let I = 0.01;                                    // protection, regulators, charger
+      I += sleep ? 0.014 + 0.01 : 9.5;                 // MCU deep sleep + wake-ups, or awake
+      I += sensor === "lsm" ? 0.02 + 0.55 * hrs / 24 : 3.9;
+      I += modemOff ? 0.003 : 17.6;
+      I += chk * 0.0417;                               // ~30 s at ~120 mA per check-in
+      I += alerts * 0.0119;                            // ~2 mAh per alert, per week
+      const usable = cap * 0.8, days = usable / I / 24;
+      calc.querySelectorAll("[data-show]").forEach(s => s.textContent = f(s.dataset.show).value);
+      out("i").textContent = I < 1 ? I.toFixed(2) + " mA" : I.toFixed(1) + " mA";
+      out("d").textContent = days < 1 ? (days * 24).toFixed(0) + " hours" : days.toFixed(days < 10 ? 1 : 0) + " days";
+      const ok = I <= 2.4, goal = I <= 0.5;
+      out("v").textContent = goal ? "Meets the design goal (≤ 0.5 mA)" : ok ? "Meets the requirement (≤ 2.4 mA)" : "Misses the 2.4 mA requirement";
+      out("v").style.color = goal ? C.green : ok ? "#b26a00" : C.red;
+      const pct = Math.min(100, Math.log10(Math.max(I, 0.05) / 0.05) / Math.log10(50 / 0.05) * 100);
+      const m = calc.querySelector(".w-meter i"); m.style.width = pct + "%"; m.style.background = goal ? C.green : ok ? C.amber : C.red;
+    }
+    calc.addEventListener("input", compute);
+    calc.querySelectorAll("[data-preset]").forEach(b => b.addEventListener("click", () => {
+      const p = b.dataset.preset === "proto"
+        ? { sensor: "mpu", modem: false, sleep: false, hours: 3, checkins: 0, alerts: 0, cap: 500 }
+        : { sensor: "lsm", modem: true, sleep: true, hours: 3, checkins: 1, alerts: 3, cap: 500 };
+      f("sensor").value = p.sensor; f("modem").checked = p.modem; f("sleep").checked = p.sleep;
+      f("hours").value = p.hours; f("checkins").value = p.checkins; f("alerts").value = p.alerts; f("cap").value = p.cap; compute();
+    }));
+    compute();
+  }
+
+  /* ---------- alert flow demo ---------- */
+  const flow = $("#w-flow");
+  if (flow) {
+    const tok = flow.querySelector(".w-token"), led = flow.querySelector(".led"), msg = flow.querySelector(".w-flow-msg");
+    const steps = $$(".w-steps span", flow), tiers = $$(".w-tier", flow), btnPlay = flow.querySelector("[data-act=play]");
+    const btnCancel = flow.querySelector("[data-act=cancel]"), btnReset = flow.querySelector("[data-act=reset]");
+    let timers = [], running = false;
+    const later = (fn, ms) => timers.push(setTimeout(fn, reduce ? Math.min(ms, 200) : ms));
+    function stage(i) { steps.forEach((s, k) => { s.classList.toggle("on", k === i); s.classList.toggle("done", k < i); }); }
+    function reset() {
+      timers.forEach(clearTimeout); timers = []; running = false;
+      led.className = "led"; stage(-1); tiers.forEach(t => t.className = "w-tier");
+      msg.innerHTML = "Press <b>Play</b> to walk through what happens after a fall."; btnCancel.disabled = true; btnPlay.disabled = false;
+    }
+    function play() {
+      reset(); running = true; btnPlay.disabled = true;
+      stage(0); tok.classList.remove("shake"); void tok.offsetWidth; tok.classList.add("shake");
+      msg.innerHTML = "<b>Impact.</b> The peak acceleration lands inside Window A (pocket or bag) or Window B (stick).";
+      later(() => { stage(1); msg.innerHTML = "<b>Stillness check.</b> The token confirms she is lying still for 2 seconds."; }, 2200);
+      later(() => {
+        stage(2); led.className = "led amber"; btnCancel.disabled = false;
+        let n = 15; msg.innerHTML = `<b>Cancel window.</b> The LED turns amber. One press of SOS cancels.<div class="w-flow-count">${n}</div>`;
+        const tick = () => { if (!running) return; n--; const c = msg.querySelector(".w-flow-count"); if (c) c.textContent = n;
+          if (n > 0) later(tick, 330); else sendAlert(); };
+        later(tick, 330);
+      }, 4400);
+    }
+    function sendAlert() {
+      btnCancel.disabled = true; stage(3);
+      msg.innerHTML = "<b>Alert sent.</b> The alert and her location go out over 4G, with no phone needed.";
+      later(() => { stage(4); tiers[0].classList.add("ring"); msg.innerHTML = "<b>Tier 1</b> (her son) is notified. No reply within 2 minutes…"; }, 2000);
+      later(() => { tiers[0].className = "w-tier miss"; tiers[1].classList.add("ring"); msg.innerHTML = "<b>Escalation.</b> The alert moves to Tier 2 (care staff)."; }, 4200);
+      later(() => { tiers[1].className = "w-tier ack"; led.className = "led green"; stage(5);
+        msg.innerHTML = "<b>Acknowledged.</b> The LED turns green so she knows help is coming."; btnPlay.disabled = false; running = false; }, 6400);
+    }
+    btnPlay.addEventListener("click", play);
+    btnReset.addEventListener("click", reset);
+    btnCancel.addEventListener("click", () => { timers.forEach(clearTimeout); timers = []; running = false; led.className = "led";
+      msg.innerHTML = "<b>Cancelled.</b> She pressed SOS within 15 seconds, so nothing was sent."; btnCancel.disabled = true; btnPlay.disabled = false; });
+    reset();
+  }
+})();
