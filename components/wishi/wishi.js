@@ -7,14 +7,14 @@
   const C = { dark: "#1f2933", blue: "#1e5aa8", red: "#d32f2f", amber: "#e8a33d", green: "#2e7d32", grey: "#9aa5b1" };
 
   /* ---------- reading progress + scroll spy ---------- */
-  const bar = document.createElement("div"); bar.id = "w-progress"; document.body.appendChild(bar);
-  const links = $$(".w-side a[href^='#']");
+  const bar = document.getElementById("w-progress") || document.body.appendChild(Object.assign(document.createElement("div"), { id: "w-progress" }));
+  const links = $$(".w-links a[href^='#']");
   const targets = links.map(a => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
   function onScroll() {
     const h = document.documentElement;
     bar.style.width = (100 * h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) + "%";
     let current = null;
-    for (const t of targets) if (t.getBoundingClientRect().top < 140) current = t.id;
+    for (const t of targets) if (t.getBoundingClientRect().top < 160) current = t.id;
     links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
   }
   document.addEventListener("scroll", onScroll, { passive: true }); onScroll();
@@ -26,7 +26,7 @@
     if (e.target.dataset.count !== undefined) countUp(e.target);
     io.unobserve(e.target);
   }), { threshold: 0, rootMargin: "0px 0px -8% 0px" });
-  $$(".w-main > div, .w-stat, .w-card, .w-chart, .w-calc, .w-flow").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
+  $$(".w-head, .w-body > *:not(dialog), .w-tile, .w-statrow > div").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
   $$("[data-count]").forEach(el => io.observe(el));
   function countUp(el) {
     const end = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length;
@@ -47,7 +47,7 @@
       if (!img) return;
       const swap = () => {
         const ph = document.createElement("div"); ph.className = "w-figph";
-        ph.innerHTML = "<strong>Figure coming soon</strong><br><span style='font-size:.85rem'>" + (ic.getAttribute("subtitle") || "") + "</span>";
+        ph.innerHTML = "<strong>Figure coming soon</strong><br><span style='font-size:.9rem'>" + (ic.getAttribute("subtitle") || "") + "</span>";
         ic.replaceWith(ph);
       };
       if (img.complete && img.naturalWidth === 0) swap(); else img.addEventListener("error", swap);
@@ -202,4 +202,36 @@
       msg.innerHTML = "<b>Cancelled.</b> She pressed SOS within 15 seconds, so nothing was sent."; btnCancel.disabled = true; btnPlay.disabled = false; });
     reset();
   }
+
+  /* ---------- modals ---------- */
+  function openModal(d) {
+    if (!d) return;
+    d.showModal(); requestAnimationFrame(() => d.classList.add("show"));
+    document.documentElement.style.overflow = "hidden";
+  }
+  function closeModal(d) {
+    d.classList.remove("show");
+    setTimeout(() => { d.close(); document.documentElement.style.overflow = ""; }, reduce ? 0 : 280);
+  }
+  document.addEventListener("click", e => {
+    const o = e.target.closest("[data-open]");
+    if (o) { e.preventDefault(); openModal(document.getElementById(o.dataset.open)); return; }
+    const c = e.target.closest(".w-close");
+    if (c) { closeModal(c.closest("dialog")); return; }
+    if (e.target.tagName === "DIALOG" && e.target.classList.contains("w-modal")) closeModal(e.target);
+  });
+  document.addEventListener("keydown", e => {
+    const o = e.target.closest && e.target.closest("[data-open]");
+    if (o && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openModal(document.getElementById(o.dataset.open)); }
+  });
+  $$("dialog.w-modal").forEach(d => d.addEventListener("cancel", ev => { ev.preventDefault(); closeModal(d); }));
+
+  /* ---------- segmented tabs ---------- */
+  $$(".w-seg").forEach(seg => {
+    const btns = $$("button", seg), root = seg.parentElement;
+    btns.forEach(b => b.addEventListener("click", () => {
+      btns.forEach(x => x.setAttribute("aria-selected", x === b));
+      $$(":scope > .w-panel", root).forEach(p => p.hidden = p.id !== b.dataset.panel);
+    }));
+  });
 })();

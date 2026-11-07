@@ -1,224 +1,79 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-<title>CDE4301 Wishi</title>
-<link href="./favicon.ico" rel="icon" type="image/x-icon"/>
-<link href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js" type="module"></script>
-<link href="./index.css" rel="stylesheet"/>
-<link href="./components/team-member/team-member.css" rel="stylesheet"/>
-<script src="./components/team-member/team-member.js" type="module"></script>
-<link href="./components/table-of-content/table-of-content.css" rel="stylesheet"/>
-<script src="./components/image/image-component.js" type="module"></script>
-<script src="./components/video/video.js" type="module"></script>
-<link href="./components/references/references.css" rel="stylesheet"/>
-<link href="./components/scroll-to-top/scroll-to-top.css" rel="stylesheet"/>
-<script src="./components/scroll-to-top/scroll-to-top.js"></script>
-<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="./components/wishi/wishi.css" rel="stylesheet"/></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W-ishi · CDE4301 Interim Report</title>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./components/team-member/team-member.css">
+  <script type="module" src="./components/team-member/team-member.js"></script>
+  <link rel="stylesheet" href="./components/table-of-content/table-of-content.css">
+  <script type="module" src="./components/image/image-component.js"></script>
+  <script type="module" src="./components/video/video.js"></script>
+  <link rel="stylesheet" href="./components/references/references.css">
+  <link rel="stylesheet" href="./components/scroll-to-top/scroll-to-top.css">
+  <script src="./components/scroll-to-top/scroll-to-top.js"></script>
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./components/wishi/wishi.css">
+</head>
 <body>
-<div class="content"><header class="w-hero"><div class="w-hero-inner"><div class="w-hero-grid"><div>
-<span class="w-eyebrow">CDE4301 · INTERIM REPORT</span>
-<h1>W-ishi: A Personal Safety Token for Seniors</h1>
-<p class="w-tagline">A discreet token that detects falls, lets the senior cancel, and reaches the right person wherever she is, without cameras, microphones or constant tracking.</p>
-<div class="w-stats">
-<div class="w-stat"><div class="num" data-count="40">0</div><div class="lab">residents in our co-design workshops</div></div>
-<div class="w-stat" style="border-top-color:#d32f2f"><div class="num" data-count="91" data-suf="%">0</div><div class="lab">of falls caught in 45 trials</div></div>
-<div class="w-stat" style="border-top-color:#e8a33d"><div class="num" data-count="24" data-pre="≈" data-suf=" s">0</div><div class="lab">from alert to the first contact</div></div>
-<div class="w-stat" style="border-top-color:#00a156"><div class="num" data-count="0">0</div><div class="lab">cameras or microphones on board</div></div>
-</div>
-</div><img class="w-hero-img" src="assets/wishi/hero-token.png" alt="Render of the W-ishi token: a fabric-faced long cuboid with a round SOS button and a small status LED"></div><div class="team-member-wrapper">
-<team-member avatar="assets/blackranger.png" department="Electrical Engineering" name="Shishir" year="[year]"></team-member>
-<team-member avatar="assets/yellowranger.png" department="Computer Engineering" name="Dhruv" year="[year]"></team-member>
-<team-member avatar="assets/redranger.png" department="Mechanical Engineering" name="Bob" year="[year]"></team-member>
-<team-member avatar="assets/pinkranger.png" department="Biomedical Engineering" name="Genieve" year="[year]"></team-member>
-</div></div></header><div class="w-layout"><aside class="w-side"><div class="table-of-content">
-<h2>Table of Contents</h2>
-<sl-tree>
-<sl-tree-item>
-<a href="#sec-1">1. Summary</a>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-2">2. Problem Background</a>
-<sl-tree-item><a href="#sec-2-1">2.1 Singapore’s Ageing Population</a></sl-tree-item>
-<sl-tree-item><a href="#sec-2-2">2.2 The National Response: Age Well SG</a></sl-tree-item>
-<sl-tree-item><a href="#sec-2-3">2.3 Field Sites</a></sl-tree-item>
-<sl-tree-item><a href="#sec-2-4">2.4 Motivating Incident: The 2 September Fall</a></sl-tree-item>
-<sl-tree-item><a href="#sec-2-5">2.5 Gaps Common to Both Sites</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-3">3. User Research and Problem Definition</a>
-<sl-tree-item><a href="#sec-3-1">3.1 Co-design Workshops: Method</a></sl-tree-item>
-<sl-tree-item><a href="#sec-3-2">3.2 Stakeholder Mapping</a></sl-tree-item>
-<sl-tree-item><a href="#sec-3-3">3.3 Key Findings from 40 Residents</a></sl-tree-item>
-<sl-tree-item><a href="#sec-3-4">3.4 Key Insights</a></sl-tree-item>
-<sl-tree-item><a href="#sec-3-5">3.5 Design Principles</a></sl-tree-item>
-<sl-tree-item><a href="#sec-3-6">3.6 Problem Statement</a></sl-tree-item>
-<sl-tree-item><a href="#sec-3-7">3.7 Value Proposition and Novelty</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-4">4. Design Specifications</a>
-<sl-tree-item><a href="#sec-4-1">4.1 Functional Requirements</a></sl-tree-item>
-<sl-tree-item><a href="#sec-4-2">4.2 User-centred Requirements</a></sl-tree-item>
-<sl-tree-item><a href="#sec-4-3">4.3 Specification Table</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-5">5. Concept Generation and Selection</a>
-<sl-tree-item><a href="#sec-5-1">5.1 Functional Decomposition</a></sl-tree-item>
-<sl-tree-item><a href="#sec-5-2">5.2 Morphological Chart of Options</a></sl-tree-item>
-<sl-tree-item><a href="#sec-5-3">5.3 Selection Rationale</a></sl-tree-item>
-<sl-tree-item><a href="#sec-5-4">5.4 Selected Concept and System Architecture</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-6">6. Detailed Design</a>
-<sl-tree-item><a href="#sec-6-1">6.1 Mechanical and Ergonomics</a></sl-tree-item>
-<sl-tree-item><a href="#sec-6-2">6.2 Electrical and Sensing</a></sl-tree-item>
-<sl-tree-item><a href="#sec-6-3">6.3 Alert Flow and User Journey</a></sl-tree-item>
-<sl-tree-item><a href="#sec-6-4">6.4 Companion App</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-7">7. Prototyping and Testing</a>
-<sl-tree-item><a href="#sec-7-1">7.1 Prototype Build</a></sl-tree-item>
-<sl-tree-item><a href="#sec-7-2">7.2 Test Plan and Methods</a></sl-tree-item>
-<sl-tree-item><a href="#sec-7-3">7.3 Results (Electrical)</a></sl-tree-item>
-<sl-tree-item><a href="#sec-7-4">7.4 Results Against Specifications</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item>
-<a href="#sec-8">8. Discussion and Shortcomings</a>
-</sl-tree-item>
-<sl-tree-item expanded="">
-<a href="#sec-9">9. Plan for Semester 2</a>
-<sl-tree-item><a href="#sec-9-1">9.1 Work Packages per Subsystem</a></sl-tree-item>
-<sl-tree-item><a href="#sec-9-2">9.2 Timeline and Milestones</a></sl-tree-item>
-<sl-tree-item><a href="#sec-9-3">9.3 Risks and Mitigations</a></sl-tree-item>
-</sl-tree-item>
-<sl-tree-item>
-<a href="#sec-10">10. Conclusion</a>
-</sl-tree-item>
-<sl-tree-item><a href="#references">References</a></sl-tree-item>
-</sl-tree>
-</div></aside><main class="w-main"><div>
-<div id="sec-1">
-<h2>1. Summary</h2>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-2">
-<h2>2. Problem Background</h2>
-</div>
-<div id="sec-2-1">
-<h3>2.1 Singapore’s Ageing Population</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-2-2">
-<h3>2.2 The National Response: Age Well SG</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-2-3">
-<h3>2.3 Field Sites</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-2-4">
-<h3>2.4 Motivating Incident: The 2 September Fall</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-2-5">
-<h3>2.5 Gaps Common to Both Sites</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-3">
-<h2>3. User Research and Problem Definition</h2>
-</div>
-<div id="sec-3-1">
-<h3>3.1 Co-design Workshops: Method</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-3-2">
-<h3>3.2 Stakeholder Mapping</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-3-3">
-<h3>3.3 Key Findings from 40 Residents</h3>
+<div class="content">
+  <nav class="w-nav" aria-label="Report sections"><div class="w-nav-inner">
+    <a class="w-brand" href="#top">W-ishi</a>
+    <div class="w-links"><a href="#sec-2">Problem</a><a href="#sec-3">Research</a><a href="#sec-4">Specs</a><a href="#sec-5">Concept</a><a href="#sec-6">Design</a><a href="#sec-7">Testing</a><a href="#sec-8">Shortcomings</a><a href="#sec-9">Plan</a></div>
+    <button class="w-pill" data-open="m-toc">Contents</button>
+  </div><div id="w-progress"></div></nav>
+
+  <header class="w-hero" id="top"><div>
+    <span class="w-eyebrow">CDE4301 · Interim report</span>
+    <h1>W-ishi</h1>
+    <p class="sub">A personal safety token for seniors.</p>
+    <p class="tag">A discreet token that detects falls, lets the senior cancel, and reaches the right person wherever she is, without cameras, microphones or constant tracking.</p>
+    <div class="cta"><a class="w-pill" href="#sec-1" style="text-decoration:none">Read the report</a><a class="w-pill ghost" href="#w-flow" style="text-decoration:none">See the alert flow</a></div>
+    <img src="assets/wishi/hero-token.png" alt="Concept render of the W-ishi token: a fabric-faced long cuboid with a round SOS button and a small status LED">
+  </div></header>
+
+  <div class="w-statband"><div class="w-statrow">
+    <div><div class="w-big" data-count="40">0</div><div class="w-biglab">residents in our co-design workshops</div></div>
+    <div><div class="w-big" data-count="91" data-suf="%">0</div><div class="w-biglab">of falls caught in 45 trials</div></div>
+    <div><div class="w-big" data-count="24" data-pre="≈" data-suf=" s">0</div><div class="w-biglab">from alert to the first contact</div></div>
+    <div><div class="w-big" data-count="0">0</div><div class="w-biglab">cameras or microphones on board</div></div>
+  </div></div>
+
+  <div class="w-team"><h2>The team</h2><div class="team-member-wrapper">
+    <team-member avatar="assets/blackranger.png" name="Shishir" department="Electrical Engineering" year="[year]"></team-member>
+    <team-member avatar="assets/yellowranger.png" name="Dhruv" department="Computer Engineering" year="[year]"></team-member>
+    <team-member avatar="assets/redranger.png" name="Bob" department="Mechanical Engineering" year="[year]"></team-member>
+    <team-member avatar="assets/pinkranger.png" name="Genieve" department="Biomedical Engineering" year="[year]"></team-member>
+  </div></div>
+
+  <section class="w-sec" id="sec-1"><div class="w-head"><span class="w-eyebrow">Section 1</span><h2>Summary</h2></div><div class="w-body"><p style="text-align:center"><span class="w-soon">Being written</span></p></div></section><section class="w-sec" id="sec-2"><div class="w-head"><span class="w-eyebrow">Section 2</span><h2>Problem Background</h2><p>Why seniors living alone need a better way to call for help.</p></div><div class="w-body"><div id="sec-2-1"><h3><span class="n">2.1</span>Singapore’s Ageing Population</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-2-2"><h3><span class="n">2.2</span>The National Response: Age Well SG</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-2-3"><h3><span class="n">2.3</span>Field Sites</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-2-4"><h3><span class="n">2.4</span>Motivating Incident: The 2 September Fall</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-2-5"><h3><span class="n">2.5</span>Gaps Common to Both Sites</h3><p><span class="w-soon">Being written</span></p></div></div></section><section class="w-sec" id="sec-3"><div class="w-head"><span class="w-eyebrow">Section 3</span><h2>User Research and Problem Definition</h2><p>What 40 residents told us, and the question it led to.</p></div><div class="w-body"><div id="sec-3-1"><h3><span class="n">3.1</span>Co-design Workshops: Method</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-3-2"><h3><span class="n">3.2</span>Stakeholder Mapping</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-3-3">
+<h3><span class="n">3.3</span>Key Findings from 40 Residents</h3>
 <p>We ran three co-design sessions with 40 residents across both sites: Harmony Village (HV) on 24 August with 10 residents, Lions Befrienders (LB) on 26 August with 17 residents, and HV again on 27 August with 13 residents. Participants were aged 61 to 91, with an average age of 76. Thirty-four were women (85%) and six were men (15%). Each session ran four activities: “A day in my life”, “When I need help”, “My ideal helper”, and a round of concept demonstrations with feedback.</p>
 <!-- TODO: save the image as assets/wishi/fig-3-1.png. Content: Photographs of the co-design sessions at Harmony Village and Lions Befrienders (e.g. residents completing the activity sheets). -->
 <image-component source="assets/wishi/fig-3-1.png" subtitle="Figure 3.1. Co-design workshops at Harmony Village and Lions Befrienders." tag="fig-3-1"></image-component>
-<p>Seventy per cent of the residents we spoke to live alone. At HV there is one care staff member for every 189 residents (1:189), and residents described staff check-ins as happening “seldom or never”.</p><div class="w-chips">
-<div class="w-chip"><b data-count="40">0</b><span>residents</span></div>
-<div class="w-chip"><b data-count="76">0</b><span>average age</span></div>
-<div class="w-chip"><b data-count="70" data-suf="%">0</b><span>live alone</span></div>
-<div class="w-chip"><b>1:189</b><span>staff to residents at HV</span></div>
-</div>
+<p>Seventy per cent of the residents we spoke to live alone. At HV there is one care staff member for every 189 residents (1:189), and residents described staff check-ins as happening “seldom or never”.</p><div class="w-chips"><div class="w-chip"><b data-count="40">0</b><span>residents</span></div><div class="w-chip"><b data-count="76">0</b><span>average age</span></div><div class="w-chip"><b data-count="70" data-suf="%">0</b><span>live alone</span></div><div class="w-chip"><b>1:189</b><span>staff to residents at HV</span></div></div>
 <p>We coded each participant’s responses separately and counted a preference only when that participant stated it directly. Table 3.1 lists the five preferences raised most often.</p>
-<div class="w-chart small"><canvas aria-label="Bar chart of the five most frequent user preferences" id="w-chart-prefs"></canvas></div><p class="w-caption">Hover a bar for the share of residents. Full data with participant IDs below.</p><sl-details class="w-more" summary="Show Table 3.1 with participant IDs"><table-component subtitle="Table 3.1. Most frequent user preferences (n = 40).">
-<div class="w-scroll"><table class="wishi-table">
-<thead>
-<tr>
-<th><strong>User preference</strong></th>
-<th><strong>Participants</strong></th>
-<th><strong>Count</strong></th>
-<th><strong>Share</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Feel safe without being watched (no cameras, microphones or unprompted speakers)</td>
-<td>P01, P03, P08, P10, P14, P15, P17, P21, P23, P27, P32, P33, P34, P36, P38, P40</td>
-<td>16</td>
-<td>40%</td>
-</tr>
-<tr>
-<td>Want family, not staff or institutions, as the first point of contact</td>
-<td>P03, P04, P05, P06, P08, P10, P11, P12, P16, P21, P22, P23, P30, P39</td>
-<td>14</td>
-<td>35%</td>
-</tr>
-<tr>
-<td>Rely on informal help from peers and neighbours</td>
-<td>P02, P05, P06, P08, P14, P21, P24, P25</td>
-<td>8</td>
-<td>20%</td>
-</tr>
-<tr>
-<td>Retain manual control over alerts (cancel and override buttons)</td>
-<td>P04, P05, P06, P07, P25, P27, P33</td>
-<td>7</td>
-<td>18%</td>
-</tr>
-<tr>
-<td>Hesitate to pay for a device while they still feel healthy</td>
-<td>P07, P16, P24, P33, P34, P38</td>
-<td>6</td>
-<td>15%</td>
-</tr>
-</tbody>
-</table></div>
-</table-component></sl-details>
+<div class="w-chartbox"><div class="w-chart small"><canvas aria-label="Bar chart of the five most frequent user preferences" id="w-chart-prefs"></canvas></div></div><p class="w-caption">Hover a bar for the share of residents.</p><p><button class="w-open" data-open="m-t31"><span class="plus">+</span>View Table 3.1 with participant IDs</button></p>
 <p>The two strongest findings pull in opposite directions. Residents want help to reach them quickly, yet they do not want to be monitored to make that possible. They also trust their families more than the staff assigned to them. Together these findings define the safety gap that this project addresses: independent seniors have no reliable way to reach help quickly in a real emergency without depending on staff who are not consistently available.</p>
 <p><strong>Why we focused on falls.</strong> Falls were the emergency residents raised most directly when they described needing help. The interviewer of P04 (F, 81) noted that she “repeatedly mentioned being afraid that no one would be able to help her when her husband is out at work” and was “concerned that she may be unable to reach the alarm after a fall”. Her concern exposes the weakness of every button-based system: a senior who is hurt after a fall may not be able to press anything. When we demonstrated a fall detection concept, P33 (F, 74) “was strongly receptive to fall detection” and suggested a 15-second grace period to cancel the alert if she got up on her own. Residents also wanted control over alerts for minor bumps to spare their children unnecessary worry. The risk is greater because 70% of the residents live alone and describe staff check-ins as “seldom or never”. National figures show why this matters. Falls account for 85% of trauma among older patients seen in emergency departments (Ang et al., 2020) <strong>[verify this figure in the source]</strong>. At Harmony Village the risk is real. On 2 September an 85-year-old resident fell in her shower, pressed the call bell and received only an automated reply. She waited about two hours before neighbours heard her and SCDF took her to hospital (Yap, 2026). Automatic fall detection became the core of W-ishi. The SOS button was kept for other emergencies, which P07 (F, 73) preferred because the “call button is for the family”.</p>
-</div>
-<div id="sec-3-4">
-<h3>3.4 Key Insights</h3>
+</div><div id="sec-3-4">
+<h3><span class="n">3.4</span>Key Insights</h3>
 <p>We grouped the findings into five key insights. Each insight describes a tension that residents are trying to resolve and an existing approach that they resist.</p>
 <!-- TODO: save the image as assets/wishi/fig-3-2.png. Content: Key insights overview graphic (Trust Gap, Privacy–Detection Paradox, False Alarm Dilemma, Accessibility Barrier, Stigma Trap) with the value each protects. -->
 <image-component source="assets/wishi/fig-3-2.png" subtitle="Figure 3.2. The five key insights and the design principle each one produces." tag="fig-3-2"></image-component>
-<div class="w-cards"><div class="w-card" style="--c: var(--v-responsive)"><div class="t">Trust Gap</div><div class="s">trust in kin versus formal care structures</div>
-<span class="v">Responsive</span><sl-details summary="Read the evidence"><p>Current systems alert the institution first, but residents do not expect staff to be available when it matters. The interviewer of P08 (F, 67) recorded that “a few weeks back her husband faced a medical emergency and chose to call her son to call the ambulance rather than the care staff as she believed they wouldn’t be around to help”. An alert is useful only if it reaches someone who will answer.</p></sl-details></div><div class="w-card" style="--c: var(--v-privacy)"><div class="t">Privacy–Detection Paradox</div><div class="s">rich sensor data versus residents’ trust</div>
-<span class="v">Privacy</span><sl-details summary="Read the evidence"><p>Cameras, microphones and continuous location tracking improve detection, but residents reject them inside their homes. The interviewer of P33 (F, 74) noted that “she doesn’t want anything recording inside her house, stating her privacy and personal space ‘means a lot’ to her”. Any sensing must detect danger without recording daily life.</p></sl-details></div><div class="w-card" style="--c: var(--v-autonomy)"><div class="t">False Alarm Dilemma</div><div class="s">avoiding panic versus avoiding missed emergencies</div>
-<span class="v">Autonomy</span><sl-details summary="Read the evidence"><p>Instant automatic escalation ensures that no emergency is missed, but every false alarm worries the family. P10 (F, 87) “doesn’t want to share everything with her family, since it might worry them”. Residents want a moment to stop an alert before it is sent.</p></sl-details></div><div class="w-card" style="--c: var(--v-accessible)"><div class="t">Accessibility Barrier</div><div class="s">a lower barrier of entry versus a perceived need later</div>
-<span class="v">Accessible</span><sl-details summary="Read the evidence"><p>Commercial devices cost between $45 and $599, and some add a monthly subscription. Residents who feel healthy see little reason to pay this much. P07 (F, 73) put her ideal price at “$20 lah”. The device must be affordable before the senior feels that she needs it.</p></sl-details></div><div class="w-card" style="--c: var(--v-dignity)"><div class="t">Stigma Trap</div><div class="s">being protected versus being seen as frail</div>
-<span class="v">Dignity</span><sl-details summary="Read the evidence"><p>Visible medical alarms mark the wearer as vulnerable. The interviewer of P20 (F, 76) recorded that “she sees monitoring technology as meant for dementia patients, not healthy seniors”. A device that looks medical will be left at home.</p></sl-details></div></div>
+<div class="w-wide"><div class="w-gallery"><div aria-label="Open Trust Gap" class="w-tile" data-open="m-ins0" role="button" style="--c:var(--v-responsive)" tabindex="0"><span class="k">Responsive</span><span class="t">Trust Gap</span><span class="s">Trust in kin versus formal care structures</span><span class="plus">+</span></div><div aria-label="Open Privacy–Detection Paradox" class="w-tile" data-open="m-ins1" role="button" style="--c:var(--v-privacy)" tabindex="0"><span class="k">Privacy</span><span class="t">Privacy–Detection Paradox</span><span class="s">Rich sensor data versus residents’ trust</span><span class="plus">+</span></div><div aria-label="Open False Alarm Dilemma" class="w-tile" data-open="m-ins2" role="button" style="--c:var(--v-autonomy)" tabindex="0"><span class="k">Autonomy</span><span class="t">False Alarm Dilemma</span><span class="s">Avoiding panic versus avoiding missed emergencies</span><span class="plus">+</span></div><div aria-label="Open Accessibility Barrier" class="w-tile" data-open="m-ins3" role="button" style="--c:var(--v-accessible)" tabindex="0"><span class="k">Accessible</span><span class="t">Accessibility Barrier</span><span class="s">A lower barrier of entry versus a perceived need later</span><span class="plus">+</span></div><div aria-label="Open Stigma Trap" class="w-tile" data-open="m-ins4" role="button" style="--c:var(--v-dignity)" tabindex="0"><span class="k">Dignity</span><span class="t">Stigma Trap</span><span class="s">Being protected versus being seen as frail</span><span class="plus">+</span></div></div><p class="w-gallery-hint">Scroll sideways and tap a card to read the evidence.</p></div>
 
 
 
 
-</div>
-<div id="sec-3-5">
-<h3>3.5 Design Principles</h3>
+</div><div id="sec-3-5">
+<h3><span class="n">3.5</span>Design Principles</h3>
 <p>Each insight yields one design principle. These five principles guide every later decision in this report.</p>
 <table-component subtitle="Table 3.2. Design principles derived from the key insights.">
 <div class="w-scroll"><table class="wishi-table">
@@ -258,117 +113,23 @@
 </tbody>
 </table></div>
 </table-component>
-</div>
-<div id="sec-3-6">
-<h3>3.6 Problem Statement</h3>
+</div><div id="sec-3-6">
+<h3><span class="n">3.6</span>Problem Statement</h3>
 <p><strong>Who:</strong> seniors aged 70 to 80 who live independently and are at risk when an emergency happens away from supervision.</p>
 <p><strong>What:</strong> a personal safety device that activates only during an emergency and escalates to the right person, wherever the senior is.</p>
 <p><strong>How:</strong> affordably, and without constant tracking.</p>
 <blockquote>
-<p>How might we help seniors aged 70–80 <span class="w-phrase" style="color:#004aad" tabindex="0" data-tip="Trust Gap → Responsive. Check: time from alert to first acknowledgement.">reach the right person quickly</span> <span class="w-phrase" style="color:#e00000" tabindex="0" data-tip="Privacy Paradox and False Alarm Dilemma → Privacy, Autonomy. Check: false alarms cancelled within 15 s.">in a real emergency</span>, <span class="w-phrase" style="color:#004aad" tabindex="0" data-tip="Trust Gap → Responsive. Check: time from alert to first acknowledgement.">regardless of location</span>, in a way that is <span class="w-phrase" style="color:#5e3c38" tabindex="0" data-tip="Accessibility Barrier → Accessible. Check: unit and monthly cost against competitors.">affordable</span>, <span class="w-phrase" style="color:#757460" tabindex="0" data-tip="Stigma Trap → Dignity. Check: residents’ likelihood-to-wear ratings.">protects their dignity</span> and <span class="w-phrase" style="color:#00a156" tabindex="0" data-tip="Privacy Paradox → Privacy. Check: location fetched only during alerts; no camera or microphone.">does not require constant tracking</span>?</p>
-</blockquote><p class="w-hint">Hover or tap a coloured phrase to see the insight behind it and how we will check it.</p>
+<p>How might we help seniors aged 70–80 <span class="w-phrase" data-tip="Trust Gap → Responsive. Check: time from alert to first acknowledgement." style="color:#004aad" tabindex="0">reach the right person quickly</span> <span class="w-phrase" data-tip="Privacy Paradox and False Alarm Dilemma → Privacy, Autonomy. Check: false alarms cancelled within 15 s." style="color:#e00000" tabindex="0">in a real emergency</span>, <span class="w-phrase" data-tip="Trust Gap → Responsive. Check: time from alert to first acknowledgement." style="color:#004aad" tabindex="0">regardless of location</span>, in a way that is <span class="w-phrase" data-tip="Accessibility Barrier → Accessible. Check: unit and monthly cost against competitors." style="color:#5e3c38" tabindex="0">affordable</span>, <span class="w-phrase" data-tip="Stigma Trap → Dignity. Check: residents’ likelihood-to-wear ratings." style="color:#757460" tabindex="0">protects their dignity</span> and <span class="w-phrase" data-tip="Privacy Paradox → Privacy. Check: location fetched only during alerts; no camera or microphone." style="color:#00a156" tabindex="0">does not require constant tracking</span>?</p>
+</blockquote><p class="w-hint">Hover or tap a coloured phrase to see the insight behind it.</p>
 <p>Each phrase in the statement traces back to at least one insight. Table 3.3 shows these links and the measure we will use to check each principle.</p>
-<sl-details class="w-more" summary="Show Table 3.3: how the key insights answer the HMW"><table-component subtitle="Table 3.3. How the key insights answer the HMW statement.">
-<div class="w-scroll"><table class="wishi-table">
-<thead>
-<tr>
-<th><strong>Key insight</strong></th>
-<th><strong>Value protected</strong></th>
-<th><strong>HMW phrase addressed</strong></th>
-<th><strong>How we will check it</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Trust Gap</td>
-<td>Responsive</td>
-<td>“right person quickly”, “regardless of location”</td>
-<td>Time from alert to first acknowledgement</td>
-</tr>
-<tr>
-<td>Privacy–Detection Paradox</td>
-<td>Privacy</td>
-<td>“real emergency”, “does not require constant tracking”</td>
-<td>Location fetched only during alerts; no camera or microphone in the bill of materials</td>
-</tr>
-<tr>
-<td>False Alarm Dilemma</td>
-<td>Autonomy</td>
-<td>“real emergency”</td>
-<td>Share of false alarms cancelled within the 15-second window</td>
-</tr>
-<tr>
-<td>Accessibility Barrier</td>
-<td>Accessible</td>
-<td>“affordable”</td>
-<td>Unit cost and monthly running cost compared with competitors</td>
-</tr>
-<tr>
-<td>Stigma Trap</td>
-<td>Dignity</td>
-<td>“protects their dignity”</td>
-<td>Residents’ ratings of how likely they are to wear each prototype design</td>
-</tr>
-</tbody>
-</table></div>
-</table-component></sl-details>
-</div>
-<div id="sec-3-7">
-<h3>3.7 Value Proposition and Novelty</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-4">
-<h2>4. Design Specifications</h2>
-</div>
-<div id="sec-4-1">
-<h3>4.1 Functional Requirements</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-4-2">
-<h3>4.2 User-centred Requirements</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-4-3">
-<h3>4.3 Specification Table</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-5">
-<h2>5. Concept Generation and Selection</h2>
-</div>
-<div id="sec-5-1">
-<h3>5.1 Functional Decomposition</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-5-2">
-<h3>5.2 Morphological Chart of Options</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-5-3">
-<h3>5.3 Selection Rationale</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-5-4">
-<h3>5.4 Selected Concept and System Architecture</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-6">
-<h2>6. Detailed Design</h2>
-</div>
-<div id="sec-6-1">
-<h3>6.1 Mechanical and Ergonomics</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-6-2">
-<h3>6.2 Electrical and Sensing</h3>
+<p><button class="w-open" data-open="m-t33"><span class="plus">+</span>View Table 3.3: how the insights answer the HMW</button></p>
+</div><div id="sec-3-7"><h3><span class="n">3.7</span>Value Proposition and Novelty</h3><p><span class="w-soon">Being written</span></p></div></div></section><section class="w-sec" id="sec-4"><div class="w-head"><span class="w-eyebrow">Section 4</span><h2>Design Specifications</h2></div><div class="w-body"><div id="sec-4-1"><h3><span class="n">4.1</span>Functional Requirements</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-4-2"><h3><span class="n">4.2</span>User-centred Requirements</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-4-3"><h3><span class="n">4.3</span>Specification Table</h3><p><span class="w-soon">Being written</span></p></div></div></section><section class="w-sec" id="sec-5"><div class="w-head"><span class="w-eyebrow">Section 5</span><h2>Concept Generation and Selection</h2></div><div class="w-body"><div id="sec-5-1"><h3><span class="n">5.1</span>Functional Decomposition</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-5-2"><h3><span class="n">5.2</span>Morphological Chart of Options</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-5-3"><h3><span class="n">5.3</span>Selection Rationale</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-5-4"><h3><span class="n">5.4</span>Selected Concept and System Architecture</h3><p><span class="w-soon">Being written</span></p></div></div></section><section class="w-sec" id="sec-6"><div class="w-head"><span class="w-eyebrow">Section 6</span><h2>Detailed Design</h2><p>How W-ishi senses a fall and calls for help.</p></div><div class="w-body"><div id="sec-6-1"><h3><span class="n">6.1</span>Mechanical and Ergonomics</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-6-2">
+<h3><span class="n">6.2</span>Electrical and Sensing</h3>
 <p>The electrical system has five parts. A motion sensor detects falls; a microcontroller runs the detection logic and controls the other parts; a cellular module with built-in GNSS sends the alert and the senior’s position; a status LED tells the senior what the device is doing; and a rechargeable battery powers the token. We selected each component by comparing the available options against requirements drawn from the design principles.</p>
 <!-- TODO: save the image as assets/wishi/fig-6-1.png. Content: System block diagram: IMU → XIAO ESP32-S3 → ML307A (LTE + GNSS) → backend → app → Tier 1/2/3 contacts, with the SOS button, RGB LED and battery. -->
 <image-component source="assets/wishi/fig-6-1.png" subtitle="Figure 6.1. Electrical system architecture." tag="fig-6-1"></image-component>
-</div>
-<div id="sec-6-2-1">
-<h4>6.2.1 Component Selection</h4><image-component source="assets/wishi/fig-6-2.png" subtitle="Figure 6.2. Selected electrical components." tag="fig-6-2"></image-component>
+</div><div id="sec-6-2-1">
+<h4><span class="n">6.2.1</span>Component Selection</h4><image-component source="assets/wishi/fig-6-2.png" subtitle="Figure 6.2. Selected electrical components." tag="fig-6-2"></image-component>
 
 
 
@@ -388,13 +149,7 @@
 
 
 
-
-
-
-
-
-
-<p class="w-hint">Each tab follows the same pattern: what the part must do, the options we compared, and why we chose it.</p><sl-tab-group class="w-tabs"><sl-tab panel="c0" slot="nav">Motion sensor</sl-tab><sl-tab panel="c1" slot="nav">Microcontroller</sl-tab><sl-tab panel="c2" slot="nav">Cellular + GNSS</sl-tab><sl-tab panel="c3" slot="nav">Status LED</sl-tab><sl-tab panel="c4" slot="nav">Battery</sl-tab><sl-tab panel="c5" slot="nav">Wiring</sl-tab><sl-tab-panel name="c0"><p><strong>Motion sensor (IMU).</strong> The motion sensor must detect a fall even when the senior cannot press anything, distinguish lying down from standing upright, notice stillness after an impact, and wake the microcontroller when motion occurs. These requirements follow from the Responsive principle, since 70% of the residents live alone and help must be requested without any action from them.</p><p><strong>Why an IMU.</strong> An inertial measurement unit (IMU), which combines an accelerometer and a gyroscope, is the most widely studied sensor for wearable fall detection: a review of the decade from 2015 to 2024 covers 582 research articles in the field (Li et al., 2025). IMU-based detectors have also been evaluated on falls that older adults experienced in daily life rather than in a laboratory, including 29 real falls analysed by Bagalà et al. (2012) and 143 by Palmerini et al. (2020). Recent threshold-based wearables that follow the same impact-then-stillness logic as W-ishi report a sensitivity of 97.9% and a specificity of 99.9% on simulated falls (Tseng et al., 2025).</p><p>The alternatives conflict with our design principles. Cameras, radar and floor sensors detect falls only in the room where they are installed, which breaks the requirement to work regardless of location, and cameras also violate the Privacy principle. A wrist-worn sensor depends on arm movement, and Kangas et al. (2008) found the wrist to be a poor site for fall detection; a watch also looks like a medical or technical device, which works against Dignity. An IMU records motion only, works wherever the senior goes, costs a few dollars and can run on microamps.</p><p>One limitation is specific to W-ishi. Most published detectors fix the sensor firmly to the waist or lower back, whereas W-ishi is carried loosely in a pocket, in a bag or on a walking stick. A loosely carried token produces more variable impact signals, which is why two detection windows were needed (Section 6.2.2) and why carrying position remains a variable to validate in Semester 2. Table 6.1 compares the four IMUs we considered.</p><table-component subtitle="Table 6.1. Motion sensor options.">
+<p class="w-hint">Each part follows the same pattern: what it must do, the options we compared, and why we chose it.</p><div><div class="w-seg"><div class="w-seg-inner" role="tablist"><button aria-selected="true" data-panel="cp0" role="tab">Motion sensor</button><button aria-selected="false" data-panel="cp1" role="tab">Microcontroller</button><button aria-selected="false" data-panel="cp2" role="tab">Cellular + GNSS</button><button aria-selected="false" data-panel="cp3" role="tab">Status LED</button><button aria-selected="false" data-panel="cp4" role="tab">Battery</button></div></div><div class="w-panel" id="cp0"><p><strong>Motion sensor (IMU).</strong> The motion sensor must detect a fall even when the senior cannot press anything, distinguish lying down from standing upright, notice stillness after an impact, and wake the microcontroller when motion occurs. These requirements follow from the Responsive principle, since 70% of the residents live alone and help must be requested without any action from them.</p><p><strong>Why an IMU.</strong> An inertial measurement unit (IMU), which combines an accelerometer and a gyroscope, is the most widely studied sensor for wearable fall detection: a review of the decade from 2015 to 2024 covers 582 research articles in the field (Li et al., 2025). IMU-based detectors have also been evaluated on falls that older adults experienced in daily life rather than in a laboratory, including 29 real falls analysed by Bagalà et al. (2012) and 143 by Palmerini et al. (2020). Recent threshold-based wearables that follow the same impact-then-stillness logic as W-ishi report a sensitivity of 97.9% and a specificity of 99.9% on simulated falls (Tseng et al., 2025).</p><p>The alternatives conflict with our design principles. Cameras, radar and floor sensors detect falls only in the room where they are installed, which breaks the requirement to work regardless of location, and cameras also violate the Privacy principle. A wrist-worn sensor depends on arm movement, and Kangas et al. (2008) found the wrist to be a poor site for fall detection; a watch also looks like a medical or technical device, which works against Dignity. An IMU records motion only, works wherever the senior goes, costs a few dollars and can run on microamps.</p><p>One limitation is specific to W-ishi. Most published detectors fix the sensor firmly to the waist or lower back, whereas W-ishi is carried loosely in a pocket, in a bag or on a walking stick. A loosely carried token produces more variable impact signals, which is why two detection windows were needed (Section 6.2.2) and why carrying position remains a variable to validate in Semester 2. Table 6.1 compares the four IMUs we considered.</p><table-component subtitle="Table 6.1. Motion sensor options.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -436,13 +191,7 @@
 </tr>
 </tbody>
 </table></div>
-</table-component><p><strong>Why the MPU-6050 for the prototype.</strong> The prototype had a different job from the final token. Its purpose was to develop and test the detection logic: where the windows should sit, whether a stillness check is needed, and which everyday movements cause false alarms. The answers to these questions are expressed in units of g and carry over to any IMU. The prototype sensor could be chosen for speed of development rather than for battery life. The MPU-6050 suited this role for five reasons.</p><ul>
-<li><p><strong>Cost.</strong> At $1.94 it is the cheapest 6-axis IMU we considered, about a third of the price of the LSM6DSO. Boards damaged during fall trials and rewiring cost almost nothing to replace.</p></li>
-<li><p><strong>Ready for a breadboard.</strong> It is sold on breakout boards with a 3.3 V regulator, I²C pull-up resistors and header pins, and it connected directly to the microcontroller. The LSM6DSO is a 2.5 × 3 mm land-grid package that needs a carrier board or a custom PCB.</p></li>
-<li><p><strong>Mature software.</strong> Well-tested libraries allowed raw acceleration to be logged over a serial link within hours of assembly. This is how the 75 trials in Section 7.3.1 were recorded and how the window edges were set.</p></li>
-<li><p><strong>Suitable range and channels.</strong> Its ±16 g range records stick impacts of up to about 9 g without clipping, and its gyroscope let us explore whether rotation data improves detection before committing to a final sensor. The LSM6DSO offers the same ±16 g range and six axes, and prototype data compare directly with the final design.</p></li>
-<li><p><strong>Proven in published prototypes.</strong> The MPU-6050 has been used in several fall-detection systems for older adults, with reported accuracies between 90% and 98% (Jefiza et al., 2017; Xu et al., 2019; Suprapto et al., 2024).</p></li>
-</ul><p><strong>Why its high current was acceptable.</strong> The MPU-6050 draws 3.9 mA with both sensors active, more than the entire 2.4 mA budget derived in Section 6.2.3. It could never be used in the final token. During prototyping the electronics ran from USB and a bench supply, and current draw did not limit any test. Accepting a known power penalty in exchange for faster algorithm development was a deliberate trade-off, and the move to a low-power sensor was planned from the start. Its sensor noise of a few thousandths of a g is also negligible against detection thresholds of 1.5 g and above <strong>[confirm the noise density against the datasheet]</strong>.</p><p>The <strong>LSM6DSO</strong> is the leading candidate for the final build. It draws 0.55 mA with both sensors in high-performance mode and much less in its low-power accelerometer mode, and its built-in free-fall and wake-up detection allow the microcontroller to remain in deep sleep until motion occurs. We ruled out the ADXL345 despite its low current because it has no gyroscope to track rotation during a fall.</p><!-- TODO: save the image as assets/wishi/fig-6-2.png. Content: Photographs of the selected components: XIAO ESP32-S3, MPU-6050, ML307A-GSLN on the Mini CORE board, and the RGB LED. --></sl-tab-panel><sl-tab-panel name="c1"><p><strong>Microcontroller.</strong> The microcontroller must fit inside a small token, sleep deeply and wake on a button press or an IMU interrupt, communicate with the IMU over I²C and with the modem over UART, and charge a battery on board. The Privacy principle adds one further constraint: the board must not carry a microphone, since 16 of the 40 residents asked for no cameras or microphones. Table 6.2 compares the options.</p><table-component subtitle="Table 6.2. Microcontroller options.">
+</table-component><p>The <strong>LSM6DSO</strong> is the leading candidate for the final build. It draws 0.55 mA with both sensors in high-performance mode and much less in its low-power accelerometer mode, and its built-in free-fall and wake-up detection allow the microcontroller to remain in deep sleep until motion occurs. We ruled out the ADXL345 despite its low current because it has no gyroscope to track rotation during a fall. The prototype uses the lower-cost MPU-6050 to develop the detection logic, and Section 7.1 explains that choice.</p><!-- TODO: save the image as assets/wishi/fig-6-2.png. Content: Photographs of the selected components: XIAO ESP32-S3, MPU-6050, ML307A-GSLN on the Mini CORE board, and the RGB LED. --></div><div class="w-panel" hidden="" id="cp1"><p><strong>Microcontroller.</strong> The microcontroller must fit inside a small token, sleep deeply and wake on a button press or an IMU interrupt, communicate with the IMU over I²C and with the modem over UART, and charge a battery on board. The Privacy principle adds one further constraint: the board must not carry a microphone, since 16 of the 40 residents asked for no cameras or microphones. Table 6.2 compares the options.</p><table-component subtitle="Table 6.2. Microcontroller options.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -485,7 +234,7 @@
 </tr>
 </tbody>
 </table></div>
-</table-component><p>Our first prototype used the ESP32-S3 DevKitC-1, which proved too large for a token. The <strong>Seeed XIAO ESP32-S3</strong> has the same processor in a 21 × 17.5 mm package, and our existing code carried over with only pin changes. It is the smallest option with a built-in battery charger, and its deep-sleep current is about 14 µA. The XIAO nRF52840 Sense is the same size, but we rejected it because it carries an on-board microphone.</p></sl-tab-panel><sl-tab-panel name="c2"><p><strong>Cellular and GNSS module.</strong> The communication module must send an alert from anywhere in Singapore without a phone or Wi-Fi, obtain one GNSS fix only during an alert, and stay off between alerts. These requirements follow from the Responsive and Privacy principles: 14 of the 40 residents want family contacted first, and a fall can happen at home, at the market or on a park connector. Table 6.3 compares the options.</p><table-component subtitle="Table 6.3. Cellular and GNSS options.">
+</table-component><p>The <strong>Seeed XIAO ESP32-S3</strong> carries the same processor as the ESP32-S3 DevKitC-1 in a 21 × 17.5 mm package. It is the smallest option with a built-in battery charger, and its deep-sleep current is about 14 µA. The XIAO nRF52840 Sense is the same size, but we rejected it because it carries an on-board microphone.</p></div><div class="w-panel" hidden="" id="cp2"><p><strong>Cellular and GNSS module.</strong> The communication module must send an alert from anywhere in Singapore without a phone or Wi-Fi, obtain one GNSS fix only during an alert, and stay off between alerts. These requirements follow from the Responsive and Privacy principles: 14 of the 40 residents want family contacted first, and a fall can happen at home, at the market or on a park connector. Table 6.3 compares the options.</p><table-component subtitle="Table 6.3. Cellular and GNSS options.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -528,7 +277,7 @@
 </tr>
 </tbody>
 </table></div>
-</table-component><p>We rejected the SIM800L because Singapore’s 2G network has been shut down, and we rejected a phone-based link because the device must work for seniors who do not carry a phone at all times. The A7670E is larger and includes GNSS only in some versions, and the GNSS support of the SIM7080G could not be confirmed. We chose the <strong>ML307A-GSLN</strong>, which combines LTE Cat-1 and GNSS in one module and reduces the number of parts in the token. We use it on a Mini CORE breakout board, which shifts the module’s logic levels to 3.3 V and connects directly to the XIAO’s UART pins.</p><p>The module runs from 3.4 V to 4.5 V and draws 17.6 mA in standby. During LTE transmission its current reaches 2 A in short bursts. The breakout board’s input passes through a buck regulator that requires roughly 4.5 V or more. In the prototype the module is powered from an external 5 V, 2 A supply.</p></sl-tab-panel><sl-tab-panel name="c3"><p><strong>Status LED.</strong> The senior must know that her alert is being sent and that help is coming, without reading a screen. Table 6.4 compares the feedback options.</p><table-component subtitle="Table 6.4. Feedback options.">
+</table-component><p>We rejected the SIM800L because Singapore’s 2G network has been shut down, and we rejected a phone-based link because the device must work for seniors who do not carry a phone at all times. The A7670E is larger and includes GNSS only in some versions, and the GNSS support of the SIM7080G could not be confirmed. We chose the <strong>ML307A-GSLN</strong>, which combines LTE Cat-1 and GNSS in one module and reduces the number of parts in the token. We use it on a Mini CORE breakout board, which shifts the module’s logic levels to 3.3 V and connects directly to the XIAO’s UART pins.</p><p>The module runs from 3.4 V to 4.5 V and draws 17.6 mA in standby. During LTE transmission its current reaches 2 A in short bursts. The breakout board’s input passes through a buck regulator that requires roughly 4.5 V or more, which a single lithium cell cannot supply. Section 6.2.3 explains how the module will be powered from the battery.</p></div><div class="w-panel" hidden="" id="cp3"><p><strong>Status LED.</strong> The senior must know that her alert is being sent and that help is coming, without reading a screen. Table 6.4 compares the feedback options.</p><table-component subtitle="Table 6.4. Feedback options.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -571,50 +320,12 @@
 </tr>
 </tbody>
 </table></div>
-</table-component><p>We chose an <strong>RGB LED</strong> because each state can have its own colour: amber while the alert is counting down and being sent, green once a contact has acknowledged and help is coming, and <strong>[colour]</strong> for low battery. It draws little current, needs no driver and requires no reading, which suits weaker eyesight. We rejected the vibration motor because it draws about 80 mA at the moment the battery is already under its heaviest load. The LED faces downward on the shell to avoid drawing attention in public.</p></sl-tab-panel><sl-tab-panel name="c4"><p><strong>Battery.</strong> The battery must last at least seven days per charge, fit inside the token, supply the ML307A’s 2 A bursts and include built-in protection. Daily charging is a chore, and residents who feel healthy are unlikely to keep a device that often runs flat. Weight sets the upper limit on size. A study of wearable adherence in older adults points to a limit of about 40 g (Ding et al., 2024), and in our own questionnaire 7 of 10 seniors rejected weights above 40 g. A 40 g token leaves room for a cell of about 500 mAh. We have not yet chosen the battery, because its size depends on the current drawn by the final motion sensor.</p></sl-tab-panel><sl-tab-panel name="c5"><p><strong>System wiring.</strong> The XIAO ESP32-S3 is the hub of the prototype. The MPU-6050 connects over I²C to D4 (SDA) and D5 (SCL) and is powered from the XIAO’s 3.3 V pin. The ML307A board connects over UART to D6 (TX) and D7 (RX) and is powered from the external 5 V, 2 A supply, which shares a common ground with the XIAO. The SOS button and the three LED channels connect to separate GPIO pins.</p><!-- TODO: save the image as assets/wishi/fig-6-3.png. Content: Wiring diagram of the prototype: XIAO ESP32-S3, MPU-6050 (I²C) and ML307A-GSLN (UART) with the 5 V, 2 A supply. --><image-component source="assets/wishi/fig-6-3.png" subtitle="Figure 6.3. Prototype wiring diagram." tag="fig-6-3"></image-component></sl-tab-panel></sl-tab-group></div>
-<div id="sec-6-2-2">
-<h4>6.2.2 Fall Detection Algorithm</h4>
+</table-component><p>We chose an <strong>RGB LED</strong> because each state can have its own colour: amber while the alert is counting down and being sent, green once a contact has acknowledged and help is coming, and <strong>[colour]</strong> for low battery. It draws little current, needs no driver and requires no reading, which suits weaker eyesight. We rejected the vibration motor because it draws about 80 mA at the moment the battery is already under its heaviest load. The LED faces downward on the shell to avoid drawing attention in public.</p></div><div class="w-panel" hidden="" id="cp4"><p><strong>Battery.</strong> The battery must last at least seven days per charge, fit inside the token, supply the ML307A’s 2 A bursts and include built-in protection. Daily charging is a chore, and residents who feel healthy are unlikely to keep a device that often runs flat. Weight sets the upper limit on size. A study of wearable adherence in older adults points to a limit of about 40 g (Ding et al., 2024), and in our own questionnaire 7 of 10 seniors rejected weights above 40 g. A 40 g token leaves room for a cell of about 500 mAh. We have not yet chosen the battery, because its size depends on the current drawn by the final motion sensor.</p></div></div></div><div id="sec-6-2-2">
+<h4><span class="n">6.2.2</span>Fall Detection Algorithm</h4>
 <p>A fall detector for this user group has to do two things at once. It must catch a fall that leaves the senior unable to press a button, and it must stay silent through the many sits, steps and bumps of an ordinary day. Every missed fall defeats the purpose of the device, and every false alarm erodes the trust of the senior and her family, which is the False Alarm Dilemma described in Section 3.4.</p>
 <p><strong>What the firmware measures.</strong> The firmware reads the three accelerometer axes and computes the resultant acceleration, |a| = √(aₓ² + aᵧ² + a_z²). At rest |a| reads about 1 g because of gravity. When the body or the token strikes the ground, |a| rises in a sharp spike. For each movement the firmware records the highest value of |a|, which we call the <strong>peak</strong>.</p>
 <p><strong>Why one threshold was not enough.</strong> Our first version raised an alert whenever the peak crossed a single threshold. Early trials showed that the peak of a fall depends far more on where the token is carried than on how hard the person falls. A token in a pocket or bag is cushioned by the body and clothing, and even a heavy fall produces a modest peak. A token on a walking stick strikes the floor directly and produces a much larger one. Sitting down heavily falls between the two. Table 6.6 shows the median peaks we later measured for each case.</p>
-<div class="w-chart"><canvas aria-label="Median peak acceleration per scenario against the two detection windows" id="w-chart-windows"></canvas></div><p class="w-caption">Median peaks against the two detection windows. Hover a bar for its trial result.</p><sl-details class="w-more" summary="Show Table 6.6 as numbers"><table-component subtitle="Table 6.6. Median peak acceleration by scenario (from the trials in Section 7.3.1).">
-<div class="w-scroll"><table class="wishi-table">
-<thead>
-<tr>
-<th><strong>Scenario</strong></th>
-<th><strong>Median peak</strong></th>
-<th><strong>Where it falls</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Walking</td>
-<td>1.3 g</td>
-<td>Below Window A (ignored)</td>
-</tr>
-<tr>
-<td>Bag fall</td>
-<td>2.4 g</td>
-<td>Window A</td>
-</tr>
-<tr>
-<td>Pocket fall</td>
-<td>2.6 g</td>
-<td>Window A</td>
-</tr>
-<tr>
-<td>Sitting down</td>
-<td>3.8 g</td>
-<td>Gap between windows (ignored)</td>
-</tr>
-<tr>
-<td>Stick fall</td>
-<td>7.2 g</td>
-<td>Window B</td>
-</tr>
-</tbody>
-</table></div>
-</table-component></sl-details>
+<div class="w-chartbox"><div class="w-chart"><canvas aria-label="Median peak acceleration per scenario against the two detection windows" id="w-chart-windows"></canvas></div></div><p class="w-caption">Median peaks against the two detection windows. Hover a bar for its trial result.</p><p><button class="w-open" data-open="m-t66"><span class="plus">+</span>View Table 6.6 as numbers</button></p>
 <p>A single threshold low enough to catch pocket and bag falls would also flag every heavy sit, and one high enough to ignore sitting would miss every cushioned fall. We therefore use two detection windows with a deliberate gap between them:</p>
 <ul>
 <li><p><strong>Window A, 1.5 to 3 g:</strong> falls with the token in a pocket or bag. The lower edge sits above normal walking (median 1.3 g).</p></li>
@@ -623,22 +334,16 @@
 </ul>
 <p><strong>Comparison with published detectors.</strong> Window A’s lower edge agrees with the literature. Waist-mounted detectors flag an impact when the resultant acceleration exceeds thresholds between 1.5 g and 2 g (Kangas et al., 2008), and a recent wearable uses 1.4 g (Tseng et al., 2025). In 143 real-world falls of older adults, the softest impact peaked at 1.6 g (Palmerini et al., 2020). A lower edge of 1.5 g sits just below the softest fall on record. Thresholds tuned on simulated falls transfer poorly to real ones: thirteen published algorithms detected only 57% of real falls on average and produced between 3 and 85 false alarms in a single day of monitoring (Bagalà et al., 2012). Window B has no direct counterpart, because we found no published detector mounted on a walking stick. Its range comes from our own trials and is a contribution of this project. Unlike the published detectors, Window A also has an upper edge. A very hard fall with the token in a pocket could land in the ignored gap. The stillness check in step 2 below will allow this edge to be raised safely.</p>
 <p>The edges of the windows set the balance between missed falls and false alarms. Raising the top of Window A would catch more bag falls, but it would also admit more heavy sits. With the top edge at 3 g, every pocket fall was caught and 13 of 15 sits stayed outside the windows.</p>
-<div aria-live="polite" class="w-flow" id="w-flow">
+<div class="w-wide"><div aria-live="polite" class="w-flow" id="w-flow">
+<span class="w-eyebrow">Interactive</span><h5>From impact to help, step by step.</h5>
 <div class="w-steps"><span>Impact</span><span>Still for 2 s</span><span>15 s cancel window</span><span>Alert + location</span><span>Tier 1</span><span>Help coming</span></div>
 <div class="w-flow-top">
 <div aria-hidden="true" class="w-token"><div class="sos">SOS</div><div class="led"></div></div>
-<div>
-<div class="w-flow-msg"></div>
+<div><div class="w-flow-msg"></div>
 <div class="w-tiers"><div class="w-tier">Tier 1 · Son</div><div class="w-tier">Tier 2 · Care staff</div><div class="w-tier">Tier 3 · Neighbour</div></div>
-<div class="w-flow-ctrl">
-<sl-button data-act="play" size="small" variant="primary">Play</sl-button>
-<sl-button data-act="cancel" size="small" variant="warning">Press SOS to cancel</sl-button>
-<sl-button data-act="reset" size="small">Reset</sl-button>
-</div>
-<p class="w-hint" style="margin-top:10px">Timings are sped up. In the token the countdown lasts 15 s and each tier has 2 minutes.</p>
-</div>
-</div>
-</div><p><strong>From impact to help.</strong> A peak inside a window starts the following sequence:</p>
+<div class="w-flow-ctrl"><button data-act="play">Play</button><button data-act="cancel">Press SOS to cancel</button><button data-act="reset">Reset</button></div>
+<p class="w-hint">Timings are sped up. In the token the countdown lasts 15 s and each tier has 2 minutes.</p></div>
+</div></div></div><p><strong>From impact to help.</strong> A peak inside a window starts the following sequence:</p>
 <ol type="1">
 <li><p><strong>Impact.</strong> A peak inside Window A or Window B is treated as a possible fall.</p></li>
 <li><p><strong>Stillness check (planned for Semester 2).</strong> The firmware confirms that |a| stays close to 1 g with little movement for <strong>2 s</strong> after the impact, and that the token is lying rather than upright. This step rejects events such as a brisk step or a stick that is knocked over and picked up again. The current prototype does not yet include it.</p></li>
@@ -649,11 +354,10 @@
 <p>Holding the SOS button for two seconds raises an alert directly, without waiting for a fall <strong>[confirm whether a manual SOS also runs the 15-second cancel window]</strong>.</p>
 <p><strong>Why a 2-second stillness check.</strong> After a sit or a step, a person keeps moving, whereas after a real fall they usually lie still. Published detectors exploit this difference: Kangas et al. (2008) check posture 2 seconds after the impact, and Tseng et al. (2025) confirm a fall only if the wearer stays still and lying for 2 seconds after it. Algorithms that combined an impact threshold with a posture check performed best on real-world falls in Bagalà et al. (2012). W-ishi adopts the same 2-second window.</p>
 <p><strong>Why a 15-second cancel window.</strong> A cancel window is needed because every detector produces false alarms, and 7 of the 40 residents asked for manual control over alerts. The length of the window came from the residents themselves: P33 (F, 74) suggested a 15-second grace period to cancel the alert if she got up on her own after a fall. P10 also did not want to worry her family unnecessarily. Commercial devices take the same approach but wait longer: Apple Watch waits for about a minute of immobility and then counts down for 30 seconds before calling for help (Apple, 2026). We chose a shorter window for two reasons. First, W-ishi’s users live alone and cannot rely on staff noticing a fall. Lying on the floor for more than an hour after a fall has been associated with up to a 50% higher risk of death within six months (Casilari &amp; Silva, 2022), and the resident in the 2 September incident at Harmony Village waited about two hours for help. Second, a 15-second countdown followed by about 10 seconds to send the alert keeps delivery to the Tier 1 contact within the 30-second target. The 15-second window, together with the 2-second stillness check, gives a senior who is unhurt enough time to notice the amber LED and press cancel.</p>
-<!-- TODO: save the image as assets/wishi/fig-6-4.png. Content: Flowchart of the fall detection and alert logic: peak → window check → stillness check → 15 s countdown → alert and location → tiered escalation → green LED. -->
-<image-component source="assets/wishi/fig-6-4.png" subtitle="Figure 6.4. Fall detection and alert flow." tag="fig-6-4"></image-component>
-</div>
-<div id="sec-6-2-3">
-<h4>6.2.3 Power Budget</h4>
+<!-- TODO: save the image as assets/wishi/fig-6-3.png. Content: Flowchart of the fall detection and alert logic: peak → window check → stillness check → 15 s countdown → alert and location → tiered escalation → green LED. -->
+<image-component source="assets/wishi/fig-6-3.png" subtitle="Figure 6.3. Fall detection and alert flow." tag="fig-6-3"></image-component>
+</div><div id="sec-6-2-3">
+<h4><span class="n">6.2.3</span>Power Budget</h4>
 <p>Battery life decides whether W-ishi is worn at all. A senior who feels healthy will not keep a device that needs charging every night. The battery must last at least seven days. Weight sets the ceiling on battery size: our questionnaire and the adherence study by Ding et al. (2024) both point to a limit of about 40 g, which leaves room for a cell of about 500 mAh.</p>
 <p><strong>How the 2.4 mA target was derived.</strong> The target works backwards from battery life and weight. The 40 g weight limit leaves room for a cell of about 500 mAh. Keeping 20% in reserve for cell ageing and for the current drawn during alerts leaves 400 mAh of usable charge. Spreading 400 mAh over seven days (168 hours) gives 400 ÷ 168 ≈ <strong>2.4 mA</strong>. This figure is a ceiling: the highest average current at which the token still lasts seven days, not an estimate of what the design will draw.</p>
 <p><strong>Where the prototype stands.</strong> The prototype draws about <strong>31 mA</strong> on average, roughly thirteen times the target. Table 6.7 shows where this current goes.</p>
@@ -751,30 +455,21 @@
 </table></div>
 </table-component>
 <p>At about 0.2 mA, 400 mAh of usable charge would last roughly 80 days. The 2.4 mA ceiling is met with a margin of about ten times. The estimate is most sensitive to how often the modem wakes: each LTE transmission costs about 1 to 2 mAh, and an hourly check-in alone would add about 1 mA. Check-ins are limited to once per day. Development-board extras such as power LEDs and USB-to-serial chips can also draw 0.1 to 1 mA each, and these disappear on the custom PCB <strong>[measure the final board’s sleep current to confirm]</strong>.</p><div class="w-calc" id="w-calc">
-<h5>Try it: power budget calculator</h5>
-<div class="w-hint">Change the design choices and see the average current and battery life. Values follow Tables 6.7 and 6.8.</div>
-<div class="w-presets" style="margin-top:10px">
-<sl-button data-preset="proto" size="small">Prototype today</sl-button>
-<sl-button data-preset="final" size="small" variant="primary">Planned final design</sl-button>
-</div>
+<span class="w-eyebrow">Interactive</span><h5>Power budget calculator</h5>
+<p class="w-hint" style="text-align:left">Change the design choices to see the average current and battery life. Values follow Tables 6.7 and 6.8.</p>
+<div class="w-presets"><button class="w-pill ghost" data-preset="proto">Prototype today</button><button class="w-pill" data-preset="final">Planned final design</button></div>
 <div class="grid">
-<label>Motion sensor
-      <select name="sensor" style="width:100%;margin-top:4px;padding:6px;border-radius:8px">
-<option value="lsm">LSM6DSO, low-power wake-up</option><option value="mpu">MPU-6050, always on (3.9 mA)</option></select></label>
+<label>Motion sensor<select name="sensor"><option value="lsm">LSM6DSO, low-power wake-up</option><option value="mpu">MPU-6050, always on (3.9 mA)</option></select></label>
 <label><input checked="" name="modem" type="checkbox"/> Modem switched off between alerts</label>
 <label><input checked="" name="sleep" type="checkbox"/> Microcontroller in deep sleep</label>
-<label>Battery capacity: <span class="val" data-show="cap"></span> mAh<input max="1000" min="200" name="cap" step="50" style="width:100%" type="range" value="500"/></label>
-<label>Hours of movement per day: <span class="val" data-show="hours"></span><input max="12" min="0" name="hours" step="1" style="width:100%" type="range" value="3"/></label>
-<label>Check-ins per day: <span class="val" data-show="checkins"></span><input max="24" min="0" name="checkins" step="1" style="width:100%" type="range" value="1"/></label>
-<label>Alerts per week: <span class="val" data-show="alerts"></span><input max="14" min="0" name="alerts" step="1" style="width:100%" type="range" value="3"/></label>
+<label>Battery capacity: <span class="val" data-show="cap"></span> mAh<input max="1000" min="200" name="cap" step="50" type="range" value="500"/></label>
+<label>Hours of movement per day: <span class="val" data-show="hours"></span><input max="12" min="0" name="hours" step="1" type="range" value="3"/></label>
+<label>Check-ins per day: <span class="val" data-show="checkins"></span><input max="24" min="0" name="checkins" step="1" type="range" value="1"/></label>
+<label>Alerts per week: <span class="val" data-show="alerts"></span><input max="14" min="0" name="alerts" step="1" type="range" value="3"/></label>
 </div>
 <div class="w-meter"><i></i></div>
 <div class="w-meter-legend"><span>0.05 mA</span><span>0.5 mA goal</span><span>2.4 mA requirement</span><span>50 mA</span></div>
-<div class="out">
-<div class="big"><b data-out="i"></b><span>average current</span></div>
-<div class="big"><b data-out="d"></b><span>battery life (80% usable)</span></div>
-<div class="big"><b data-out="v" style="font-size:1rem"></b><span>against the targets</span></div>
-</div>
+<div class="out"><div><b data-out="i"></b><span>average current</span></div><div><b data-out="d"></b><span>battery life (80% usable)</span></div><div><b data-out="v" style="font-size:1.05rem;margin-top:12px"></b><span>against the targets</span></div></div>
 </div>
 <p><strong>Should the target change?</strong> Lowering the target would in principle allow a smaller battery, but the battery size is set by the modem’s 2 A transmission bursts as well as by the average current. Table 6.9 shows the trade-off.</p>
 <table-component subtitle="Table 6.9. Battery size against peak current and seven-day average current.">
@@ -813,35 +508,22 @@
 <p><strong>Does the GNSS receiver need to stay on?</strong> No. GNSS is receive-only: the receiver listens to satellite broadcasts and does not hold a connection to them. A cold start is slow (about 32 seconds in our tests) because the receiver must first download each satellite’s orbit data, the ephemeris, which is broadcast slowly and remains valid for only a few hours. With fresh orbit data, a fix takes a few seconds, as our 4-second warm start showed. Keeping the receiver on permanently would solve this, but GNSS receivers typically draw tens of milliamps while running <strong>[confirm the ML307A’s GNSS current]</strong>, which is about ten times the entire 2.4 mA budget. It would also amount to continuous tracking, contrary to the Privacy principle and to the “does not require constant tracking” part of the HMW.</p>
 <p>The receiver stays fully off until an alert. When an alert fires, the token sends it at once with the last known location and the senior’s home address, while assisted GNSS downloads the orbit data over LTE and a fresh fix follows within seconds <strong>[confirm assisted GNSS support in the ML307A firmware]</strong>. A brief refresh of the orbit data every few hours would cost only about 0.05 mA, but it is not needed once assisted GNSS is available.</p>
 <p><strong>The peak-current problem.</strong> Average current is only half of the challenge. The ML307A needs 3.4 to 4.5 V and draws up to 2 A for short bursts while transmitting. The Mini CORE board’s main input passes through a buck regulator that needs about 4.5 V or more, which a single lithium cell (3.0 to 4.2 V) cannot provide. Feeding the module’s 3.8 V rail directly from the cell avoids the regulator, but a 2 A burst can pull the cell voltage below 3.4 V and reset the modem in the middle of an alert. This is why the prototype still runs the modem from an external 5 V, 2 A supply. In Semester 2 we will power it from the battery using a cell rated for high discharge current, large low-resistance bulk capacitors on the modem’s supply to absorb each burst, and, if the voltage still sags, a buck-boost converter that holds the rail at 3.8 V.</p>
-</div>
-<div id="sec-6-3">
-<h3>6.3 Alert Flow and User Journey</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-6-4">
-<h3>6.4 Companion App</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-7">
-<h2>7. Prototyping and Testing</h2>
-</div>
-<div id="sec-7-1">
-<h3>7.1 Prototype Build</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-7-2">
-<h3>7.2 Test Plan and Methods</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-7-3">
-<h3>7.3 Results (Electrical)</h3>
-<p><strong>Electrical prototype build.</strong> We built the electronics in two versions. Version 1 combined an ESP32-S3 DevKitC-1 and an MPU-6050 on a breadboard and was used to develop and tune the fall detection code. The DevKit was too large for a token. Version 2 moved to the XIAO ESP32-S3 and added the ML307A-GSLN, with the modem powered from a 5 V, 2 A bench supply. All the tests below used Version 2.</p>
+</div><div id="sec-6-3"><h3><span class="n">6.3</span>Alert Flow and User Journey</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-6-4"><h3><span class="n">6.4</span>Companion App</h3><p><span class="w-soon">Being written</span></p></div></div></section><section class="w-sec" id="sec-7"><div class="w-head"><span class="w-eyebrow">Section 7</span><h2>Prototyping and Testing</h2><p>What we built, and what the tests showed.</p></div><div class="w-body"><div id="sec-7-1">
+<h3><span class="n">7.1</span>Prototype Build (Electrical)</h3>
+<p>The electrical prototype had one job: to prove that the detection logic and the alert chain work before the parts are miniaturised. It was therefore built for speed of development, with breadboards, breakout modules and a bench supply, rather than for size or battery life.</p>
+<p><strong>Two versions.</strong> We built the electronics in two versions on a breadboard. Version 1 combined an ESP32-S3 DevKitC-1 and an MPU-6050 and was used to develop and tune the fall detection code. The DevKit was too large for a token. Version 2 moved to the XIAO ESP32-S3, which uses the same processor, and our code carried over with only pin changes. Version 2 also added the ML307A-GSLN. The modem’s board needs about 4.5 V or more and its LTE bursts reach 2 A. It therefore ran from a 5 V, 2 A bench supply. All the tests in Section 7.3 used Version 2.</p>
 <!-- TODO: save the image as assets/wishi/fig-7-1.png. Content: Photographs of Version 1 (ESP32-S3 DevKitC-1 + MPU-6050) and Version 2 (XIAO ESP32-S3 + MPU-6050 + ML307A) on the breadboard. -->
 <image-component source="assets/wishi/fig-7-1.png" subtitle="Figure 7.1. Electrical prototype, Versions 1 and 2." tag="fig-7-1"></image-component>
-</div>
-<div id="sec-7-3-1">
-<h4>7.3.1 Fall Detection</h4>
+<p><strong>Why the MPU-6050 for the prototype.</strong> The prototype had a different job from the final token. Its purpose was to develop and test the detection logic: where the windows should sit, whether a stillness check is needed, and which everyday movements cause false alarms. The answers to these questions are expressed in units of g and carry over to any IMU. The prototype sensor could be chosen for speed of development rather than for battery life. The MPU-6050 suited this role for five reasons.</p>
+<div class="w-tilegrid"><div class="w-tile light" data-open="m-mpu0" role="button" tabindex="0"><span class="k">Reason 1</span><span class="t">Cost</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu1" role="button" tabindex="0"><span class="k">Reason 2</span><span class="t">Ready for a breadboard</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu2" role="button" tabindex="0"><span class="k">Reason 3</span><span class="t">Mature software</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu3" role="button" tabindex="0"><span class="k">Reason 4</span><span class="t">Suitable range and channels</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu4" role="button" tabindex="0"><span class="k">Reason 5</span><span class="t">Proven in published prototypes</span><span class="plus">+</span></div></div>
+<p><strong>Why its high current was acceptable.</strong> The MPU-6050 draws 3.9 mA with both sensors active, more than the entire 2.4 mA budget derived in Section 6.2.3. It could never be used in the final token. During prototyping the electronics ran from USB and a bench supply, and current draw did not limit any test. Accepting a known power penalty in exchange for faster algorithm development was a deliberate trade-off, and the move to a low-power sensor was planned from the start. Its sensor noise of a few thousandths of a g is also negligible against detection thresholds of 1.5 g and above <strong>[confirm the noise density against the datasheet]</strong>.</p>
+<p><strong>Wiring.</strong> The XIAO ESP32-S3 is the hub of the prototype. The MPU-6050 connects over I²C to D4 (SDA) and D5 (SCL) and is powered from the XIAO’s 3.3 V pin. The ML307A board connects over UART to D6 (TX) and D7 (RX) and is powered from the external 5 V, 2 A supply, which shares a common ground with the XIAO. The SOS button and the three LED channels connect to separate GPIO pins.</p>
+<!-- TODO: save the image as assets/wishi/fig-7-2.png. Content: Wiring diagram of the prototype: XIAO ESP32-S3, MPU-6050 (I²C) and ML307A-GSLN (UART) with the 5 V, 2 A supply. -->
+<image-component source="assets/wishi/fig-7-2.png" subtitle="Figure 7.2. Prototype wiring diagram." tag="fig-7-2"></image-component>
+</div><div id="sec-7-2"><h3><span class="n">7.2</span>Test Plan and Methods</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-7-3">
+<h3><span class="n">7.3</span>Results (Electrical)</h3>
+</div><div id="sec-7-3-1">
+<h4><span class="n">7.3.1</span>Fall Detection</h4>
 <p><strong>Method.</strong> We tested five scenarios with 15 trials each, 75 trials in total. Three scenarios were falls, with the token in a trouser pocket, in a bag and attached to a walking stick. The other two were everyday movements that must not raise an alert: sitting down and walking. <strong>[Describe who performed the trials, how the falls were performed and onto what surface.]</strong> For each trial we logged the peak acceleration and whether it fell inside a detection window.</p>
 <div class="w-chips"><div class="w-chip"><b data-count="91" data-suf="%">0</b><span>falls caught (41/45)</span></div><div class="w-chip"><b data-count="90" data-suf="%">0</b><span>daily moves ignored (27/30)</span></div><div class="w-chip"><b data-count="75">0</b><span>trials in total</span></div></div><table-component subtitle="Table 7.1. Fall detection results (15 trials per scenario).">
 <div class="w-scroll"><table class="wishi-table">
@@ -905,8 +587,8 @@
 </tbody>
 </table></div>
 </table-component>
-<!-- TODO: save the image as assets/wishi/fig-7-2.png. Content: Fall detection chart: median peak acceleration per scenario with minimum–maximum lines and the two shaded detection windows. -->
-<div class="w-chart"><canvas aria-label="Figure 7.2 peak acceleration by scenario against the two detection windows" id="w-chart-fall"></canvas></div><p class="w-caption">Figure 7.2. Peak acceleration by scenario against the two detection windows (interactive).</p>
+<!-- TODO: save the image as assets/wishi/fig-7-3.png. Content: Fall detection chart: median peak acceleration per scenario with minimum–maximum lines and the two shaded detection windows. -->
+<div class="w-chartbox"><div class="w-chart"><canvas aria-label="Figure 7.3 peak acceleration by scenario against the two detection windows" id="w-chart-fall"></canvas></div></div><p class="w-caption">Figure 7.3. Peak acceleration by scenario against the two detection windows.</p>
 <p><strong>What the results show.</strong> Taken together, the system met the target of at least 90% for both falls caught and everyday movements ignored. The individual scenarios tell a more detailed story.</p>
 <ul>
 <li><p><strong>Pocket falls were the most consistent.</strong> Every peak landed inside Window A, because a pocket holds the token firmly against the body.</p></li>
@@ -916,9 +598,8 @@
 <li><p><strong>Walking was almost always ignored.</strong> One brisk step produced a peak above 1.5 g.</p></li>
 </ul>
 <p>The false alarms point to a clear fix. A sit or a step is followed by continued movement, while a real fall is followed by stillness. The planned stillness check should remove most false alarms without moving the window edges. The missed falls will need the windows to be retuned on more data. The sample of 15 trials per scenario is small and the falls were simulated rather than real. The windows must be validated on a larger and more realistic data set.</p>
-</div>
-<div id="sec-7-3-2">
-<h4>7.3.2 Location</h4>
+</div><div id="sec-7-3-2">
+<h4><span class="n">7.3.2</span>Location</h4>
 <p><strong>Method.</strong> We requested GNSS fixes from the ML307A in three places: an open outdoor space, a covered corridor and the inside of the lab, with five attempts in each. We measured the error of each fix against a reference position <strong>[state how the reference position was obtained]</strong>. We also recorded the time to first fix from a cold start, when the receiver has no recent satellite data, and from a warm start, when it does.</p>
 <table-component subtitle="Table 7.2. Location results.">
 <div class="w-scroll"><table class="wishi-table">
@@ -951,29 +632,26 @@
 </tr>
 </tbody>
 </table></div>
-</table-component><div class="w-chart small"><canvas aria-label="Mean GNSS error by test location" id="w-chart-gnss"></canvas></div><p class="w-caption">Mean GNSS error by location against the 10 m target.</p><div class="w-chips"><div class="w-chip"><b>≈32 s</b><span>cold-start fix</span></div><div class="w-chip"><b>≈4 s</b><span>warm-start fix</span></div></div>
-<!-- TODO: save the image as assets/wishi/fig-7-3.png. Content: Map of the outdoor test site showing the reference point and the five GNSS fixes, plus a photograph of the corridor and lab test positions. -->
-<image-component source="assets/wishi/fig-7-3.png" subtitle="Figure 7.3. GNSS fixes recorded during location testing." tag="fig-7-3"></image-component>
+</table-component><div class="w-chartbox"><div class="w-chart small"><canvas aria-label="Mean GNSS error by test location" id="w-chart-gnss"></canvas></div></div><p class="w-caption">Mean GNSS error by location against the 10 m target.</p><div class="w-chips"><div class="w-chip"><b>≈32 s</b><span>cold-start fix</span></div><div class="w-chip"><b>≈4 s</b><span>warm-start fix</span></div></div>
+<!-- TODO: save the image as assets/wishi/fig-7-4.png. Content: Map of the outdoor test site showing the reference point and the five GNSS fixes, plus a photograph of the corridor and lab test positions. -->
+<image-component source="assets/wishi/fig-7-4.png" subtitle="Figure 7.4. GNSS fixes recorded during location testing." tag="fig-7-4"></image-component>
 <p>Outdoors, every fix landed within 8 m of the reference, comfortably inside the 10 m target. The time to first fix was about <strong>32 seconds</strong> from a cold start and about <strong>4 seconds</strong> from a warm start. Under cover the module struggled, and inside the lab it obtained no fix at all.</p>
 <p>Two factors explain the indoor result. GNSS signals reach the ground extremely weak, and concrete roofs and walls absorb most of what remains. The prototype’s small passive antenna makes this worse, because it sits on a breadboard beside the LTE antenna and the microcontroller, both of which add interference. A better antenna will improve marginal locations such as the corridor, but no antenna will reliably obtain a fix deep inside a building.</p>
 <p>This matters because many falls happen at home. In Semester 2 we will fit an active GNSS antenna, which has a built-in amplifier, facing upward in the shell. We will also use assisted GNSS, which downloads satellite data over LTE, to shorten the cold start. When no fix is available, the token will send the alert at once with the last good fix, the senior’s registered home address and a coarse position from nearby cell towers or Wi-Fi networks, and then follow up once a fresh fix is obtained. All of these run only during an alert, which preserves the Privacy principle.</p>
-</div>
-<div id="sec-7-3-3">
-<h4>7.3.3 Alert Latency and Escalation</h4><div class="w-chips"><div class="w-chip"><b data-count="24" data-pre="≈" data-suf=" s">0</b><span>average alert latency</span></div><div class="w-chip"><b>10/10</b><span>alerts delivered</span></div><div class="w-chip"><b>2 min</b><span>escalation to Tier 2</span></div></div>
+</div><div id="sec-7-3-3">
+<h4><span class="n">7.3.3</span>Alert Latency and Escalation</h4><div class="w-chips"><div class="w-chip"><b data-count="24" data-pre="≈" data-suf=" s">0</b><span>average alert latency</span></div><div class="w-chip"><b>10/10</b><span>alerts delivered</span></div><div class="w-chip"><b>2 min</b><span>escalation to Tier 2</span></div></div>
 <p><strong>Method.</strong> We triggered ten alerts and measured the time from the alert being sent <strong>[confirm the start point: end of the cancel window or the trigger itself]</strong> to the Tier 1 contact receiving the notification in the app. The modem stayed powered and registered on the network throughout, and its GNSS receiver was warm. We then left each alert unacknowledged to test escalation.</p>
 <p>All ten alerts were delivered, with an average latency of about <strong>24 seconds</strong>, inside the 30-second target. In every trial the alert moved to Tier 2 after the two-minute timeout, as designed. Because the modem was already on, these results represent the warm case. Once the modem is switched off between alerts, the send-first approach in Section 6.2.2 will be needed to keep the latency under 30 seconds.</p>
-<!-- TODO: save the image as assets/wishi/fig-7-4.png. Content: Screenshot of the caregiver app showing the alert notification and its timestamp, alongside the trigger time logged by the token. -->
-<image-component source="assets/wishi/fig-7-4.png" subtitle="Figure 7.4. Alert received by the Tier 1 contact." tag="fig-7-4"></image-component>
-</div>
-<div id="sec-7-3-4">
-<h4>7.3.4 Power</h4>
+<!-- TODO: save the image as assets/wishi/fig-7-5.png. Content: Screenshot of the caregiver app showing the alert notification and its timestamp, alongside the trigger time logged by the token. -->
+<image-component source="assets/wishi/fig-7-5.png" subtitle="Figure 7.5. Alert received by the Tier 1 contact." tag="fig-7-5"></image-component>
+</div><div id="sec-7-3-4">
+<h4><span class="n">7.3.4</span>Power</h4>
 <p><strong>Method.</strong> We measured the average current drawn by the whole prototype in its idle state, waiting for a fall <strong>[state the instrument and the measurement duration]</strong>.</p>
 <p>The prototype drew about <strong>31 mA</strong> against a target of 2.4 mA and did not pass this test. Table 6.7 breaks down where the current goes, and Section 6.2.3 sets out the changes that should bring it to about 0.2 mA.</p>
-<!-- TODO: save the image as assets/wishi/fig-7-5.png. Content: Photograph of the current measurement set-up (multimeter or power profiler in series with the supply) and the reading. -->
-<image-component source="assets/wishi/fig-7-5.png" subtitle="Figure 7.5. Current measurement of the prototype." tag="fig-7-5"></image-component>
-</div>
-<div id="sec-7-4">
-<h3>7.4 Results Against Specifications (Electrical)</h3><div class="w-chips"><div class="w-chip"><b style="color:#2e7d32">4</b><span>passed</span></div><div class="w-chip"><b style="color:#c62828">2</b><span>failed</span></div><div class="w-chip"><b>3</b><span>not yet tested</span></div></div>
+<!-- TODO: save the image as assets/wishi/fig-7-6.png. Content: Photograph of the current measurement set-up (multimeter or power profiler in series with the supply) and the reading. -->
+<image-component source="assets/wishi/fig-7-6.png" subtitle="Figure 7.6. Current measurement of the prototype." tag="fig-7-6"></image-component>
+</div><div id="sec-7-4">
+<h3><span class="n">7.4</span>Results Against Specifications (Electrical)</h3><div class="w-chips"><div class="w-chip"><b style="color:var(--green)">4</b><span>passed</span></div><div class="w-chip"><b style="color:#c62828">2</b><span>failed</span></div><div class="w-chip"><b>3</b><span>not yet tested</span></div></div>
 <table-component subtitle="Table 7.3. Electrical results against specifications.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
@@ -1052,15 +730,142 @@
 </tbody>
 </table></div>
 </table-component>
-</div>
-</div><div>
-<div id="sec-8">
-<h2>8. Discussion and Shortcomings</h2>
-<!-- Electrical shortcomings below; mechanical and app shortcomings to be added by their owners -->
-<div id="sec-8-electrical">
-<h3>8.1 Electrical</h3>
+</div></div></section><section class="w-sec" id="sec-8"><div class="w-head"><span class="w-eyebrow">Section 8</span><h2>Discussion and Shortcomings</h2><p>What still holds the prototype back, and how we will fix it.</p></div><div class="w-body"><div id="sec-8">
+<h3><span class="n">8.1</span>Electrical</h3>
 <p>The prototype proves that the full chain works: a fall is detected, the senior can cancel, the alert reaches a contact in under 30 seconds, and it escalates when no one answers. What it does not yet prove is that this chain can run from a battery inside a 40 g token, or that it works indoors. Table 8.1 lists every electrical shortcoming, why it matters and how we will address it.</p>
-<p class="w-hint">Open a shortcoming to see why it matters and how we will fix it. The full table is below.</p><div class="w-short"><sl-details summary="Average current of ≈31 mA against a 2.4 mA target"><p class="why">A 500 mAh cell would last less than a day</p><p class="fix">Semester 2 fix: LSM6DSO in wake-up mode, load switch on the modem, deep sleep on the microcontroller; design goal ≤ 0.5 mA</p></sl-details><sl-details summary="ML307A needs an external DC supply"><p class="why">Its 2 A bursts can reset the modem if run from the battery</p><p class="fix">Semester 2 fix: High-discharge cell, bulk capacitors and, if needed, a buck-boost converter</p></sl-details><sl-details summary="Battery not yet chosen"><p class="why">Battery life and token size cannot be confirmed</p><p class="fix">Semester 2 fix: Choose the cell once the final sensor’s current is measured</p></sl-details><sl-details summary="Breadboard is too large"><p class="why">The electronics cannot fit inside the token</p><p class="fix">Semester 2 fix: Custom PCB</p></sl-details><sl-details summary="Components may exceed the 40 g limit [insert measured weight]"><p class="why">Seniors rejected weights above 40 g</p><p class="fix">Semester 2 fix: Lighter modules, a lighter cell and a PCB in place of wiring</p></sl-details><sl-details summary="No GNSS fix indoors (0/5 in the lab, 2/5 in a corridor)"><p class="why">Many falls happen at home</p><p class="fix">Semester 2 fix: Active antenna, assisted GNSS and a cell-tower or Wi-Fi fallback with the home address</p></sl-details><sl-details summary="Cold-start fix takes ≈32 s"><p class="why">Exceeds the 30 s alert target once the modem is switched off</p><p class="fix">Semester 2 fix: Send the alert first and follow with the fix</p></sl-details><sl-details summary="4 falls missed and 3 movements flagged; 15 trials per scenario"><p class="why">False alarms erode trust; misses defeat the purpose</p><p class="fix">Semester 2 fix: Stillness check, larger and more realistic trials, retest with the LSM6DSO</p></sl-details><sl-details summary="SOS button force and LED cues not tested"><p class="why">Two user-facing specifications remain unverified</p><p class="fix">Semester 2 fix: Press-force and LED tests with residents at HV and LB</p></sl-details></div><sl-details class="w-more" summary="Show Table 8.1 as a table"><table-component subtitle="Table 8.1. Electrical shortcomings and planned fixes.">
+<div class="w-tilegrid"><div class="w-tile light" data-open="m-sc0" role="button" tabindex="0"><span class="k">Shortcoming 1</span><span class="t">Average current of ≈31 mA against a 2.4 mA target</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc1" role="button" tabindex="0"><span class="k">Shortcoming 2</span><span class="t">ML307A needs an external DC supply</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc2" role="button" tabindex="0"><span class="k">Shortcoming 3</span><span class="t">Battery not yet chosen</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc3" role="button" tabindex="0"><span class="k">Shortcoming 4</span><span class="t">Breadboard is too large</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc4" role="button" tabindex="0"><span class="k">Shortcoming 5</span><span class="t">Components may exceed the 40 g limit [insert measured weight]</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc5" role="button" tabindex="0"><span class="k">Shortcoming 6</span><span class="t">No GNSS fix indoors (0/5 in the lab, 2/5 in a corridor)</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc6" role="button" tabindex="0"><span class="k">Shortcoming 7</span><span class="t">Cold-start fix takes ≈32 s</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc7" role="button" tabindex="0"><span class="k">Shortcoming 8</span><span class="t">4 falls missed and 3 movements flagged; 15 trials per scenario</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-sc8" role="button" tabindex="0"><span class="k">Shortcoming 9</span><span class="t">SOS button force and LED cues not tested</span><span class="plus">+</span></div></div><p><button class="w-open" data-open="m-t81"><span class="plus">+</span>View Table 8.1: all shortcomings and fixes</button></p>
+<p>These shortcomings are linked, and the order in which we tackle them matters. The battery cannot be chosen until the final sensor’s current is known. The PCB cannot be laid out until the battery and the modem’s power circuit are fixed, and the shell cannot be finalised until the PCB is. Power is the first task in Semester 2 because every later step depends on it.</p>
+<!-- TODO: save the image as assets/wishi/fig-8-1.png. Content: Shortcomings slide (shortcoming and planned fix for each subsystem). -->
+<image-component source="assets/wishi/fig-8-1.png" subtitle="Figure 8.1. Summary of shortcomings and planned fixes." tag="fig-8-1"></image-component>
+</div><h3><span class="n">8.2</span>Mechanical and app</h3><p><span class="w-soon">Being written</span></p></div></section><section class="w-sec" id="sec-9"><div class="w-head"><span class="w-eyebrow">Section 9</span><h2>Plan for Semester 2</h2></div><div class="w-body"><div id="sec-9-1"><h3><span class="n">9.1</span>Work Packages per Subsystem</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-9-2"><h3><span class="n">9.2</span>Timeline and Milestones</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-9-3"><h3><span class="n">9.3</span>Risks and Mitigations</h3><p><span class="w-soon">Being written</span></p></div></div></section><section class="w-sec" id="sec-10"><div class="w-head"><span class="w-eyebrow">Section 10</span><h2>Conclusion</h2></div><div class="w-body"><p style="text-align:center"><span class="w-soon">Being written</span></p></div></section>
+
+  <section class="w-sec" id="references"><div class="w-head"><span class="w-eyebrow">Sources</span><h2>References</h2></div>
+    <div class="w-body references w-refs"><ul><li>Ang, G. C., Low, S. L., &amp; How, C. H. (2020). Approach to falls among the elderly in the community. <em>Singapore Medical Journal, 61</em>(3), 116–121.</li><li>Apple Inc. (2026). <em>Use Fall Detection with Apple Watch</em>. Apple Support. https://support.apple.com/en-us/108896</li><li>Bagalà, F., Becker, C., Cappello, A., Chiari, L., Aminian, K., Hausdorff, J. M., Zijlstra, W., &amp; Klenk, J. (2012). Evaluation of accelerometer-based fall detection algorithms on real-world falls. <em>PLoS ONE, 7</em>(5), e37062. https://doi.org/10.1371/journal.pone.0037062</li><li>Casilari, E., &amp; Silva, C. A. (2022). An analytical comparison of datasets of real-world and simulated falls intended for the evaluation of wearable fall alerting systems. <em>Measurement, 202</em>, 111843. https://doi.org/10.1016/j.measurement.2022.111843</li><li>Ding, H., Ho, K., Searls, E., Low, S., Li, Z., Rahman, S., Madan, S., Igwe, A., Popp, Z., Burk, A., Wu, H., Ding, Y., Hwang, P. H., De Anda-Duran, I., Kolachalama, V. B., Gifford, K. A., Shih, L. C., Au, R., &amp; Lin, H. (2024). Assessment of wearable device adherence for monitoring physical activity in older adults: Pilot cohort study. <em>JMIR Aging, 7</em>, e60209. https://doi.org/10.2196/60209</li><li>Jefiza, A., Pramunanto, E., Boedinoegroho, H., &amp; Purnomo, M. H. (2017). Fall detection based on accelerometer and gyroscope using back propagation. In <em>Proceedings of the 4th International Conference on Electrical Engineering, Computer Science and Informatics (EECSI)</em> (pp. 418–423). https://doi.org/10.11591/eecsi.4.1079</li><li>Kangas, M., Konttila, A., Lindgren, P., Winblad, I., &amp; Jämsä, T. (2008). Comparison of low-complexity fall detection algorithms for body attached accelerometers. <em>Gait &amp; Posture, 28</em>(2), 285–291. <strong>[verify volume and pages]</strong></li><li>Li, Y., Liu, P., Fang, Y., Wu, X., Xie, Y., Xu, Z., Ren, H., &amp; Jing, F. (2025). A decade of progress in wearable sensors for fall detection (2015–2024): A network-based visualization review. <em>Sensors, 25</em>(7), 2205. https://doi.org/10.3390/s25072205</li><li>Palmerini, L., Klenk, J., Becker, C., &amp; Chiari, L. (2020). Accelerometer-based fall detection using machine learning: Training and testing on real-world falls. <em>Sensors, 20</em>(22), 6479. https://doi.org/10.3390/s20226479</li><li>Suprapto, S. S., Kusuma, V. A., Firdaus, A. A., Putra, W. H., &amp; Yuniar, R. J. (2024). Design and build an airbag system for elderly fall protection using the MPU6050 sensor module. <em>International Journal of Reconfigurable and Embedded Systems, 13</em>(1), 111–116. https://doi.org/10.11591/ijres.v13.i1.pp111-116</li><li>Tseng, C.-K., Huang, S.-J., &amp; Kau, L.-J. (2025). Wearable fall detection system with real-time localization and notification capabilities. <em>Sensors, 25</em>(12), 3632. https://doi.org/10.3390/s25123632</li><li>Xu, T., Sun, W., Lu, S., Ma, K., &amp; Wang, X. (2019). The real-time elderly fall posture identifying scheme with wearable sensors. <em>International Journal of Distributed Sensor Networks, 15</em>(11). https://doi.org/10.1177/1550147719885616</li><li>Yap, G. (2026, September 10). Elderly woman, 85, falls down in shower at Bukit Batok community care apartment, pressed call bell but no help for 2 hours. <em>Mothership.SG</em>.</li></ul></div></section>
+
+  <dialog class="w-modal" id="m-t31" aria-label="Most frequent user preferences (n = 40)"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Table 3.1</span><h3>Most frequent user preferences (n = 40)</h3><table-component subtitle="Table 3.1. Most frequent user preferences (n = 40).">
+<div class="w-scroll"><table class="wishi-table">
+<thead>
+<tr>
+<th><strong>User preference</strong></th>
+<th><strong>Participants</strong></th>
+<th><strong>Count</strong></th>
+<th><strong>Share</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feel safe without being watched (no cameras, microphones or unprompted speakers)</td>
+<td>P01, P03, P08, P10, P14, P15, P17, P21, P23, P27, P32, P33, P34, P36, P38, P40</td>
+<td>16</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Want family, not staff or institutions, as the first point of contact</td>
+<td>P03, P04, P05, P06, P08, P10, P11, P12, P16, P21, P22, P23, P30, P39</td>
+<td>14</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>Rely on informal help from peers and neighbours</td>
+<td>P02, P05, P06, P08, P14, P21, P24, P25</td>
+<td>8</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Retain manual control over alerts (cancel and override buttons)</td>
+<td>P04, P05, P06, P07, P25, P27, P33</td>
+<td>7</td>
+<td>18%</td>
+</tr>
+<tr>
+<td>Hesitate to pay for a device while they still feel healthy</td>
+<td>P07, P16, P24, P33, P34, P38</td>
+<td>6</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table></div>
+</table-component></div></dialog><dialog class="w-modal" id="m-ins0" aria-label="Trust Gap"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Key insight · protects Responsive</span><h3>Trust Gap</h3><p style="font-size:1.15rem;color:var(--ink-2);margin-top:-8px">Trust in kin versus formal care structures</p><p>Current systems alert the institution first, but residents do not expect staff to be available when it matters. The interviewer of P08 (F, 67) recorded that “a few weeks back her husband faced a medical emergency and chose to call her son to call the ambulance rather than the care staff as she believed they wouldn’t be around to help”. An alert is useful only if it reaches someone who will answer.</p></div></dialog><dialog class="w-modal" id="m-ins1" aria-label="Privacy–Detection Paradox"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Key insight · protects Privacy</span><h3>Privacy–Detection Paradox</h3><p style="font-size:1.15rem;color:var(--ink-2);margin-top:-8px">Rich sensor data versus residents’ trust</p><p>Cameras, microphones and continuous location tracking improve detection, but residents reject them inside their homes. The interviewer of P33 (F, 74) noted that “she doesn’t want anything recording inside her house, stating her privacy and personal space ‘means a lot’ to her”. Any sensing must detect danger without recording daily life.</p></div></dialog><dialog class="w-modal" id="m-ins2" aria-label="False Alarm Dilemma"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Key insight · protects Autonomy</span><h3>False Alarm Dilemma</h3><p style="font-size:1.15rem;color:var(--ink-2);margin-top:-8px">Avoiding panic versus avoiding missed emergencies</p><p>Instant automatic escalation ensures that no emergency is missed, but every false alarm worries the family. P10 (F, 87) “doesn’t want to share everything with her family, since it might worry them”. Residents want a moment to stop an alert before it is sent.</p></div></dialog><dialog class="w-modal" id="m-ins3" aria-label="Accessibility Barrier"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Key insight · protects Accessible</span><h3>Accessibility Barrier</h3><p style="font-size:1.15rem;color:var(--ink-2);margin-top:-8px">A lower barrier of entry versus a perceived need later</p><p>Commercial devices cost between $45 and $599, and some add a monthly subscription. Residents who feel healthy see little reason to pay this much. P07 (F, 73) put her ideal price at “$20 lah”. The device must be affordable before the senior feels that she needs it.</p></div></dialog><dialog class="w-modal" id="m-ins4" aria-label="Stigma Trap"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Key insight · protects Dignity</span><h3>Stigma Trap</h3><p style="font-size:1.15rem;color:var(--ink-2);margin-top:-8px">Being protected versus being seen as frail</p><p>Visible medical alarms mark the wearer as vulnerable. The interviewer of P20 (F, 76) recorded that “she sees monitoring technology as meant for dementia patients, not healthy seniors”. A device that looks medical will be left at home.</p></div></dialog><dialog class="w-modal" id="m-t33" aria-label="How the key insights answer the HMW statement"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Table 3.3</span><h3>How the key insights answer the HMW statement</h3><table-component subtitle="Table 3.3. How the key insights answer the HMW statement.">
+<div class="w-scroll"><table class="wishi-table">
+<thead>
+<tr>
+<th><strong>Key insight</strong></th>
+<th><strong>Value protected</strong></th>
+<th><strong>HMW phrase addressed</strong></th>
+<th><strong>How we will check it</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trust Gap</td>
+<td>Responsive</td>
+<td>“right person quickly”, “regardless of location”</td>
+<td>Time from alert to first acknowledgement</td>
+</tr>
+<tr>
+<td>Privacy–Detection Paradox</td>
+<td>Privacy</td>
+<td>“real emergency”, “does not require constant tracking”</td>
+<td>Location fetched only during alerts; no camera or microphone in the bill of materials</td>
+</tr>
+<tr>
+<td>False Alarm Dilemma</td>
+<td>Autonomy</td>
+<td>“real emergency”</td>
+<td>Share of false alarms cancelled within the 15-second window</td>
+</tr>
+<tr>
+<td>Accessibility Barrier</td>
+<td>Accessible</td>
+<td>“affordable”</td>
+<td>Unit cost and monthly running cost compared with competitors</td>
+</tr>
+<tr>
+<td>Stigma Trap</td>
+<td>Dignity</td>
+<td>“protects their dignity”</td>
+<td>Residents’ ratings of how likely they are to wear each prototype design</td>
+</tr>
+</tbody>
+</table></div>
+</table-component></div></dialog><dialog class="w-modal" id="m-t66" aria-label="Median peak acceleration by scenario (from the trials in Section 7.3.1)"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Table 6.6</span><h3>Median peak acceleration by scenario (from the trials in Section 7.3.1)</h3><table-component subtitle="Table 6.6. Median peak acceleration by scenario (from the trials in Section 7.3.1).">
+<div class="w-scroll"><table class="wishi-table">
+<thead>
+<tr>
+<th><strong>Scenario</strong></th>
+<th><strong>Median peak</strong></th>
+<th><strong>Where it falls</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Walking</td>
+<td>1.3 g</td>
+<td>Below Window A (ignored)</td>
+</tr>
+<tr>
+<td>Bag fall</td>
+<td>2.4 g</td>
+<td>Window A</td>
+</tr>
+<tr>
+<td>Pocket fall</td>
+<td>2.6 g</td>
+<td>Window A</td>
+</tr>
+<tr>
+<td>Sitting down</td>
+<td>3.8 g</td>
+<td>Gap between windows (ignored)</td>
+</tr>
+<tr>
+<td>Stick fall</td>
+<td>7.2 g</td>
+<td>Window B</td>
+</tr>
+</tbody>
+</table></div>
+</table-component></div></dialog><dialog class="w-modal" id="m-mpu0" aria-label="Cost"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Cost</h3><p>At $1.94 it is the cheapest 6-axis IMU we considered, about a third of the price of the LSM6DSO. Boards damaged during fall trials and rewiring cost almost nothing to replace.</p></div></dialog><dialog class="w-modal" id="m-mpu1" aria-label="Ready for a breadboard"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Ready for a breadboard</h3><p>It is sold on breakout boards with a 3.3 V regulator, I²C pull-up resistors and header pins, and it connected directly to the microcontroller. The LSM6DSO is a 2.5 × 3 mm land-grid package that needs a carrier board or a custom PCB.</p></div></dialog><dialog class="w-modal" id="m-mpu2" aria-label="Mature software"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Mature software</h3><p>Well-tested libraries allowed raw acceleration to be logged over a serial link within hours of assembly. This is how the 75 trials in Section 7.3.1 were recorded and how the window edges were set.</p></div></dialog><dialog class="w-modal" id="m-mpu3" aria-label="Suitable range and channels"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Suitable range and channels</h3><p>Its ±16 g range records stick impacts of up to about 9 g without clipping, and its gyroscope let us explore whether rotation data improves detection before committing to a final sensor. The LSM6DSO offers the same ±16 g range and six axes, and prototype data compare directly with the final design.</p></div></dialog><dialog class="w-modal" id="m-mpu4" aria-label="Proven in published prototypes"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Proven in published prototypes</h3><p>The MPU-6050 has been used in several fall-detection systems for older adults, with reported accuracies between 90% and 98% (Jefiza et al., 2017; Xu et al., 2019; Suprapto et al., 2024).</p></div></dialog><dialog class="w-modal" id="m-sc0" aria-label="Average current of ≈31 mA against a 2.4 mA target"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Average current of ≈31 mA against a 2.4 mA target</h3><p><strong>Why it matters.</strong> A 500 mAh cell would last less than a day</p><p><strong>Semester 2 fix.</strong> LSM6DSO in wake-up mode, load switch on the modem, deep sleep on the microcontroller; design goal ≤ 0.5 mA</p></div></dialog><dialog class="w-modal" id="m-sc1" aria-label="ML307A needs an external DC supply"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>ML307A needs an external DC supply</h3><p><strong>Why it matters.</strong> Its 2 A bursts can reset the modem if run from the battery</p><p><strong>Semester 2 fix.</strong> High-discharge cell, bulk capacitors and, if needed, a buck-boost converter</p></div></dialog><dialog class="w-modal" id="m-sc2" aria-label="Battery not yet chosen"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Battery not yet chosen</h3><p><strong>Why it matters.</strong> Battery life and token size cannot be confirmed</p><p><strong>Semester 2 fix.</strong> Choose the cell once the final sensor’s current is measured</p></div></dialog><dialog class="w-modal" id="m-sc3" aria-label="Breadboard is too large"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Breadboard is too large</h3><p><strong>Why it matters.</strong> The electronics cannot fit inside the token</p><p><strong>Semester 2 fix.</strong> Custom PCB</p></div></dialog><dialog class="w-modal" id="m-sc4" aria-label="Components may exceed the 40 g limit &lt;strong&gt;[insert measured weight]&lt;/strong&gt;"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Components may exceed the 40 g limit <strong>[insert measured weight]</strong></h3><p><strong>Why it matters.</strong> Seniors rejected weights above 40 g</p><p><strong>Semester 2 fix.</strong> Lighter modules, a lighter cell and a PCB in place of wiring</p></div></dialog><dialog class="w-modal" id="m-sc5" aria-label="No GNSS fix indoors (0/5 in the lab, 2/5 in a corridor)"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>No GNSS fix indoors (0/5 in the lab, 2/5 in a corridor)</h3><p><strong>Why it matters.</strong> Many falls happen at home</p><p><strong>Semester 2 fix.</strong> Active antenna, assisted GNSS and a cell-tower or Wi-Fi fallback with the home address</p></div></dialog><dialog class="w-modal" id="m-sc6" aria-label="Cold-start fix takes ≈32 s"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Cold-start fix takes ≈32 s</h3><p><strong>Why it matters.</strong> Exceeds the 30 s alert target once the modem is switched off</p><p><strong>Semester 2 fix.</strong> Send the alert first and follow with the fix</p></div></dialog><dialog class="w-modal" id="m-sc7" aria-label="4 falls missed and 3 movements flagged; 15 trials per scenario"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>4 falls missed and 3 movements flagged; 15 trials per scenario</h3><p><strong>Why it matters.</strong> False alarms erode trust; misses defeat the purpose</p><p><strong>Semester 2 fix.</strong> Stillness check, larger and more realistic trials, retest with the LSM6DSO</p></div></dialog><dialog class="w-modal" id="m-sc8" aria-label="SOS button force and LED cues not tested"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>SOS button force and LED cues not tested</h3><p><strong>Why it matters.</strong> Two user-facing specifications remain unverified</p><p><strong>Semester 2 fix.</strong> Press-force and LED tests with residents at HV and LB</p></div></dialog><dialog class="w-modal" id="m-t81" aria-label="Electrical shortcomings and planned fixes"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Table 8.1</span><h3>Electrical shortcomings and planned fixes</h3><table-component subtitle="Table 8.1. Electrical shortcomings and planned fixes.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -1117,59 +922,13 @@
 </tr>
 </tbody>
 </table></div>
-</table-component></sl-details>
-<p>These shortcomings are linked, and the order in which we tackle them matters. The battery cannot be chosen until the final sensor’s current is known. The PCB cannot be laid out until the battery and the modem’s power circuit are fixed, and the shell cannot be finalised until the PCB is. Power is the first task in Semester 2 because every later step depends on it.</p>
-<!-- TODO: save the image as assets/wishi/fig-8-1.png. Content: Shortcomings slide (shortcoming and planned fix for each subsystem). -->
-<image-component source="assets/wishi/fig-8-1.png" subtitle="Figure 8.1. Summary of shortcomings and planned fixes." tag="fig-8-1"></image-component>
+</table-component></div></dialog><dialog class="w-modal" id="m-toc" aria-label="Contents"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">W-ishi interim report</span><h3>Contents</h3><div class="table-of-content"><sl-tree><sl-tree-item><a href="#sec-1" data-closemodal>1. Summary</a></sl-tree-item><sl-tree-item expanded><a href="#sec-2" data-closemodal>2. Problem Background</a><sl-tree-item><a href="#sec-2-1" data-closemodal>2.1 Singapore’s Ageing Population</a></sl-tree-item><sl-tree-item><a href="#sec-2-2" data-closemodal>2.2 The National Response: Age Well SG</a></sl-tree-item><sl-tree-item><a href="#sec-2-3" data-closemodal>2.3 Field Sites</a></sl-tree-item><sl-tree-item><a href="#sec-2-4" data-closemodal>2.4 Motivating Incident: The 2 September Fall</a></sl-tree-item><sl-tree-item><a href="#sec-2-5" data-closemodal>2.5 Gaps Common to Both Sites</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-3" data-closemodal>3. User Research and Problem Definition</a><sl-tree-item><a href="#sec-3-1" data-closemodal>3.1 Co-design Workshops: Method</a></sl-tree-item><sl-tree-item><a href="#sec-3-2" data-closemodal>3.2 Stakeholder Mapping</a></sl-tree-item><sl-tree-item><a href="#sec-3-3" data-closemodal>3.3 Key Findings from 40 Residents</a></sl-tree-item><sl-tree-item><a href="#sec-3-4" data-closemodal>3.4 Key Insights</a></sl-tree-item><sl-tree-item><a href="#sec-3-5" data-closemodal>3.5 Design Principles</a></sl-tree-item><sl-tree-item><a href="#sec-3-6" data-closemodal>3.6 Problem Statement</a></sl-tree-item><sl-tree-item><a href="#sec-3-7" data-closemodal>3.7 Value Proposition and Novelty</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-4" data-closemodal>4. Design Specifications</a><sl-tree-item><a href="#sec-4-1" data-closemodal>4.1 Functional Requirements</a></sl-tree-item><sl-tree-item><a href="#sec-4-2" data-closemodal>4.2 User-centred Requirements</a></sl-tree-item><sl-tree-item><a href="#sec-4-3" data-closemodal>4.3 Specification Table</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-5" data-closemodal>5. Concept Generation and Selection</a><sl-tree-item><a href="#sec-5-1" data-closemodal>5.1 Functional Decomposition</a></sl-tree-item><sl-tree-item><a href="#sec-5-2" data-closemodal>5.2 Morphological Chart of Options</a></sl-tree-item><sl-tree-item><a href="#sec-5-3" data-closemodal>5.3 Selection Rationale</a></sl-tree-item><sl-tree-item><a href="#sec-5-4" data-closemodal>5.4 Selected Concept and System Architecture</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-6" data-closemodal>6. Detailed Design</a><sl-tree-item><a href="#sec-6-1" data-closemodal>6.1 Mechanical and Ergonomics</a></sl-tree-item><sl-tree-item><a href="#sec-6-2" data-closemodal>6.2 Electrical and Sensing</a></sl-tree-item><sl-tree-item><a href="#sec-6-3" data-closemodal>6.3 Alert Flow and User Journey</a></sl-tree-item><sl-tree-item><a href="#sec-6-4" data-closemodal>6.4 Companion App</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-7" data-closemodal>7. Prototyping and Testing</a><sl-tree-item><a href="#sec-7-1" data-closemodal>7.1 Prototype Build</a></sl-tree-item><sl-tree-item><a href="#sec-7-2" data-closemodal>7.2 Test Plan and Methods</a></sl-tree-item><sl-tree-item><a href="#sec-7-3" data-closemodal>7.3 Results (Electrical)</a></sl-tree-item><sl-tree-item><a href="#sec-7-4" data-closemodal>7.4 Results Against Specifications</a></sl-tree-item></sl-tree-item><sl-tree-item><a href="#sec-8" data-closemodal>8. Discussion and Shortcomings</a></sl-tree-item><sl-tree-item expanded><a href="#sec-9" data-closemodal>9. Plan for Semester 2</a><sl-tree-item><a href="#sec-9-1" data-closemodal>9.1 Work Packages per Subsystem</a></sl-tree-item><sl-tree-item><a href="#sec-9-2" data-closemodal>9.2 Timeline and Milestones</a></sl-tree-item><sl-tree-item><a href="#sec-9-3" data-closemodal>9.3 Risks and Mitigations</a></sl-tree-item></sl-tree-item><sl-tree-item><a href="#sec-10" data-closemodal>10. Conclusion</a></sl-tree-item><sl-tree-item><a href="#references" data-closemodal>References</a></sl-tree-item></sl-tree></div></div></dialog>
 </div>
-</div>
-</div><div>
-<div id="sec-9">
-<h2>9. Plan for Semester 2</h2>
-</div>
-<div id="sec-9-1">
-<h3>9.1 Work Packages per Subsystem</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-9-2">
-<h3>9.2 Timeline and Milestones</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-<div id="sec-9-3">
-<h3>9.3 Risks and Mitigations</h3>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div>
-<div id="sec-10">
-<h2>10. Conclusion</h2>
-<p class="w-todo">This section is being written.</p>
-</div>
-</div><div class="references" id="references">
-<sl-divider></sl-divider>
-<h2>References</h2>
-<ul>
-<li>Ang, G. C., Low, S. L., &amp; How, C. H. (2020). Approach to falls among the elderly in the community. <em>Singapore Medical Journal, 61</em>(3), 116–121.</li>
-<li>Apple Inc. (2026). <em>Use Fall Detection with Apple Watch</em>. Apple Support. https://support.apple.com/en-us/108896</li>
-<li>Bagalà, F., Becker, C., Cappello, A., Chiari, L., Aminian, K., Hausdorff, J. M., Zijlstra, W., &amp; Klenk, J. (2012). Evaluation of accelerometer-based fall detection algorithms on real-world falls. <em>PLoS ONE, 7</em>(5), e37062. https://doi.org/10.1371/journal.pone.0037062</li>
-<li>Casilari, E., &amp; Silva, C. A. (2022). An analytical comparison of datasets of real-world and simulated falls intended for the evaluation of wearable fall alerting systems. <em>Measurement, 202</em>, 111843. https://doi.org/10.1016/j.measurement.2022.111843</li>
-<li>Ding, H., Ho, K., Searls, E., Low, S., Li, Z., Rahman, S., Madan, S., Igwe, A., Popp, Z., Burk, A., Wu, H., Ding, Y., Hwang, P. H., De Anda-Duran, I., Kolachalama, V. B., Gifford, K. A., Shih, L. C., Au, R., &amp; Lin, H. (2024). Assessment of wearable device adherence for monitoring physical activity in older adults: Pilot cohort study. <em>JMIR Aging, 7</em>, e60209. https://doi.org/10.2196/60209</li>
-<li>Jefiza, A., Pramunanto, E., Boedinoegroho, H., &amp; Purnomo, M. H. (2017). Fall detection based on accelerometer and gyroscope using back propagation. In <em>Proceedings of the 4th International Conference on Electrical Engineering, Computer Science and Informatics (EECSI)</em> (pp. 418–423). https://doi.org/10.11591/eecsi.4.1079</li>
-<li>Kangas, M., Konttila, A., Lindgren, P., Winblad, I., &amp; Jämsä, T. (2008). Comparison of low-complexity fall detection algorithms for body attached accelerometers. <em>Gait &amp; Posture, 28</em>(2), 285–291. <strong>[verify volume and pages]</strong></li>
-<li>Li, Y., Liu, P., Fang, Y., Wu, X., Xie, Y., Xu, Z., Ren, H., &amp; Jing, F. (2025). A decade of progress in wearable sensors for fall detection (2015–2024): A network-based visualization review. <em>Sensors, 25</em>(7), 2205. https://doi.org/10.3390/s25072205</li>
-<li>Palmerini, L., Klenk, J., Becker, C., &amp; Chiari, L. (2020). Accelerometer-based fall detection using machine learning: Training and testing on real-world falls. <em>Sensors, 20</em>(22), 6479. https://doi.org/10.3390/s20226479</li>
-<li>Suprapto, S. S., Kusuma, V. A., Firdaus, A. A., Putra, W. H., &amp; Yuniar, R. J. (2024). Design and build an airbag system for elderly fall protection using the MPU6050 sensor module. <em>International Journal of Reconfigurable and Embedded Systems, 13</em>(1), 111–116. https://doi.org/10.11591/ijres.v13.i1.pp111-116</li>
-<li>Tseng, C.-K., Huang, S.-J., &amp; Kau, L.-J. (2025). Wearable fall detection system with real-time localization and notification capabilities. <em>Sensors, 25</em>(12), 3632. https://doi.org/10.3390/s25123632</li>
-<li>Xu, T., Sun, W., Lu, S., Ma, K., &amp; Wang, X. (2019). The real-time elderly fall posture identifying scheme with wearable sensors. <em>International Journal of Distributed Sensor Networks, 15</em>(11). https://doi.org/10.1177/1550147719885616</li>
-<li>Yap, G. (2026, September 10). Elderly woman, 85, falls down in shower at Bukit Batok community care apartment, pressed call bell but no help for 2 hours. <em>Mothership.SG</em>.</li>
-</ul>
-</div></main></div></div>
-<!-- This is the code to display the scroll to top button for ergonomic -->
-<!-- You can leave it as it is, or if you don't like its aesthetics you can also just delete it, -->
-<!-- but it might reduce the user experience. -->
-<sl-button circle="" class="scroll-to-top" onclick="scrollToTop()" size="medium" variant="primary">
-<sl-icon label="Settings" name="arrow-up"></sl-icon>
-</sl-button>
+<sl-button class="scroll-to-top" variant="primary" size="medium" circle onclick="scrollToTop()"><sl-icon name="arrow-up" label="Back to top"></sl-icon></sl-button>
 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
-<script src="./components/table-component/table-component.js" type="module"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script><script defer="" src="./components/wishi/wishi.js"></script></body>
+<script type="module" src="./components/table-component/table-component.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="./components/wishi/wishi.js" defer></script>
+<script>document.addEventListener("click", e => { const a = e.target.closest("[data-closemodal]"); if (a) { const d = a.closest("dialog"); if (d) { d.classList.remove("show"); d.close(); document.documentElement.style.overflow = ""; } } });</script>
+</body>
 </html>
