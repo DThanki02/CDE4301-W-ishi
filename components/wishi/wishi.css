@@ -286,3 +286,37 @@ canvas.trace { width: 100%; height: 130px; display: block; }
 .sim-packet b { color: #ff8a8a; }
 .sim-packet .tagx { display: block; font-family: Poppins, sans-serif; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: #6ea8ff; margin-bottom: 2px; }
 @media (max-width: 760px) { .sim-packet { max-width: 90%; font-size: .66rem; } }
+
+/* ---------- 3D viewer + wiring ---------- */
+.v3-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.v3-tabs button { border: 1px solid #3a3a40; background: #1c1c20; color: #e5e5ea; border-radius: 999px; padding: 9px 15px; font: 500 .88rem inherit; font-family: inherit; cursor: pointer; transition: all .25s; }
+.v3-tabs button[aria-selected="true"] { background: #fff; color: #111; border-color: #fff; font-weight: 600; }
+.v3-stage { position: relative; border-radius: 22px; overflow: hidden; background: radial-gradient(600px 300px at 50% 30%, #2b3446, #121419 70%); }
+.v3-stage canvas { width: 100%; height: 440px; display: block; cursor: grab; touch-action: none; }
+.v3-stage canvas:active { cursor: grabbing; }
+.v3-ctrl { position: absolute; left: 16px; bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+.v3-ctrl button { border: 0; border-radius: 999px; padding: 9px 15px; font: 600 .85rem inherit; font-family: inherit; cursor: pointer; background: rgba(255,255,255,.92); color: #111; }
+.v3-ctrl button[data-v3=reset] { background: rgba(255,255,255,.15); color: #fff; }
+.v3-ctrl button[hidden] { display: none; }
+.v3-hint { position: absolute; right: 16px; top: 14px; font-size: .75rem; color: #9aa3b2; }
+.v3-info { color: #e5e5ea; font-size: 1.05rem; margin: 16px 0 4px; min-height: 3.4em; }
+.v3-info b { color: #fff; }
+.v3-info span { color: #6ea8ff; font-weight: 600; }
+.w-wiring svg { width: 100%; height: auto; display: block; background: #17181c; border-radius: 22px; }
+.wr-name { fill: #fff; font: 700 15px Poppins, sans-serif; }
+.wr-sub { fill: rgba(255,255,255,.6); font: 500 11px Poppins, sans-serif; }
+.wr-pin { fill: #e5e5ea; font: 600 11.5px Poppins, sans-serif; }
+.wr-wire { cursor: pointer; outline: none; transition: opacity .25s; }
+.wr-wire .wr-flow { opacity: 0; }
+.wr-wire.hot .wr-flow, .wr-wire.on .wr-flow { opacity: .9; animation: wr-flow 1s linear infinite; }
+.wr-wire.hot .wr-line, .wr-wire.on .wr-line { stroke-width: 6; }
+.wr-wire.dim { opacity: .14; }
+@keyframes wr-flow { to { stroke-dashoffset: -16; } }
+.wr-info { color: #e5e5ea; font-size: 1.05rem; margin: 16px 0 0; min-height: 3.4em; }
+.wr-info b { color: #fff; }
+.wr-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; margin-right: 8px; background: #333; color: #fff; }
+.wr-tag.power { background: #e53935; } .wr-tag.ground { background: #616161; } .wr-tag.i2c { background: #43a047; } .wr-tag.uart { background: #ec407a; }
+.w-figbtns { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin: 4px 0 20px; }
+.w-modal-in img.w-modalimg { width: 100%; border-radius: 14px; display: block; }
+@media (max-width: 700px) { .v3-stage canvas { height: 320px; } }
+@media (prefers-reduced-motion: reduce) { .wr-wire.hot .wr-flow, .wr-wire.on .wr-flow { animation: none; } }
