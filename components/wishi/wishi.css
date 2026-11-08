@@ -231,3 +231,42 @@ blockquote p { font-size: inherit; line-height: inherit; color: inherit; text-al
 .w-breakdown .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
 .w-calc .note { font-size: .8rem; color: #b26a00; display: block; margin-top: 4px; }
 .w-calc input:disabled + * , .w-calc label:has(input:disabled) { color: var(--ink-2); }
+
+/* ---------- fall simulation ---------- */
+.w-sim h5 { margin-bottom: 18px; }
+.sim-scen { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.sim-scen button { border: 1px solid #3a3a40; background: #1c1c20; color: #e5e5ea; border-radius: 999px; padding: 9px 15px; font: 500 .88rem inherit; font-family: inherit; cursor: pointer; transition: all .25s; }
+.sim-scen button:hover { border-color: #6ea8ff; }
+.sim-scen button.sel { background: #fff; color: #111; border-color: #fff; font-weight: 600; }
+.sim-stage { display: grid; grid-template-columns: minmax(0, 2.3fr) minmax(170px, 1fr); gap: 16px; }
+.sim-stage svg { width: 100%; height: auto; border-radius: 18px; display: block; }
+.w-sim.shake .sim-stage svg { animation: w-shake .45s; }
+.sim-stage .lab { fill: #9fb0c8; font: 500 12px Poppins, sans-serif; }
+.sim-stage .tower .tip { fill: #3a4558; transition: fill .3s; }
+.sim-stage .tower.live .tip { fill: #6ea8ff; filter: drop-shadow(0 0 6px #6ea8ff); }
+.sim-stage .led { transition: fill .3s; }
+.sim-stage .led.off { fill: #3a3f48; }
+.sim-stage .led.amber { fill: #e8a33d; filter: drop-shadow(0 0 4px #e8a33d); animation: w-blink 1s infinite; }
+.sim-stage .led.green { fill: #3fd15e; filter: drop-shadow(0 0 4px #3fd15e); }
+.sim-phones { display: flex; flex-direction: column; gap: 10px; }
+.sim-phone { flex: 1; border-radius: 18px; border: 1px solid #333; background: #19191d; padding: 14px 14px; display: flex; flex-direction: column; justify-content: center; transition: all .35s; }
+.sim-phone .who { font-size: .82rem; font-weight: 600; color: #e5e5ea; }
+.sim-phone .st { font-size: .8rem; color: #8a8a90; margin-top: 4px; }
+.sim-phone.ring { border-color: #e8a33d; background: #2a2114; animation: sim-ring .9s infinite; }
+.sim-phone.ring .st { color: #ffd28a; }
+.sim-phone.miss { opacity: .45; }
+.sim-phone.miss .st { text-decoration: line-through; }
+.sim-phone.ack { border-color: #3fd15e; background: #12261a; }
+.sim-phone.ack .st { color: #8ff0a4; font-weight: 600; }
+@keyframes sim-ring { 50% { transform: translateX(3px); } }
+.sim-tracebox { position: relative; margin-top: 16px; background: #17181c; border-radius: 18px; padding: 10px 12px 6px; }
+.sim-tl { font-size: .75rem; color: #8a8a90; }
+canvas.trace { width: 100%; height: 130px; display: block; }
+.sim-steps { margin-top: 18px; }
+.sim-row { display: flex; gap: 20px; align-items: center; justify-content: space-between; min-height: 4.2em; }
+.sim-msg { font-size: 1.12rem; color: #f5f5f7; }
+.sim-msg b { color: #fff; }
+.sim-note { color: #8a8a90; font-size: .85rem; }
+.sim-count { font-size: 3.2rem; font-weight: 700; color: var(--amber); min-width: 70px; text-align: right; }
+@media (max-width: 760px) { .sim-stage { grid-template-columns: 1fr; } .sim-phones { flex-direction: row; } .sim-phone { padding: 10px; } }
+@media (prefers-reduced-motion: reduce) { .sim-phone.ring, .sim-stage .led.amber { animation: none; } }

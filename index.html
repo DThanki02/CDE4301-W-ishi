@@ -34,7 +34,7 @@
     <h1>W-ishi</h1>
     <p class="sub">A personal safety token for seniors.</p>
     <p class="tag">A discreet token that detects falls, lets the senior cancel, and reaches the right person wherever they are, without cameras, microphones or constant tracking.</p>
-    <div class="cta"><a class="w-pill" href="#sec-1" style="text-decoration:none">Read the report</a><a class="w-pill ghost" href="#w-flow" style="text-decoration:none">See the alert flow</a></div>
+    <div class="cta"><a class="w-pill" href="#sec-1" style="text-decoration:none">Read the report</a><a class="w-pill ghost" href="#w-sim" style="text-decoration:none">See the simulation</a></div>
     <img src="assets/wishi/hero-token.png" alt="Concept render of the W-ishi token: a fabric-faced long cuboid with a round SOS button and a small status LED">
   </div></header>
 
@@ -334,16 +334,59 @@
 </ul>
 <p><strong>Comparison with published detectors.</strong> Window A’s lower edge agrees with the literature. Waist-mounted detectors flag an impact when the resultant acceleration exceeds thresholds between 1.5 g and 2 g (Kangas et al., 2008), and a recent wearable uses 1.4 g (Tseng et al., 2025). In 143 real-world falls of older adults, the softest impact peaked at 1.6 g (Palmerini et al., 2020). A lower edge of 1.5 g sits just below the softest fall on record. Thresholds tuned on simulated falls transfer poorly to real ones: thirteen published algorithms detected only 57% of real falls on average and produced between 3 and 85 false alarms in a single day of monitoring (Bagalà et al., 2012). Window B has no direct counterpart, because we found no published detector mounted on a walking stick. Its range comes from our own trials and is a contribution of this project. Unlike the published detectors, Window A also has an upper edge. A very hard fall with the token in a pocket could land in the ignored gap. The stillness check in step 2 below will allow this edge to be raised safely.</p>
 <p>The edges of the windows set the balance between missed falls and false alarms. Raising the top of Window A would catch more bag falls, but it would also admit more heavy sits. With the top edge at 3 g, every pocket fall was caught and 13 of 15 sits stayed outside the windows.</p>
-<div class="w-wide"><div aria-live="polite" class="w-flow" id="w-flow">
-<span class="w-eyebrow">Interactive</span><h5>From impact to help, step by step.</h5>
-<div class="w-steps"><span>Impact</span><span>Still for 2 s</span><span>15 s cancel window</span><span>Alert + location</span><span>Tier 1</span><span>Help coming</span></div>
-<div class="w-flow-top">
-<div aria-hidden="true" class="w-token"><div class="sos">SOS</div><div class="led"></div></div>
-<div><div class="w-flow-msg"></div>
-<div class="w-tiers"><div class="w-tier">Tier 1 · Family</div><div class="w-tier">Tier 2 · Care staff</div><div class="w-tier">Tier 3 · Neighbour</div></div>
-<div class="w-flow-ctrl"><button data-act="play">Play</button><button data-act="cancel">Press SOS to cancel</button><button data-act="reset">Reset</button></div>
-<p class="w-hint">Timings are sped up. In the token the countdown lasts 15 s and each tier has 2 minutes.</p></div>
-</div></div></div><p><strong>From impact to help.</strong> A peak inside a window starts the following sequence:</p>
+<div class="w-wide"><div aria-live="polite" class="w-flow w-sim" id="w-sim">
+<span class="w-eyebrow">Interactive simulation</span><h5>From impact to help, step by step.</h5>
+<div aria-label="Scenarios" class="sim-scen" role="group">
+<button data-scenario="fall">Fall, cannot get up</button>
+<button data-scenario="family">Fall, family answers</button>
+<button data-scenario="getup">Fall, gets up and cancels</button>
+<button data-scenario="sit">Sits down hard</button>
+</div>
+<div class="sim-stage">
+<svg aria-label="Animated scene of a senior falling and the token sending an alert" class="scene" role="img" viewbox="0 0 800 330">
+<defs><lineargradient id="sim-sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1b2433"></stop><stop offset="1" stop-color="#121722"></stop></lineargradient></defs>
+<rect fill="url(#sim-sky)" height="330" width="800"></rect>
+<rect fill="#232b38" height="30" width="800" x="0" y="300"></rect>
+<line stroke="#3a4558" stroke-width="2" x1="0" x2="800" y1="300" y2="300"></line>
+<g class="tower" id="sim-tower">
+<path d="M650 300 L632 300 L650 160 L668 300 Z M641 230 L659 230 M637 265 L663 265 M645 195 L655 195" fill="none" stroke="#6b7a90" stroke-linejoin="round" stroke-width="3"></path>
+<circle class="tip" cx="650" cy="152" r="7"></circle>
+<text class="lab" text-anchor="middle" x="650" y="322">4G network</text>
+</g>
+<g id="sim-chair" style="opacity:0"><rect fill="#8a6a4a" height="8" rx="3" width="66" x="252" y="262"></rect><rect fill="#8a6a4a" height="110" rx="3" width="8" x="247" y="190"></rect><rect fill="#8a6a4a" height="32" width="7" x="309" y="268"></rect></g>
+<g id="sim-fig" transform="translate(120 300)">
+<g id="sim-body">
+<g id="sim-legL"><rect fill="#3d4a63" height="66" rx="6" width="12" x="-6" y="-66"></rect></g>
+<g id="sim-legR"><rect fill="#4a587a" height="66" rx="6" width="12" x="-6" y="-66"></rect></g>
+<g id="sim-armL"><rect fill="#b9864f" height="52" rx="5" width="10" x="-5" y="-118"></rect></g>
+<rect fill="#5b8bd6" height="66" rx="13" width="30" x="-15" y="-128"></rect>
+<rect fill="#8fa0bb" height="17" rx="3" stroke="#e9e4da" stroke-width="1.5" width="10" x="5" y="-84"></rect>
+<circle class="led off" cx="10" cy="-71" id="sim-led" r="3.2"></circle>
+<g id="sim-armR"><rect fill="#c99561" height="52" rx="5" width="10" x="-5" y="-118"></rect></g>
+<circle cx="0" cy="-146" fill="#d9a774" r="15"></circle>
+<path d="M-15 -148 A15 15 0 0 1 15 -148 L13 -152 A13 13 0 0 0 -13 -152 Z" fill="#c9ccd2"></path>
+</g>
+</g>
+<g id="sim-burst" style="opacity:0"><g stroke="#ffd166" stroke-linecap="round" stroke-width="3">
+<line x1="0" x2="0" y1="-14" y2="-26"></line><line x1="10" x2="19" y1="-10" y2="-19"></line><line x1="14" x2="26" y1="0" y2="0"></line><line x1="10" x2="19" y1="10" y2="19"></line>
+<line x1="-10" x2="-19" y1="-10" y2="-19"></line><line x1="-14" x2="-26" y1="0" y2="0"></line><line x1="-10" x2="-19" y1="10" y2="19"></line></g></g>
+<g fill="none" id="sim-waves" stroke="#6ea8ff" stroke-width="2.5" style="opacity:0"><circle r="10"></circle><circle r="10"></circle><circle r="10"></circle></g>
+<line id="sim-beam" stroke="#6ea8ff" stroke-dasharray="8 8" stroke-dashoffset="400" stroke-width="3" style="opacity:0" x1="0" x2="650" y1="0" y2="152"></line>
+<g id="sim-still" style="opacity:0"><rect fill="#2a3446" height="26" rx="13" width="150" x="330" y="236"></rect><text class="lab" text-anchor="middle" x="405" y="253">no movement · 2 s</text></g>
+</svg>
+<div class="sim-phones">
+<div class="sim-phone"><div class="who">Tier 1 · Family</div><div class="st">Waiting</div></div>
+<div class="sim-phone"><div class="who">Tier 2 · Care staff</div><div class="st">Waiting</div></div>
+<div class="sim-phone"><div class="who">Tier 3 · Neighbour</div><div class="st">Waiting</div></div>
+</div>
+</div>
+<div class="sim-tracebox"><span class="sim-tl">What the motion sensor measures (|a| in g)</span><canvas aria-label="Live acceleration trace with the two detection windows" class="trace"></canvas></div>
+<div class="w-steps sim-steps"><span>Impact</span><span>Still for 2 s</span><span>15 s cancel window</span><span>Alert + location</span><span>Tier 1</span><span>Help coming</span></div>
+<div class="sim-row"><div class="sim-msg"></div><div class="sim-count"></div></div>
+<div class="w-flow-ctrl"><button data-act="cancel">Press SOS to cancel</button><button data-act="reset">Reset</button></div>
+<p class="w-hint">Timings are sped up. In the token the countdown lasts 15 s and each tier has 2 minutes. Peak values follow the median results in Section 7.3.1.</p>
+</div></div>
+<p><strong>From impact to help.</strong> A peak inside a window starts the following sequence:</p>
 <ol type="1">
 <li><p><strong>Impact.</strong> A peak inside Window A or Window B is treated as a possible fall.</p></li>
 <li><p><strong>Stillness check (planned for Semester 2).</strong> The firmware confirms that |a| stays close to 1 g with little movement for <strong>2 s</strong> after the impact, and that the token is lying rather than upright. This step rejects events such as a brisk step or a stick that is knocked over and picked up again. The current prototype does not yet include it.</p></li>
@@ -929,6 +972,7 @@
 <script type="module" src="./components/table-component/table-component.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="./components/wishi/wishi.js" defer></script>
+<script src="./components/wishi/sim.js" defer></script>
 <script>document.addEventListener("click", e => { const a = e.target.closest("[data-closemodal]"); if (a) { const d = a.closest("dialog"); if (d) { d.classList.remove("show"); d.close(); document.documentElement.style.overflow = ""; } } });</script>
 </body>
 </html>
