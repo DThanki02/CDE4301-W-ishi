@@ -135,13 +135,13 @@
       const cap = +f("cap").value, sensor = f("sensor").value, modemOff = f("modem").checked;
       // The MPU-6050 has to be polled for every sample, so the microcontroller cannot deep sleep with it.
       const sl = f("sleep");
-      if (sensor === "mpu") { sl.checked = false; sl.disabled = true; }
-      else { if (sl.disabled && (!e || e.target === f("sensor"))) sl.checked = true; sl.disabled = false; }
+      if (sensor === "mpu") { sl.value = "awake"; sl.disabled = true; }
+      else { if (sl.disabled && (!e || e.target === f("sensor"))) sl.value = "light"; sl.disabled = false; }
       calc.querySelector("[data-note=sleep]").hidden = sensor !== "mpu";
-      const sleep = sl.checked;
+      const sleep = sl.value;
       const hrs = +f("hours").value, chk = +f("checkins").value, alerts = +f("alerts").value;
       const parts = [
-        ["Microcontroller", sleep ? 0.014 + 0.01 : 9.5, "#1e5aa8"],
+        ["Microcontroller", { light: 0.6, deep: 0.014 + 0.01, awake: 9.5 }[sleep], "#1e5aa8"],
         ["Motion sensor", sensor === "lsm" ? 0.02 + 0.55 * hrs / 24 : 3.9, "#8e6cc9"],
         ["Modem between alerts", modemOff ? 0.003 : 17.6, "#2e9e8f"],
         ["Check-ins", chk * 0.0417, "#e8a33d"],
@@ -152,8 +152,8 @@
       calc.querySelectorAll("[data-show]").forEach(s => s.textContent = f(s.dataset.show).value);
       out("i").textContent = I < 1 ? I.toFixed(2) + " mA" : I.toFixed(1) + " mA";
       out("d").textContent = days < 1 ? (days * 24).toFixed(0) + " hours" : days.toFixed(days < 10 ? 1 : 0) + " days";
-      const ok = I <= 2.4, goal = I <= 0.5;
-      out("v").textContent = goal ? "Meets the design goal (≤ 0.5 mA)" : ok ? "Meets the requirement (≤ 2.4 mA)" : "Misses the 2.4 mA requirement";
+      const ok = I <= 2.4, goal = I <= 1.2;
+      out("v").textContent = goal ? "Meets the design goal (≤ 1.2 mA)" : ok ? "Meets the requirement (≤ 2.4 mA)" : "Misses the 2.4 mA requirement";
       out("v").style.color = goal ? C.green : ok ? "#b26a00" : C.red;
       const pct = Math.min(100, Math.log10(Math.max(I, 0.05) / 0.05) / Math.log10(50 / 0.05) * 100);
       const m = calc.querySelector(".w-meter i"); m.style.width = pct + "%"; m.style.background = goal ? C.green : ok ? C.amber : C.red;
@@ -164,9 +164,9 @@
     calc.addEventListener("input", compute);
     calc.querySelectorAll("[data-preset]").forEach(b => b.addEventListener("click", () => {
       const p = b.dataset.preset === "proto"
-        ? { sensor: "mpu", modem: false, sleep: false, hours: 3, checkins: 0, alerts: 0, cap: 500 }
-        : { sensor: "lsm", modem: true, sleep: true, hours: 3, checkins: 1, alerts: 3, cap: 500 };
-      f("sensor").value = p.sensor; f("modem").checked = p.modem; f("sleep").checked = p.sleep;
+        ? { sensor: "mpu", modem: false, sleep: "awake", hours: 3, checkins: 0, alerts: 0, cap: 500 }
+        : { sensor: "lsm", modem: true, sleep: "light", hours: 3, checkins: 1, alerts: 3, cap: 500 };
+      f("sensor").value = p.sensor; f("modem").checked = p.modem; f("sleep").value = p.sleep;
       f("hours").value = p.hours; f("checkins").value = p.checkins; f("alerts").value = p.alerts; f("cap").value = p.cap; compute();
     }));
     compute();
@@ -246,3 +246,9 @@
     }));
   });
 })();
+
+/* trial video: play when on screen */
+document.querySelectorAll(".w-video video").forEach(v => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? v.play().catch(() => {}) : v.pause()), { threshold: 0.5 }).observe(v);
+});
