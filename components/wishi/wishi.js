@@ -190,7 +190,7 @@
       reset(); running = true; btnPlay.disabled = true;
       stage(0); tok.classList.remove("shake"); void tok.offsetWidth; tok.classList.add("shake");
       msg.innerHTML = "<b>Impact.</b> The peak acceleration lands inside Window A (pocket or bag) or Window B (stick).";
-      later(() => { stage(1); msg.innerHTML = "<b>Stillness check.</b> The token confirms she is lying still for 2 seconds."; }, 2200);
+      later(() => { stage(1); msg.innerHTML = "<b>Stillness check.</b> The token confirms the senior is lying still for 2 seconds."; }, 2200);
       later(() => {
         stage(2); led.className = "led amber"; btnCancel.disabled = false;
         let n = 15; msg.innerHTML = `<b>Cancel window.</b> The LED turns amber. One press of SOS cancels.<div class="w-flow-count">${n}</div>`;
@@ -201,16 +201,16 @@
     }
     function sendAlert() {
       btnCancel.disabled = true; stage(3);
-      msg.innerHTML = "<b>Alert sent.</b> The alert and her location go out over 4G, with no phone needed.";
-      later(() => { stage(4); tiers[0].classList.add("ring"); msg.innerHTML = "<b>Tier 1</b> (her son) is notified. No reply within 2 minutes…"; }, 2000);
+      msg.innerHTML = "<b>Alert sent.</b> The alert and the senior’s location go out over 4G, with no phone needed.";
+      later(() => { stage(4); tiers[0].classList.add("ring"); msg.innerHTML = "<b>Tier 1</b> (family) is notified. No reply within 2 minutes…"; }, 2000);
       later(() => { tiers[0].className = "w-tier miss"; tiers[1].classList.add("ring"); msg.innerHTML = "<b>Escalation.</b> The alert moves to Tier 2 (care staff)."; }, 4200);
       later(() => { tiers[1].className = "w-tier ack"; led.className = "led green"; stage(5);
-        msg.innerHTML = "<b>Acknowledged.</b> The LED turns green so she knows help is coming."; btnPlay.disabled = false; running = false; }, 6400);
+        msg.innerHTML = "<b>Acknowledged.</b> The LED turns green so the senior knows help is coming."; btnPlay.disabled = false; running = false; }, 6400);
     }
     btnPlay.addEventListener("click", play);
     btnReset.addEventListener("click", reset);
     btnCancel.addEventListener("click", () => { timers.forEach(clearTimeout); timers = []; running = false; led.className = "led";
-      msg.innerHTML = "<b>Cancelled.</b> She pressed SOS within 15 seconds, so nothing was sent."; btnCancel.disabled = true; btnPlay.disabled = false; });
+      msg.innerHTML = "<b>Cancelled.</b> The senior pressed SOS within 15 seconds. Nothing was sent."; btnCancel.disabled = true; btnPlay.disabled = false; });
     reset();
   }
 
