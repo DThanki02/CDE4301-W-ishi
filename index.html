@@ -591,15 +591,19 @@
 <p><strong>Why the MPU-6050 for the prototype.</strong> The prototype had a different job from the final token. Its purpose was to develop and test the detection logic: where the windows should sit, whether a stillness check is needed, and which everyday movements cause false alarms. The answers to these questions are expressed in units of g and carry over to any IMU. The prototype sensor could be chosen for speed of development rather than for battery life. The MPU-6050 suited this role for five reasons.</p>
 <div class="w-tilegrid"><div class="w-tile light" data-open="m-mpu0" role="button" tabindex="0"><span class="k">Reason 1</span><span class="t">Cost</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu1" role="button" tabindex="0"><span class="k">Reason 2</span><span class="t">Ready for a breadboard</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu2" role="button" tabindex="0"><span class="k">Reason 3</span><span class="t">Mature software</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu3" role="button" tabindex="0"><span class="k">Reason 4</span><span class="t">Suitable range and channels</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu4" role="button" tabindex="0"><span class="k">Reason 5</span><span class="t">Proven in published prototypes</span><span class="plus">+</span></div></div>
 <p><strong>Why its high current was acceptable.</strong> The MPU-6050 draws 3.9 mA with both sensors active, more than the entire 2.4 mA budget derived in Section 6.2.3. It could never be used in the final token. During prototyping the electronics ran from USB and a bench supply, and current draw did not limit any test. Accepting a known power penalty in exchange for faster algorithm development was a deliberate trade-off, and the move to a low-power sensor was planned from the start. Its sensor noise of a few thousandths of a g is also negligible against detection thresholds of 1.5 g and above <strong>[confirm the noise density against the datasheet]</strong>.</p>
-<p><strong>Wiring.</strong> The XIAO ESP32-S3 is the hub of the prototype. The MPU-6050 connects over I²C to D4 (SDA) and D5 (SCL) and is powered from the XIAO’s 3.3 V pin. The ML307A board connects over UART to D6 (TX) and D7 (RX) and is powered from the external 5 V, 2 A supply, which shares a common ground with the XIAO. The SOS button and the three LED channels connect to separate GPIO pins.</p>
+<p><strong>Wiring.</strong> The XIAO ESP32-S3 is the hub of the prototype. The MPU-6050 connects over I²C to D4 (SDA) and D5 (SCL) and is powered from the XIAO’s 3.3 V pin. The ML307A board connects over UART to D2 (TX) and D1 (RX) and is powered from the external 5 V, 2 A supply, which shares a common ground with the XIAO. The SOS button and the three LED channels connect to separate GPIO pins.</p>
 <!-- TODO: save the image as assets/wishi/fig-7-2.png. Content: Wiring diagram of the prototype: XIAO ESP32-S3, MPU-6050 (I²C) and ML307A-GSLN (UART) with the 5 V, 2 A supply. -->
 <div class="w-wide"><div class="w-flow w-wiring" id="w-wiring">
-<span class="w-eyebrow">Interactive wiring</span><h5>How the prototype is wired.</h5>
+<span class="w-eyebrow">Interactive wiring</span><h5>Watch the prototype come together.</h5>
 <div class="v3-tabs wr-filter" role="tablist">
 <button data-bus-btn="all">All</button><button data-bus-btn="power">Power</button><button data-bus-btn="ground">Ground</button><button data-bus-btn="i2c">I²C (sensor)</button><button data-bus-btn="uart">UART (modem)</button>
 </div>
-<svg aria-label="Wiring between the bench supply, XIAO ESP32-S3, MPU-6050 and ML307A" role="img" viewbox="0 0 910 450"></svg>
-<p class="wr-info"></p>
+<div class="v3-stage wr-stage"><canvas aria-label="3D model of the prototype on a breadboard. The parts fly in and the wires connect them. Drag to rotate, scroll or pinch to zoom, tap a wire to learn what it does."></canvas>
+<div aria-hidden="true" class="wr-labels"></div>
+<div class="v3-ctrl"><button data-wr="replay">Replay assembly</button><button data-wr="next">Next wire</button><button data-v3="reset" data-wr="reset">Reset view</button></div>
+<div class="v3-hint">Drag to rotate · tap a wire</div></div>
+<p aria-live="polite" class="wr-info"></p>
+<p class="w-hint">Simplified 3D models at real scale, laid out as on the Version 2 breadboard.</p>
 </div></div>
 <div class="w-figbtns"><button class="w-open" data-open="m-fig72"><span class="plus">+</span>View Figure 7.2: original diagram</button><button class="w-open" data-open="m-build"><span class="plus">+</span>View the real build</button></div>
 </div><div id="sec-7-2"><h3><span class="n">7.2</span>Test Plan and Methods</h3><p><span class="w-soon">Being written</span></p></div><div id="sec-7-3">
@@ -1012,7 +1016,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="./components/wishi/wishi.js" defer></script>
 <script src="./components/wishi/sim.js" defer></script>
-<script src="./components/wishi/wiring.js" defer></script>
 <script type="module" src="./components/wishi/viewer3d.js"></script>
 <script>document.addEventListener("click", e => { const a = e.target.closest("[data-closemodal]"); if (a) { const d = a.closest("dialog"); if (d) { d.classList.remove("show"); d.close(); document.documentElement.style.overflow = ""; } } });</script>
 </body>
