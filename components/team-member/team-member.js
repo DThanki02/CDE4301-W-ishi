@@ -1,6 +1,6 @@
 class TeamMember extends HTMLElement {
   static get observedAttributes() {
-    return ["avatar", "name", "department", "year"];
+    return ["avatar", "name", "department", "subsystem"];
   }
 
   constructor() {
@@ -22,25 +22,27 @@ class TeamMember extends HTMLElement {
     <img src="${this.avatar}" alt="${this.name}">
     <p><strong>${this.name}</strong></p>
     <p>${this.department}</p>
-    <p>${this.year}</p>
+    <p>${this.subsystem}</p>
     <style>
       :host {
         display: block;
-        max-width: 120px;
+        max-width: 170px;
         text-align: center;
       }
 
       img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
+        object-fit: cover;
         display: block;
-        margin: auto;
+        margin: 0 auto 14px;
       }
 
       p {
         text-align: center;
         margin: 8px 0;
+        line-height: 1.4;
       }
 
       @media (max-width: 599px) {

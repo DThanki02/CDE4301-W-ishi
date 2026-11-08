@@ -26,7 +26,19 @@
     if (e.target.dataset.count !== undefined) countUp(e.target);
     io.unobserve(e.target);
   }), { threshold: 0, rootMargin: "0px 0px -8% 0px" });
-  $$(".w-head, .w-body > *:not(dialog), .w-tile, .w-statrow > div").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
+  /* incident timeline: line draws with scroll, events appear one by one */
+  $$(".w-tl").forEach(tl => {
+    const draw = () => {
+      const r = tl.getBoundingClientRect(), mid = innerHeight * 0.6;
+      tl.style.setProperty("--tl", Math.min(1, Math.max(0, (mid - r.top) / r.height)));
+    };
+    document.addEventListener("scroll", draw, { passive: true }); draw();
+    const tio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); tio.unobserve(e.target); }
+    }), { rootMargin: "0px 0px -40% 0px" });
+    $$(".w-tl-item", tl).forEach(li => tio.observe(li));
+  });
+  $$(".w-head, .w-body > *:not(dialog):not(.w-tl), .w-tile, .w-statrow > div").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
   $$("[data-count]").forEach(el => io.observe(el));
   function countUp(el) {
     const end = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length;
