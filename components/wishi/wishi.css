@@ -270,3 +270,19 @@ canvas.trace { width: 100%; height: 130px; display: block; }
 .sim-count { font-size: 3.2rem; font-weight: 700; color: var(--amber); min-width: 70px; text-align: right; }
 @media (max-width: 760px) { .sim-stage { grid-template-columns: 1fr; } .sim-phones { flex-direction: row; } .sim-phone { padding: 10px; } }
 @media (prefers-reduced-motion: reduce) { .sim-phone.ring, .sim-stage .led.amber { animation: none; } }
+.sim-phone .ctx { font-size: .72rem; color: #6e6e76; margin-top: 2px; }
+.sim-phone .ui { display: none; margin-top: 8px; gap: 8px; align-items: center; }
+.sim-phone.ring .ui, .sim-phone.ack .ui { display: flex; }
+.sim-phone .map { position: relative; width: 54px; height: 38px; border-radius: 8px; flex: none; background: linear-gradient(135deg, #2a3446 25%, #233042 25% 50%, #2a3446 50% 75%, #233042 75%); background-size: 12px 12px; }
+.sim-phone .map i { position: absolute; left: 50%; top: 45%; width: 10px; height: 10px; margin: -9px 0 0 -5px; background: #ff5a5a; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 0 0 3px rgba(255,90,90,.25); }
+.sim-phone .btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.sim-phone .btns span { font-size: .7rem; padding: 4px 9px; border-radius: 999px; background: #2c2c32; color: #d0d0d6; }
+.sim-phone.ack .btns .go { background: #3fd15e; color: #0c2213; font-weight: 700; }
+.sim-phone.ring .btns .go { background: #e8a33d; color: #231600; }
+
+.sim-stage { position: relative; }
+.sim-packet { position: absolute; left: 14px; top: 14px; z-index: 2; background: rgba(15,22,34,.92); border: 1px solid #6ea8ff; border-radius: 14px; padding: 10px 14px; font: 500 .74rem/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #cfe0ff; opacity: 0; transform: translateY(-8px); transition: opacity .5s, transform .5s; pointer-events: none; max-width: 62%; }
+.sim-packet.show { opacity: 1; transform: none; }
+.sim-packet b { color: #ff8a8a; }
+.sim-packet .tagx { display: block; font-family: Poppins, sans-serif; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: #6ea8ff; margin-bottom: 2px; }
+@media (max-width: 760px) { .sim-packet { max-width: 90%; font-size: .66rem; } }
