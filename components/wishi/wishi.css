@@ -394,6 +394,42 @@ canvas.trace { width: 100%; height: 130px; display: block; }
 .morph-table img { display: block; max-width: 100%; max-height: 90px; margin: 0 auto; object-fit: contain; }
 .morph-table td.morph-why { text-align: left; vertical-align: middle; font-size: .85rem; line-height: 1.45; }
 
+/* ---------- companion app screens (6.4) ---------- */
+.app-strip { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 26px 0 6px; }
+.app-phone { position: relative; margin: 0; width: 180px; text-align: center; }
+.app-phone img { display: block; width: 100%; height: auto; }
+.app-phone figcaption { font-size: .8rem; line-height: 1.4; color: var(--ink-2); margin-top: 8px; }
+.app-tag { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: .68rem; font-weight: 600; color: #fff; padding: 2px 9px; border-radius: 999px; z-index: 1; }
+.app-v1 { background: var(--red); }
+.app-v2 { background: var(--green); }
+.app-figcap { text-align: center; font-size: .85rem; color: var(--ink-2); margin: 8px 0 26px; }
+.app-tabs { margin: 26px 0; }
+.app-ba { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.app-side { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.app-side .app-phone { width: 170px; }
+.app-arrow { font-size: 2rem; color: var(--ink-2); }
+.app-issue { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; max-width: 600px; margin: 22px auto 0; font-size: .92rem; line-height: 1.55; }
+.app-issue dt { font-weight: 600; color: var(--ink); }
+.app-issue dd { margin: 0; color: #333336; }
+@media (max-width: 600px) { .app-phone, .app-side .app-phone { width: 140px; } .app-arrow { transform: rotate(90deg); } }
+
+/* ---------- product comparison (3.6) ---------- */
+.cmp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin: 26px 0 6px; }
+.cmp-card { margin: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+.cmp-img { background: #fff; height: 150px; display: flex; align-items: center; justify-content: center; padding: 12px; border-bottom: 1px solid var(--line); }
+.cmp-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.cmp-card figcaption { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 4px; font-size: .85rem; line-height: 1.45; color: #333336; }
+.cmp-kind { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-2); }
+.cmp-card b { font-size: .98rem; color: var(--ink); }
+.cmp-price { font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.cmp-pro strong { color: var(--green); }
+.cmp-con strong { color: var(--red); }
+
+/* ---------- core values to target specs (4.2) ---------- */
+.cv-table { min-width: 860px; }
+.cv-table td { vertical-align: middle; }
+.cv-table ul { margin: 0; padding-left: 1.1em; }
+.cv-table li { font-size: inherit; line-height: 1.45; margin: 2px 0; }
 /* ---------- stakeholder quadrants (2.5) ---------- */
 .w-quad { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; }
 .w-quad .q { border-radius: 18px; padding: 16px 18px; background: #f5f5f7; border-top: 4px solid var(--c, #999); }
