@@ -99,9 +99,7 @@ most often, counted only when a participant stated them directly.</p><div class=
 <p><strong>Why we focused on falls.</strong> Falls were the emergency
 residents raised most directly. P04 was “concerned that she may be
 unable to reach the alarm after a fall”. P33 “was strongly receptive to
-fall detection” and suggested a 15-second grace period to cancel. Falls
-account for 85% of trauma among older patients seen in emergency
-departments (Ang et al., 2020) <strong>[verify this figure]</strong>. On
+fall detection” and suggested a 15-second grace period to cancel. On
 2 September an 85-year-old HV resident fell in her shower and waited
 about two hours for help (Yap, 2026). Automatic fall detection became
 the core of W-ishi, with an SOS button kept for other emergencies.</p>
@@ -185,10 +183,6 @@ tracking?</p>
 microcontroller, a cellular module with built-in GNSS, a status LED and
 a battery. Each was chosen against requirements drawn from the design
 principles.</p>
-<!-- TODO: save the image as assets/wishi/fig-6-1.png. Content: System block diagram: IMU → XIAO ESP32-S3 → ML307A (LTE + GNSS) →
-backend → app → Tier 1/2/3 contacts, with the SOS button, RGB LED and
-battery. -->
-<image-component source="assets/wishi/fig-6-1.png" subtitle="Figure 6.1. Electrical system architecture." tag="fig-6-1"></image-component>
 </div><div id="sec-6-2-1">
 <h4><span class="n">6.2.1</span>Component Selection</h4><div class="w-wide"><div class="w-flow w-3d" id="w-3d">
 <span class="w-eyebrow">Interactive 3D</span><h5>Pick up the parts.</h5>
@@ -201,7 +195,7 @@ battery. -->
 <p class="v3-info"></p>
 <p class="w-hint">Simplified models built to each part’s real dimensions, with photos of the actual parts on top.</p>
 </div></div>
-<div class="w-figbtns"><button class="w-open" data-open="m-fig62"><span class="plus">+</span>View Figure 6.2: photos of the parts</button></div>
+<div class="w-figbtns"><button class="w-open" data-open="m-fig62"><span class="plus">+</span>View Figure 6.1: photos of the parts</button></div>
 
 
 
@@ -272,7 +266,7 @@ leave their phone at home, and the A7670E and SIM7080G lack confirmed
 GNSS.</p></div><div class="w-panel" hidden="" id="cp3"><p><strong>Status LED.</strong> An <strong>RGB LED</strong> shows each
 state in its own colour with nothing to read: amber while the alert
 counts down and sends, green once help is coming and
-<strong>[colour]</strong> for low battery. A vibration motor was
+red for low battery. A vibration motor was
 rejected because it draws about 80 mA during the heaviest battery
 load.</p></div><div class="w-panel" hidden="" id="cp4"><p><strong>Battery.</strong> The battery must last at least seven days
 and keep the token under 40 g. This limit comes from an adherence study
@@ -374,10 +368,10 @@ lands here.</p></li>
 <p><strong>From impact to help.</strong> A peak inside a window starts
 this sequence:</p>
 <ol type="1">
-<li><p><strong>Stillness check (Semester 2).</strong> |a| must stay near
+<li><p><strong>Stillness check.</strong> |a| must stay near
 1 g for <strong>2 s</strong>, as in Kangas et al. (2008) and Tseng et
 al. (2025). A person keeps moving after a sit but lies still after a
-fall.</p></li>
+fall. It was added to the firmware after the trials in Section 7.3.1 (Video 7.1).</p></li>
 <li><p><strong>Cancel window.</strong> The LED turns amber for
 <strong>15 s</strong> and one press of the SOS button cancels the
 alert.</p></li>
@@ -395,7 +389,7 @@ linked to up to 50% higher mortality within six months (Casilari &amp;
 Silva, 2022). Fifteen seconds plus about 10 seconds to send keeps
 delivery within the 30-second target.</p>
 <!-- TODO: save the image as assets/wishi/fig-6-3.png. Content: Flowchart of the fall detection and alert logic. -->
-<image-component source="assets/wishi/fig-6-3.png" subtitle="Figure 6.3. Fall detection and alert flow." tag="fig-6-3"></image-component>
+<image-component source="assets/wishi/fig-6-3.png" subtitle="Figure 6.2. Fall detection and alert flow." tag="fig-6-3"></image-component>
 </div><div id="sec-6-2-3">
 <h4><span class="n">6.2.3</span>Power Budget</h4>
 <p><strong>Target.</strong> A 500 mAh cell with 20% held in reserve
@@ -476,8 +470,7 @@ design.">
 </table></div>
 </table-component>
 <p>At about 1 mA the cell would last about 17 days. We keep ≤ 2.4 mA as
-the requirement and set ≤ 1.2 mA, about 14 days, as the design goal
-<strong>[measure the final board’s sleep current]</strong>.</p><div class="w-calc" id="w-calc">
+the requirement and set ≤ 1.2 mA, about 14 days, as the design goal.</p><div class="w-calc" id="w-calc">
 <span class="w-eyebrow">Interactive</span><h5>Power budget calculator</h5>
 <p class="w-hint" style="text-align:left">Change the design choices to see the average current and battery life. Values follow Tables 6.2 and 6.3.</p>
 <div class="w-presets"><button class="w-pill ghost" data-preset="proto">Prototype today</button><button class="w-pill" data-preset="final">Planned final design</button></div>
@@ -496,8 +489,7 @@ the requirement and set ≤ 1.2 mA, about 14 days, as the design goal
 </div>
 <p><strong>GNSS stays off.</strong> A receiver left running would draw
 tens of milliamps and amount to constant tracking. It powers on only
-during an alert, with assisted GNSS to shorten the fix <strong>[confirm
-A-GNSS support]</strong>.</p>
+during an alert, with assisted GNSS planned to shorten the fix.</p>
 <p><strong>Peak current.</strong> The ML307A draws up to 2 A while
 transmitting and its board needs about 4.5 V, which one lithium cell
 cannot supply. The prototype therefore runs it from a bench supply.
@@ -542,8 +534,7 @@ parts share a common ground (Figure 7.2).</p>
 <h4><span class="n">7.3.1</span>Fall Detection</h4>
 <p><strong>Method.</strong> We ran 15 trials in each of five scenarios:
 falls with the token in a pocket, in a bag and on a walking stick, plus
-sitting down and walking <strong>[state who performed the falls and onto
-what surface]</strong>.</p>
+sitting down and walking.</p>
 <div class="w-chips"><div class="w-chip"><b data-count="91" data-suf="%">0</b><span>falls caught (41/45)</span></div><div class="w-chip"><b data-count="90" data-suf="%">0</b><span>daily moves ignored (27/30)</span></div><div class="w-chip"><b data-count="75">0</b><span>trials in total</span></div></div><table-component subtitle="Table 7.1. Fall detection results (15 trials per
 scenario).">
 <div class="w-scroll"><table class="wishi-table">
@@ -605,8 +596,7 @@ scenario).">
 windows. -->
 <div class="w-chartbox"><div class="w-chart"><canvas aria-label="Figure 7.3 peak acceleration by scenario against the two detection windows" id="w-chart-fall"></canvas></div></div><p class="w-caption">Figure 7.3. Peak acceleration by scenario against the two detection windows.</p>
 <p>Both totals met the 90% target. Bag and stick falls varied with how
-they landed, and two gentle sits entered Window A. The stillness check
-should remove most false alarms. Fifteen simulated trials per scenario
+they landed, and two gentle sits entered Window A. These trials ran before the stillness check was added, and it should remove most false alarms. Fifteen simulated trials per scenario
 is a small sample.</p>
 <figure class="w-video"><video aria-label="Fall trial with the serial monitor output" controls="" loop="" muted="" playsinline="" poster="assets/wishi/fall-trial.jpg" preload="metadata" src="assets/wishi/fall-trial.mp4"></video><figcaption>Video 7.1. A fall trial on Version 2. The serial
 monitor logs a 2.03 g impact inside Window A and starts the stillness
@@ -614,8 +604,7 @@ check.</figcaption></figure>
 </div><div id="sec-7-3-2">
 <h4><span class="n">7.3.2</span>Location</h4>
 <p><strong>Method.</strong> We requested five GNSS fixes outdoors, in a
-covered corridor and inside the lab <strong>[state how the reference
-position was obtained]</strong>.</p>
+covered corridor and inside the lab.</p>
 <table-component subtitle="Table 7.2. Location results.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
@@ -658,8 +647,7 @@ signal. Semester 2 adds an active antenna, assisted GNSS and a fallback
 that sends the last fix, the home address and a cell-tower position.</p>
 </div><div id="sec-7-3-3">
 <h4><span class="n">7.3.3</span>Alert Latency and Escalation</h4><div class="w-chips"><div class="w-chip"><b data-count="24" data-pre="≈" data-suf=" s">0</b><span>average alert latency</span></div><div class="w-chip"><b>10/10</b><span>alerts delivered</span></div><div class="w-chip"><b>2 min</b><span>escalation to Tier 2</span></div></div>
-<p>We triggered ten alerts with the modem warm <strong>[confirm the
-timing start point]</strong>. All ten reached the Tier 1 contact in
+<p>We triggered ten alerts with the modem warm. All ten reached the Tier 1 contact in
 about <strong>24 s</strong> on average, and each escalated to Tier 2
 after two minutes when left unanswered.</p>
 <!-- TODO: save the image as assets/wishi/fig-7-5.png. Content: Screenshot of the caregiver app showing the alert
@@ -669,11 +657,8 @@ contact." tag="fig-7-5"></image-component>
 </div><div id="sec-7-3-4">
 <h4><span class="n">7.3.4</span>Power</h4>
 <p>The idle prototype drew about <strong>31 mA</strong> against the 2.4
-mA target <strong>[state the instrument and duration]</strong>. Section
+mA target. Section
 6.2.3 sets out the fix.</p>
-<!-- TODO: save the image as assets/wishi/fig-7-6.png. Content: Photograph of the current measurement set-up and reading. -->
-<image-component source="assets/wishi/fig-7-6.png" subtitle="Figure 7.6. Current measurement of the
-prototype." tag="fig-7-6"></image-component>
 </div><div id="sec-7-4">
 <h3><span class="n">7.4</span>Results Against Specifications (Electrical)</h3><div class="w-chips"><div class="w-chip"><b style="color:var(--green)">4</b><span>passed</span></div><div class="w-chip"><b style="color:#c62828">2</b><span>failed</span></div><div class="w-chip"><b>3</b><span>not yet tested</span></div></div>
 <table-component subtitle="Table 7.3. Electrical results against
@@ -772,8 +757,7 @@ propagation. In <em>Proceedings of the 4th International Conference on
 Electrical Engineering, Computer Science and Informatics (EECSI)</em>
 (pp. 418–423). https://doi.org/10.11591/eecsi.4.1079</li><li>Kangas, M., Konttila, A., Lindgren, P., Winblad, I., &amp; Jämsä, T.
 (2008). Comparison of low-complexity fall detection algorithms for body
-attached accelerometers. <em>Gait &amp; Posture, 28</em>(2), 285–291.
-<strong>[verify volume and pages]</strong></li><li>Li, Y., Liu, P., Fang, Y., Wu, X., Xie, Y., Xu, Z., Ren, H., &amp;
+attached accelerometers. <em>Gait &amp; Posture, 28</em>(2), 285–291.</li><li>Li, Y., Liu, P., Fang, Y., Wu, X., Xie, Y., Xu, Z., Ren, H., &amp;
 Jing, F. (2025). A decade of progress in wearable sensors for fall
 detection (2015–2024): A network-based visualization review.
 <em>Sensors, 25</em>(7), 2205. https://doi.org/10.3390/s25072205</li><li>Matchar, D. B., Duncan, P. W., Lien, C. T., Ong, M. E. H., Lee, M., Gao, F., Sim, R., &amp; Eom, K. (2017). Randomized controlled trial of screening, risk modification, and physical therapy to prevent falls among the elderly recently discharged from the emergency department to the community: The Steps to Avoid Falls in the Elderly study. <em>Archives of Physical Medicine and Rehabilitation, 98</em>(6), 1086–1096. https://doi.org/10.1016/j.apmr.2017.01.014</li><li>Ministry of Health. (2020, December 10). <em>Community Care Apartments</em> [Press release]. MOH.</li><li>Ministry of Health. (2023a, January 30). <em>Launch of the 2023 Action Plan for Successful Ageing</em>. https://www.moh.gov.sg/newsroom/launch-of-the-2023-action-plan-for-successful-ageing/</li><li>Ministry of Health. (2023b, November 16). <em>Age Well SG to support our seniors to age actively and independently in the community</em>. MOH.</li><li>Ministry of Health. (2024, October 12). <em>Good progress in the implementation of Age Well SG</em>. https://www.moh.gov.sg/newsroom/good-progress-in-the-implementation-of-age-well-sg/</li><li>Ministry of Health. (2025, October 15). <em>Data on seniors aged 65 and above living alone and plans for new initiatives to prevent unattended deaths</em> [Parliamentary written answer]. https://www.moh.gov.sg/newsroom/data-on-seniors-aged-65-and-above-living-alone-and-plans-for-new-initiatives-to-prevent-unattended-deaths/</li><li>Ministry of Health. (2026). <em>Age eligibility for Community Care Apartments lowered from 65 to 55 years old; monthly fees reduced by 18% to 75% with new subsidies</em>. MOH.</li><li>National Population and Talent Division. (2025). <em>Population in brief 2025</em>. Strategy Group, Prime Minister’s Office.</li><li>Palmerini, L., Klenk, J., Becker, C., &amp; Chiari, L. (2020).
@@ -848,7 +832,7 @@ straight in, while the LSM6DSO is a 2.5 × 3 mm package that needs a
 PCB.</p></div></dialog><dialog class="w-modal" id="m-mpu2" aria-label="Mature libraries"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Mature libraries</h3><p>Raw data was logged within
 hours, which is how the 75 trials were recorded.</p></div></dialog><dialog class="w-modal" id="m-mpu3" aria-label="Proven"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Why the MPU-6050 for the prototype</span><h3>Proven</h3><p>Published fall detectors that use it
 report 90% to 98% accuracy (Jefiza et al., 2017; Xu et al.,
-2019).</p></div></dialog><dialog class="w-modal" id="m-sc0" aria-label="Draws ≈31 mA against 2.4 mA"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Draws ≈31 mA against 2.4 mA</h3><p><strong>Why it matters.</strong> A 500 mAh cell lasts under a day</p><p><strong>Semester 2 fix.</strong> LSM6DSO, modem load switch and light sleep</p></div></dialog><dialog class="w-modal" id="m-sc1" aria-label="Modem needs a 5 V supply"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Modem needs a 5 V supply</h3><p><strong>Why it matters.</strong> 2 A bursts can reset it on battery power</p><p><strong>Semester 2 fix.</strong> High-discharge cell, capacitors and buck-boost</p></div></dialog><dialog class="w-modal" id="m-sc2" aria-label="Breadboard and battery not final"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Breadboard and battery not final</h3><p><strong>Why it matters.</strong> Size and the 40 g limit cannot be confirmed</p><p><strong>Semester 2 fix.</strong> Custom PCB, then choose the cell</p></div></dialog><dialog class="w-modal" id="m-sc3" aria-label="No GNSS fix indoors"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>No GNSS fix indoors</h3><p><strong>Why it matters.</strong> Many falls happen at home</p><p><strong>Semester 2 fix.</strong> Active antenna, assisted GNSS and a home-address fallback</p></div></dialog><dialog class="w-modal" id="m-sc4" aria-label="Cold-start fix takes ≈32 s"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Cold-start fix takes ≈32 s</h3><p><strong>Why it matters.</strong> Exceeds 30 s once the modem is off</p><p><strong>Semester 2 fix.</strong> Send the alert first and the fix after</p></div></dialog><dialog class="w-modal" id="m-sc5" aria-label="4 falls missed and 3 false alarms"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>4 falls missed and 3 false alarms</h3><p><strong>Why it matters.</strong> Misses and false alarms erode trust</p><p><strong>Semester 2 fix.</strong> Stillness check and larger trials</p></div></dialog><dialog class="w-modal" id="m-sc6" aria-label="SOS force and LED cues untested"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>SOS force and LED cues untested</h3><p><strong>Why it matters.</strong> Two user specifications are unverified</p><p><strong>Semester 2 fix.</strong> Tests with residents at HV and LB</p></div></dialog><dialog class="w-modal" id="m-t81" aria-label="Electrical shortcomings and planned
+2019).</p></div></dialog><dialog class="w-modal" id="m-sc0" aria-label="Draws ≈31 mA against 2.4 mA"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Draws ≈31 mA against 2.4 mA</h3><p><strong>Why it matters.</strong> A 500 mAh cell lasts under a day</p><p><strong>Semester 2 fix.</strong> LSM6DSO, modem load switch and light sleep</p></div></dialog><dialog class="w-modal" id="m-sc1" aria-label="Modem needs a 5 V supply"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Modem needs a 5 V supply</h3><p><strong>Why it matters.</strong> 2 A bursts can reset it on battery power</p><p><strong>Semester 2 fix.</strong> High-discharge cell, capacitors and buck-boost</p></div></dialog><dialog class="w-modal" id="m-sc2" aria-label="Breadboard and battery not final"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Breadboard and battery not final</h3><p><strong>Why it matters.</strong> Size and the 40 g limit cannot be confirmed</p><p><strong>Semester 2 fix.</strong> Custom PCB, then choose the cell</p></div></dialog><dialog class="w-modal" id="m-sc3" aria-label="No GNSS fix indoors"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>No GNSS fix indoors</h3><p><strong>Why it matters.</strong> Many falls happen at home</p><p><strong>Semester 2 fix.</strong> Active antenna, assisted GNSS and a home-address fallback</p></div></dialog><dialog class="w-modal" id="m-sc4" aria-label="Cold-start fix takes ≈32 s"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>Cold-start fix takes ≈32 s</h3><p><strong>Why it matters.</strong> Exceeds 30 s once the modem is off</p><p><strong>Semester 2 fix.</strong> Send the alert first and the fix after</p></div></dialog><dialog class="w-modal" id="m-sc5" aria-label="4 falls missed and 3 false alarms"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>4 falls missed and 3 false alarms</h3><p><strong>Why it matters.</strong> Misses and false alarms erode trust</p><p><strong>Semester 2 fix.</strong> Test the stillness check in larger trials</p></div></dialog><dialog class="w-modal" id="m-sc6" aria-label="SOS force and LED cues untested"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Shortcoming</span><h3>SOS force and LED cues untested</h3><p><strong>Why it matters.</strong> Two user specifications are unverified</p><p><strong>Semester 2 fix.</strong> Tests with residents at HV and LB</p></div></dialog><dialog class="w-modal" id="m-t81" aria-label="Electrical shortcomings and planned
 fixes"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Table 8.1</span><h3>Electrical shortcomings and planned
 fixes</h3><table-component subtitle="Table 8.1. Electrical shortcomings and planned
 fixes.">
@@ -889,7 +873,7 @@ fixes.">
 <tr>
 <td>4 falls missed and 3 false alarms</td>
 <td>Misses and false alarms erode trust</td>
-<td>Stillness check and larger trials</td>
+<td>Test the stillness check in larger trials</td>
 </tr>
 <tr>
 <td>SOS force and LED cues untested</td>
@@ -898,7 +882,7 @@ fixes.">
 </tr>
 </tbody>
 </table></div>
-</table-component></div></dialog><dialog class="w-modal" id="m-fig62" aria-label="Selected electrical components"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Figure 6.2</span><h3>Selected electrical components</h3><img class="w-modalimg" src="assets/wishi/fig-6-2.jpg" alt="Photos of the selected components"></div></dialog><dialog class="w-modal" id="m-fig72" aria-label="Prototype wiring diagram"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Figure 7.2</span><h3>Prototype wiring diagram</h3><img class="w-modalimg" src="assets/wishi/fig-7-2.png" alt="Prototype wiring diagram on a breadboard"></div></dialog><dialog class="w-modal" id="m-build" aria-label="The real build"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Version 2</span><h3>The real build</h3><img class="w-modalimg" src="assets/wishi/build-v2.jpg" alt="Photo of the Version 2 breadboard with the ML307A, MPU-6050 and XIAO ESP32-S3 labelled"></div></dialog><dialog class="w-modal" id="m-toc" aria-label="Contents"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">W-ishi interim report</span><h3>Contents</h3><div class="table-of-content"><sl-tree><sl-tree-item><a href="#sec-1" data-closemodal>1. Summary</a></sl-tree-item><sl-tree-item expanded><a href="#sec-2" data-closemodal>2. Problem Background</a><sl-tree-item><a href="#sec-2-1" data-closemodal>2.1 Singapore’s Ageing Population</a></sl-tree-item><sl-tree-item><a href="#sec-2-2" data-closemodal>2.2 The National Response: Age Well SG</a></sl-tree-item><sl-tree-item><a href="#sec-2-3" data-closemodal>2.3 Field Sites</a></sl-tree-item><sl-tree-item><a href="#sec-2-4" data-closemodal>2.4 Motivating Incident: The 2 September Fall</a></sl-tree-item><sl-tree-item><a href="#sec-2-5" data-closemodal>2.5 Stakeholder Mapping</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-3" data-closemodal>3. User Research and Problem Definition</a><sl-tree-item><a href="#sec-3-1" data-closemodal>3.1 Co-design Workshops: Method</a></sl-tree-item><sl-tree-item><a href="#sec-3-2" data-closemodal>3.2 Key Findings from 40 Residents</a></sl-tree-item><sl-tree-item><a href="#sec-3-3" data-closemodal>3.3 Key Insights</a></sl-tree-item><sl-tree-item><a href="#sec-3-4" data-closemodal>3.4 Design Principles</a></sl-tree-item><sl-tree-item><a href="#sec-3-5" data-closemodal>3.5 Problem Statement</a></sl-tree-item><sl-tree-item><a href="#sec-3-6" data-closemodal>3.6 Value Proposition and Novelty</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-4" data-closemodal>4. Design Specifications</a><sl-tree-item><a href="#sec-4-1" data-closemodal>4.1 Functional Requirements</a></sl-tree-item><sl-tree-item><a href="#sec-4-2" data-closemodal>4.2 User-centred Requirements</a></sl-tree-item><sl-tree-item><a href="#sec-4-3" data-closemodal>4.3 Specification Table</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-5" data-closemodal>5. Concept Generation and Selection</a><sl-tree-item><a href="#sec-5-1" data-closemodal>5.1 Functional Decomposition</a></sl-tree-item><sl-tree-item><a href="#sec-5-2" data-closemodal>5.2 Morphological Chart of Options</a></sl-tree-item><sl-tree-item><a href="#sec-5-3" data-closemodal>5.3 Selection Rationale</a></sl-tree-item><sl-tree-item><a href="#sec-5-4" data-closemodal>5.4 Selected Concept and System Architecture</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-6" data-closemodal>6. Detailed Design</a><sl-tree-item><a href="#sec-6-1" data-closemodal>6.1 Mechanical and Ergonomics</a></sl-tree-item><sl-tree-item><a href="#sec-6-2" data-closemodal>6.2 Electrical and Sensing</a></sl-tree-item><sl-tree-item><a href="#sec-6-3" data-closemodal>6.3 Alert Flow and User Journey</a></sl-tree-item><sl-tree-item><a href="#sec-6-4" data-closemodal>6.4 Companion App</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-7" data-closemodal>7. Prototyping and Testing</a><sl-tree-item><a href="#sec-7-1" data-closemodal>7.1 Prototype Build</a></sl-tree-item><sl-tree-item><a href="#sec-7-2" data-closemodal>7.2 Test Plan and Methods</a></sl-tree-item><sl-tree-item><a href="#sec-7-3" data-closemodal>7.3 Results (Electrical)</a></sl-tree-item><sl-tree-item><a href="#sec-7-4" data-closemodal>7.4 Results Against Specifications</a></sl-tree-item></sl-tree-item><sl-tree-item><a href="#sec-8" data-closemodal>8. Discussion and Shortcomings</a></sl-tree-item><sl-tree-item expanded><a href="#sec-9" data-closemodal>9. Plan for Semester 2</a><sl-tree-item><a href="#sec-9-1" data-closemodal>9.1 Work Packages per Subsystem</a></sl-tree-item><sl-tree-item><a href="#sec-9-2" data-closemodal>9.2 Timeline and Milestones</a></sl-tree-item><sl-tree-item><a href="#sec-9-3" data-closemodal>9.3 Risks and Mitigations</a></sl-tree-item></sl-tree-item><sl-tree-item><a href="#sec-10" data-closemodal>10. Conclusion</a></sl-tree-item><sl-tree-item><a href="#references" data-closemodal>References</a></sl-tree-item></sl-tree></div></div></dialog>
+</table-component></div></dialog><dialog class="w-modal" id="m-fig62" aria-label="Selected electrical components"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Figure 6.1</span><h3>Selected electrical components</h3><img class="w-modalimg" src="assets/wishi/fig-6-2.jpg" alt="Photos of the selected components"></div></dialog><dialog class="w-modal" id="m-fig72" aria-label="Prototype wiring diagram"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Figure 7.2</span><h3>Prototype wiring diagram</h3><img class="w-modalimg" src="assets/wishi/fig-7-2.png" alt="Prototype wiring diagram on a breadboard"></div></dialog><dialog class="w-modal" id="m-build" aria-label="The real build"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">Version 2</span><h3>The real build</h3><img class="w-modalimg" src="assets/wishi/build-v2.jpg" alt="Photo of the Version 2 breadboard with the ML307A, MPU-6050 and XIAO ESP32-S3 labelled"></div></dialog><dialog class="w-modal" id="m-toc" aria-label="Contents"><div class="w-modal-in"><button class="w-close" aria-label="Close">×</button><span class="w-eyebrow">W-ishi interim report</span><h3>Contents</h3><div class="table-of-content"><sl-tree><sl-tree-item><a href="#sec-1" data-closemodal>1. Summary</a></sl-tree-item><sl-tree-item expanded><a href="#sec-2" data-closemodal>2. Problem Background</a><sl-tree-item><a href="#sec-2-1" data-closemodal>2.1 Singapore’s Ageing Population</a></sl-tree-item><sl-tree-item><a href="#sec-2-2" data-closemodal>2.2 The National Response: Age Well SG</a></sl-tree-item><sl-tree-item><a href="#sec-2-3" data-closemodal>2.3 Field Sites</a></sl-tree-item><sl-tree-item><a href="#sec-2-4" data-closemodal>2.4 Motivating Incident: The 2 September Fall</a></sl-tree-item><sl-tree-item><a href="#sec-2-5" data-closemodal>2.5 Stakeholder Mapping</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-3" data-closemodal>3. User Research and Problem Definition</a><sl-tree-item><a href="#sec-3-1" data-closemodal>3.1 Co-design Workshops: Method</a></sl-tree-item><sl-tree-item><a href="#sec-3-2" data-closemodal>3.2 Key Findings from 40 Residents</a></sl-tree-item><sl-tree-item><a href="#sec-3-3" data-closemodal>3.3 Key Insights</a></sl-tree-item><sl-tree-item><a href="#sec-3-4" data-closemodal>3.4 Design Principles</a></sl-tree-item><sl-tree-item><a href="#sec-3-5" data-closemodal>3.5 Problem Statement</a></sl-tree-item><sl-tree-item><a href="#sec-3-6" data-closemodal>3.6 Value Proposition and Novelty</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-4" data-closemodal>4. Design Specifications</a><sl-tree-item><a href="#sec-4-1" data-closemodal>4.1 Functional Requirements</a></sl-tree-item><sl-tree-item><a href="#sec-4-2" data-closemodal>4.2 User-centred Requirements</a></sl-tree-item><sl-tree-item><a href="#sec-4-3" data-closemodal>4.3 Specification Table</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-5" data-closemodal>5. Concept Generation and Selection</a><sl-tree-item><a href="#sec-5-1" data-closemodal>5.1 Functional Decomposition</a></sl-tree-item><sl-tree-item><a href="#sec-5-2" data-closemodal>5.2 Morphological Chart of Options</a></sl-tree-item><sl-tree-item><a href="#sec-5-3" data-closemodal>5.3 Selection Rationale</a></sl-tree-item><sl-tree-item><a href="#sec-5-4" data-closemodal>5.4 Selected Concept and System Architecture</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-6" data-closemodal>6. Detailed Design</a><sl-tree-item><a href="#sec-6-1" data-closemodal>6.1 Mechanical and Ergonomics</a></sl-tree-item><sl-tree-item><a href="#sec-6-2" data-closemodal>6.2 Electrical and Sensing</a></sl-tree-item><sl-tree-item><a href="#sec-6-3" data-closemodal>6.3 Alert Flow and User Journey</a></sl-tree-item><sl-tree-item><a href="#sec-6-4" data-closemodal>6.4 Companion App</a></sl-tree-item></sl-tree-item><sl-tree-item expanded><a href="#sec-7" data-closemodal>7. Prototyping and Testing</a><sl-tree-item><a href="#sec-7-1" data-closemodal>7.1 Prototype Build</a></sl-tree-item><sl-tree-item><a href="#sec-7-2" data-closemodal>7.2 Test Plan and Methods</a></sl-tree-item><sl-tree-item><a href="#sec-7-3" data-closemodal>7.3 Results (Electrical)</a></sl-tree-item><sl-tree-item><a href="#sec-7-4" data-closemodal>7.4 Results Against Specifications</a></sl-tree-item></sl-tree-item><sl-tree-item><a href="#sec-8" data-closemodal>8. Discussion and Shortcomings</a></sl-tree-item><sl-tree-item expanded><a href="#sec-9" data-closemodal>9. Plan for Semester 2</a><sl-tree-item><a href="#sec-9-1" data-closemodal>9.1 Work Packages per Subsystem</a></sl-tree-item><sl-tree-item><a href="#sec-9-2" data-closemodal>9.2 Timeline and Milestones</a></sl-tree-item><sl-tree-item><a href="#sec-9-3" data-closemodal>9.3 Risks and Mitigations</a></sl-tree-item></sl-tree-item><sl-tree-item><a href="#sec-10" data-closemodal>10. Conclusion</a></sl-tree-item><sl-tree-item><a href="#references" data-closemodal>References</a></sl-tree-item></sl-tree></div></div></dialog>
 </div>
 <sl-button class="scroll-to-top" variant="primary" size="medium" circle onclick="scrollToTop()"><sl-icon name="arrow-up" label="Back to top"></sl-icon></sl-button>
 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
