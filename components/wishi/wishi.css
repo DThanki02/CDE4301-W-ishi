@@ -366,3 +366,19 @@ canvas.trace { width: 100%; height: 130px; display: block; }
 .w-video { margin: 28px 0; }
 .w-video video { width: 100%; display: block; border-radius: 18px; background: #000; box-shadow: 0 14px 40px rgba(0,0,0,.18); }
 .w-video figcaption { text-align: center; color: #6e6e73; font-size: .92rem; font-style: italic; margin-top: 10px; }
+
+/* ---------- system architecture (5.4) ---------- */
+.w-arch { margin: 28px 0; padding: 28px 20px 18px; border-radius: 22px; background: #f5f5f7; }
+.w-arch-row { display: flex; align-items: center; gap: 10px; }
+.w-arch-row i { font-style: normal; font-size: .72rem; font-weight: 600; letter-spacing: .04em; color: #6e6e73; white-space: nowrap; position: relative; padding: 0 22px 14px 0; }
+.w-arch-row i::after { content: ""; position: absolute; left: 0; right: 4px; bottom: 4px; height: 2px; background: #0071e3; }
+.w-arch-row i::before { content: ""; position: absolute; right: 0; bottom: 0; border: 5px solid transparent; border-left: 8px solid #0071e3; }
+.w-arch-box { flex: 1; background: #fff; border-radius: 16px; padding: 14px 16px; box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+.w-arch-box b { display: block; font-size: 1rem; }
+.w-arch-box span { font-size: .82rem; color: #6e6e73; }
+.w-arch-tiers { display: flex; gap: 8px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap; }
+.w-arch-tiers span { font-size: .78rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; color: #fff; }
+.w-arch-tiers .t1 { background: #0071e3; } .w-arch-tiers .t2 { background: #5e5ce6; } .w-arch-tiers .t3 { background: #34a853; }
+.w-arch figcaption { text-align: center; color: #6e6e73; font-size: .9rem; font-style: italic; margin-top: 14px; }
+@media (max-width: 700px) { .w-arch-row { flex-direction: column; align-items: stretch; } .w-arch-row i { align-self: center; padding: 4px 0; } .w-arch-row i::after, .w-arch-row i::before { display: none; } .w-arch-tiers { justify-content: center; } }
+.w-member small { display: block; font-size: .78rem; color: #6e6e73; margin-top: 6px; line-height: 1.4; }
