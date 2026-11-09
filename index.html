@@ -175,14 +175,14 @@ tracking?</p>
 <figure class="w-arch" aria-label="System architecture">
 <div class="w-arch-row"><div class="w-arch-box"><b>Token</b><span>IMU, SOS button, LED, battery</span></div><i>4G + GNSS</i><div class="w-arch-box"><b>Backend</b><span>Receives alerts, runs the 2-minute timer</span></div><i>Push</i><div class="w-arch-box"><b>Companion app</b><span>Contacts receive and acknowledge</span></div></div>
 <div class="w-arch-tiers"><span class="t1">Tier 1 · Family</span><span class="t2">Tier 2 · Care staff</span><span class="t3">Tier 3 · Neighbours</span></div>
-<figcaption>Figure 5.1. System architecture.</figcaption></figure></div></div></section><section class="w-sec" id="sec-6"><div class="w-head"><span class="w-eyebrow">Section 6</span><h2>Detailed Design</h2><p>How W-ishi senses a fall and calls for help.</p></div><div class="w-body"><div id="sec-6-1"><h3><span class="n">6.1</span>Mechanical and Ergonomics</h3><h4><span class="n">6.1.1</span>Form Factor</h4><p><strong>Shape.</strong> Older adults reject wearables that look medical (Thilo et al., 2016). Of a card, a matchbox, a pebble and a 25 × 25 × 120 mm long cuboid, seniors chose the cuboid for its grip and pocketability (Section 7.3.5). It resembles a small torch rather than an alarm.</p>
+<figcaption>Figure 5.1. System architecture.</figcaption></figure></div></div></section><section class="w-sec" id="sec-6"><div class="w-head"><span class="w-eyebrow">Section 6</span><h2>Detailed Design</h2><p>How W-ishi senses a fall and calls for help.</p></div><div class="w-body"><div id="sec-6-1"><h3><span class="n">6.1</span>Mechanical and Ergonomics</h3><h4><span class="n">6.1.1</span>Form Factor</h4><p><strong>Shape.</strong> Older adults reject wearables that look medical (Thilo et al., 2016). Of a card, a matchbox, a pebble and a 25 × 25 × 120 mm long cuboid, seniors chose the cuboid for its grip and pocketability (Figure 6.1, Section 7.3.5). It resembles a small torch rather than an alarm.</p>
 <image-component source="assets/wishi/fig-6-1-shape.jpg" subtitle="Figure 6.1. Shape mock-ups." tag="fig-6-1"></image-component>
-<p><strong>Weight.</strong> Weight trades comfort against battery size. Clay models of 30 to 60 g set a ceiling of 40 g, which fits a 500 mAh cell.</p>
+<p><strong>Weight.</strong> Weight trades comfort against battery size. Clay models of 30 to 60 g set a ceiling of 40 g (Figure 6.2), which fits a 500 mAh cell.</p>
 <image-component source="assets/wishi/fig-6-1-clay.jpg" subtitle="Figure 6.2. Clay weight models of 30 to 60 g." tag="fig-6-2"></image-component>
-<p><strong>Charging.</strong> USB-C proved too fiddly for seniors with limited finger control. Magnetic pogo pins self-align, snap into place and keep the casing sealed against water.</p>
+<p><strong>Charging.</strong> USB-C proved too fiddly for seniors with limited finger control. Magnetic pogo pins self-align, snap into place and keep the casing sealed (Figure 6.3).</p>
 <image-component source="assets/wishi/fig-6-1-charge.jpg" subtitle="Figure 6.3. USB-C and magnetic charging prototypes." tag="fig-6-3x"></image-component>
-<p><strong>SOS button.</strong> A 12 × 12 mm tactile switch needs about 2.5 N, the lower end of the 2.5 to 5 N range suited to older adults (Harte et al., 2014), and gives a clear click. A raised collar guards it against bumps. Capacitive pads and membrane switches were rejected for weak feedback and poor reliability with wet hands.</p><h4><span class="n">6.1.2</span>Button and LED Placement</h4><p>The cancel button sits low on the front face under a circular silicone cap. Its soft surface contrasts with the rigid shell and can be found by touch, following the Universal Design principles of low physical effort and perceptible information (Connell et al., 1997). A large target eases pressing (Fitts, 1954) and a shallow rim limits accidental presses. The LED faces downward, out of sight in daily use but visible when the senior checks it, which keeps the device discreet.</p>
-<div class="w-figpair"><image-component source="assets/wishi/fig-6-1-front.jpg" subtitle="Figure 6.4. Front view with the silicone cancel button." tag="fig-6-4x"></image-component><image-component source="assets/wishi/fig-6-1-views.jpg" subtitle="Figure 6.5. Back, side, top and bottom views." tag="fig-6-5x"></image-component></div><h4><span class="n">6.1.3</span>Attachment Options</h4><p>One electronic core fits three attachments that let seniors keep their existing habits: a hook for keys, a flat clip for belts and a round clip for walking sticks. A cantilever snap-fit on sliding guide rails locks each one with a tactile click and releases with a single tab. It was chosen over a tapered dovetail and a flexure catch because it needs less precision and effort (Connell et al., 1997). Insertion force, retention and fatigue are still to be tested.</p>
+<h4><span class="n">6.1.2</span>Button and LED Placement</h4><p>One button raises an SOS and cancels alerts. It is a 12 × 12 mm tactile switch under a circular silicone cap, low on the front face (Figure 6.4). Its 2.5 N actuation force sits at the lower end of the range suited to older adults (Harte et al., 2014), and the soft cap contrasts with the rigid shell and can be found by touch (Connell et al., 1997). A large target eases pressing (Fitts, 1954) and a raised rim limits accidental presses. Capacitive pads and membrane switches were rejected for weak feedback and poor reliability with wet hands.</p><p>The LED faces downward, out of sight in daily use but visible when the senior checks it (Figure 6.5).</p>
+<div class="w-figpair"><image-component source="assets/wishi/fig-6-1-front.jpg" subtitle="Figure 6.4. Front view with the silicone cancel button." tag="fig-6-4x"></image-component><image-component source="assets/wishi/fig-6-1-views.jpg" subtitle="Figure 6.5. Back, side, top and bottom views." tag="fig-6-5x"></image-component></div><h4><span class="n">6.1.3</span>Attachment Options</h4><p>Three attachments fit one core and let seniors keep their habits: a hook for keys, a flat clip for belts and a round clip for walking sticks (Figure 6.6). A cantilever snap-fit on sliding rails locks each with a click and releases with one tab (Figure 6.7). It needs less precision and effort than a tapered dovetail or a flexure catch (Connell et al., 1997). Insertion force, retention and fatigue are still to be tested.</p>
 <image-component source="assets/wishi/fig-6-1-attach.jpg" subtitle="Figure 6.6. Attachments: integrated loop, flat clip and round clip." tag="fig-6-6x"></image-component><image-component source="assets/wishi/fig-6-1-cad.jpg" subtitle="Figure 6.7. CAD drawings of the detachable top and bottom shells." tag="fig-6-7x"></image-component><h4><span class="n">6.1.4</span>Material Selection</h4><p>Materials were chosen with the Ashby method (Ashby, 2017):</p>
 <ul><li><p><strong>Rigid shell:</strong> PETG for 3D-printed prototypes and PC-ABS for injection-moulded production, both tough and moisture resistant.</p></li>
 <li><p><strong>Front and back panels:</strong> foam-backed polyester, then woven microfibre, for a less clinical feel.</p></li>
@@ -217,12 +217,7 @@ a battery.</p>
 
 <p class="w-hint">Each part follows the same pattern: what it must do, the options we compared, and why we chose it.</p><div><div class="w-seg"><div class="w-seg-inner" role="tablist"><button aria-selected="true" data-panel="cp0" role="tab">Motion sensor</button><button aria-selected="false" data-panel="cp1" role="tab">Microcontroller</button><button aria-selected="false" data-panel="cp2" role="tab">Cellular + GNSS</button><button aria-selected="false" data-panel="cp3" role="tab">Status LED</button><button aria-selected="false" data-panel="cp4" role="tab">Battery</button></div></div><div class="w-panel" id="cp0"><p><strong>Motion sensor (IMU).</strong> The sensor must detect a fall
 when the senior cannot press anything and wake the microcontroller when
-motion occurs. An inertial measurement unit (IMU) is the most studied
-sensor for wearable fall detection, with 582 articles from 2015 to 2024
-(Li et al., 2025). Cameras, radar and floor sensors work in one room
-only, and cameras break the Privacy principle. The wrist is a poor site
-for fall detection (Kangas et al., 2008) and a watch looks medical.
-Table 6.1 compares four IMUs.</p><table-component subtitle="Table 6.1. Motion sensor options.">
+motion occurs. An inertial measurement unit (IMU) was chosen in Section 5.2 and is the most studied sensor for wearable fall detection (Li et al., 2025). Table 6.1 compares four.</p><table-component subtitle="Table 6.1. Motion sensor options.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -261,9 +256,7 @@ Table 6.1 compares four IMUs.</p><table-component subtitle="Table 6.1. Motion se
 </table></div>
 </table-component><p>The <strong>LSM6DSO</strong> leads for the final build because its
 wake-up detection lets the microcontroller sleep until motion occurs.
-The prototype uses the cheaper MPU-6050 (Section 7.1). W-ishi is carried
-loosely in a pocket, in a bag or on a stick rather than strapped to the
-waist, which makes impacts more variable (Section 6.2.2).</p></div><div class="w-panel" hidden="" id="cp1"><p><strong>Microcontroller.</strong> The <strong>Seeed XIAO
+</p></div><div class="w-panel" hidden="" id="cp1"><p><strong>Microcontroller.</strong> The <strong>Seeed XIAO
 ESP32-S3</strong> is the smallest option with an on-board battery
 charger at 21 × 17.5 mm, and its light-sleep mode wakes within about a
 millisecond. The same-sized XIAO nRF52840 Sense was rejected because it
@@ -278,18 +271,16 @@ counts down and sends, green once help is coming and
 red for low battery. A vibration motor was
 rejected because it draws about 80 mA during the heaviest battery
 load.</p></div><div class="w-panel" hidden="" id="cp4"><p><strong>Battery.</strong> The battery must last at least seven days
-and keep the token under 40 g. (Section 4.2). A cell of about 500 mAh fits and will be chosen once the final sensor’s current is known.</p></div></div></div><div id="sec-6-2-2">
+and keep the token under 40 g (Section 4.2). A cell of about 500 mAh fits and will be chosen once the final sensor’s current is known.</p></div></div></div><div id="sec-6-2-2">
 <h4><span class="n">6.2.2</span>Fall Detection Algorithm</h4>
 <p>The firmware computes the resultant acceleration |a| = √(aₓ² + aᵧ² +
 a_z²), which reads 1 g at rest and spikes on impact. The highest value
 in each movement is its <strong>peak</strong>.</p>
-<p><strong>Two windows instead of one threshold.</strong> The peak
-depends more on where the token is carried than on how hard the person
-falls (Section 7.3.1). A pocket or bag cushions the impact while a stick
+<p><strong>Two windows instead of one threshold.</strong> W-ishi is carried loosely rather than strapped to the waist, and the peak depends more on where it is carried than on how hard the person falls (Figure 7.3). A pocket or bag cushions the impact while a stick
 strikes the floor directly. Sitting down lands between the two. One
 threshold could not catch cushioned falls without also flagging heavy
 sits.</p>
-<div class="w-chartbox"><div class="w-chart"><canvas aria-label="Median peak acceleration per scenario against the two detection windows" id="w-chart-windows"></canvas></div></div><p class="w-caption">Median peaks against the two detection windows. Hover a bar for its trial result.</p><ul>
+<ul>
 <li><p><strong>Window A, 1.5 to 3 g:</strong> pocket and bag falls. The
 lower edge matches published waist detectors at 1.5 to 2 g (Kangas et
 al., 2008) and sits just below the softest of 143 real-world falls at
@@ -387,56 +378,20 @@ over LTE.</p></li>
 then Tier 2 and Tier 3 if no one acknowledges within two minutes. The
 LED turns green once help is coming.</p></li>
 </ol>
-<p><strong>Why 15 seconds.</strong> P33 suggested it. Apple Watch waits about 90 seconds in total (Apple, 2026), but our users live alone, and lying on the floor for over an hour has been linked to up to 50% higher six-month mortality (Casilari &amp; Silva, 2022). Fifteen seconds plus about 10 seconds to send stays within the 30-second target.</p>
+<p><strong>Why 15 seconds.</strong> Apple Watch waits about 90 seconds in total (Apple, 2026), but our users live alone, and lying on the floor for over an hour has been linked to up to 50% higher six-month mortality (Casilari &amp; Silva, 2022). Fifteen seconds plus about 10 seconds to send stays within the 30-second target.</p>
 <image-component source="assets/wishi/fig-6-3.png" subtitle="Figure 6.9. Fall detection and alert flow." tag="fig-6-3"></image-component>
 </div><div id="sec-6-2-3">
 <h4><span class="n">6.2.3</span>Power Budget</h4>
 <p><strong>Target.</strong> A 500 mAh cell with 20% held in reserve
 leaves 400 mAh. Spread over seven days (168 h) this allows an average of
-400 ÷ 168 ≈ <strong>2.4 mA</strong>. The prototype draws about
-<strong>31 mA</strong> (Table 6.2).</p>
-<table-component subtitle="Table 6.2. Idle current of the prototype.">
-<div class="w-scroll"><table class="wishi-table">
-<thead>
-<tr>
-<th><strong>Component</strong></th>
-<th><strong>State</strong></th>
-<th><strong>Current</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ML307A-GSLN</td>
-<td>Standby, always on</td>
-<td>17.6 mA</td>
-</tr>
-<tr>
-<td>MPU-6050</td>
-<td>6-axis, always on</td>
-<td>3.9 mA</td>
-</tr>
-<tr>
-<td>XIAO ESP32-S3 and regulators</td>
-<td>Awake, polling the sensor</td>
-<td>≈9.5 mA</td>
-</tr>
-<tr>
-<td><strong>Total (measured)</strong></td>
-<td></td>
-<td><strong>≈31 mA</strong></td>
-</tr>
-</tbody>
-</table></div>
-</table-component>
-<p><strong>Reaching the target.</strong> Three changes close the gap:
+400 ÷ 168 ≈ <strong>2.4 mA</strong>. </p>
+<p><strong>Reaching the target.</strong> The prototype draws about 31 mA (Section 7.3.4). Three changes close the gap:
 the LSM6DSO in low-power wake-up mode, a load switch that cuts the modem
 except during alerts and one daily check-in, and light sleep on the
 microcontroller. We avoid deep sleep because every wake from it is a
 full restart, which adds risk at the moment a fall must be handled.
-Light sleep keeps the firmware running and wakes within about a
-millisecond, Table 6.3 estimates the result from datasheet values.</p>
-<table-component subtitle="Table 6.3. Estimated average current of the final
-design.">
+Light sleep keeps the firmware running and wakes within about a millisecond. Table 6.2 estimates the result from datasheet values.</p>
+<table-component subtitle="Table 6.2. Estimated average current of the final design.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
@@ -471,7 +426,7 @@ design.">
 <p>At about 1 mA the cell would last about 17 days. We keep ≤ 2.4 mA as
 the requirement and set ≤ 1.2 mA, about 14 days, as the design goal.</p><div class="w-calc" id="w-calc">
 <span class="w-eyebrow">Interactive</span><h5>Power budget calculator</h5>
-<p class="w-hint" style="text-align:left">Change the design choices to see the average current and battery life. Values follow Tables 6.2 and 6.3.</p>
+<p class="w-hint" style="text-align:left">Change the design choices to see the average current and battery life. Values follow Tables 6.2 and 7.4.</p>
 <div class="w-presets"><button class="w-pill ghost" data-preset="proto">Prototype today</button><button class="w-pill" data-preset="final">Planned final design</button></div>
 <div class="grid">
 <label>Motion sensor<select name="sensor"><option value="lsm">LSM6DSO, low-power wake-up</option><option value="mpu">MPU-6050, always on (3.9 mA)</option></select></label>
@@ -487,7 +442,7 @@ the requirement and set ≤ 1.2 mA, about 14 days, as the design goal.</p><div c
 <div class="w-breakdown"></div><div class="out"><div><b data-out="i"></b><span>average current</span></div><div><b data-out="d"></b><span>battery life (80% usable)</span></div><div><b data-out="v" style="font-size:1.05rem;margin-top:12px"></b><span>against the targets</span></div></div>
 </div>
 <p><strong>GNSS stays off.</strong> A receiver left running would draw tens of milliamps and track the senior constantly. It powers on only during an alert.</p>
-<p><strong>Peak current.</strong> The ML307A draws up to 2 A bursts and its board needs about 4.5 V, more than one lithium cell supplies. Semester 2 adds a high-discharge cell, bulk capacitors and a buck-boost converter if needed.</p>
+<p><strong>Peak current.</strong> The ML307A draws bursts of up to 2 A and its board needs about 4.5 V, more than one lithium cell supplies. Semester 2 adds a high-discharge cell, bulk capacitors and a buck-boost converter if needed.</p>
 </div><div id="sec-6-3"><h3><span class="n">6.3</span>Alert Flow and User Journey</h3><p>A typical alert runs as follows (try it in the simulation in Section 6.2.2):</p>
 <ol class="w-tl" aria-label="User journey for one alert">
 <li class="w-tl-item"><b>Fall</b><span>The token detects the impact.</span></li>
@@ -495,8 +450,8 @@ the requirement and set ≤ 1.2 mA, about 14 days, as the design goal.</p><div c
 <li class="w-tl-item w-tl-alert"><b>Alert</b><span>The alert and location go to family (Tier 1).</span></li>
 <li class="w-tl-item"><b>Escalation</b><span>Unanswered after two minutes, it goes to care staff (Tier 2).</span></li>
 <li class="w-tl-item"><b>Help coming</b><span>The LED turns green.</span></li>
-</ol></div><div id="sec-6-4"><h3><span class="n">6.4</span>Companion App</h3><h4><span class="n">6.4.1</span>Version 1 and Expert Review</h4><p>Version 1 used one interface shared by the senior and caregivers. A family member set it up with the senior, adding contacts and choosing whether each received a full SOS alert or a softer check-in. An expert review of the set-up and daily flows against usability principles found five issues (Table 6.4).</p>
-<table-component subtitle="Table 6.4. Expert review of Version 1."><div class="w-scroll"><table class="wishi-table"><thead><tr><th><strong>Issue</strong></th><th><strong>Why it matters</strong></th><th><strong>Fix</strong></th></tr></thead><tbody><tr><td>Shared interface is crowded</td><td>Seniors and caregivers need different things</td><td>Separate senior and caregiver apps</td></tr><tr><td>Ambiguous add button</td><td>Users could not tell whether they were adding a caregiver or a senior</td><td>Role-specific set-up</td></tr><tr><td>No role permissions</td><td>Any caregiver could change the senior’s contacts</td><td>Only the senior manages contacts</td></tr><tr><td>Redundant tone select</td><td>Tone matters only for soft check-ins</td><td>Remove it</td></tr><tr><td>Unneeded phone number field</td><td>Contacts are linked through the app</td><td>Remove it</td></tr></tbody></table></div></table-component>
+</ol></div><div id="sec-6-4"><h3><span class="n">6.4</span>Companion App</h3><h4><span class="n">6.4.1</span>Version 1 and Expert Review</h4><p>Version 1 used one interface shared by the senior and caregivers. A family member set it up with the senior, adding contacts and choosing whether each received a full SOS alert or a softer check-in. An expert review of the set-up and daily flows against usability principles found five issues (Table 6.3).</p>
+<table-component subtitle="Table 6.3. Expert review of Version 1."><div class="w-scroll"><table class="wishi-table"><thead><tr><th><strong>Issue</strong></th><th><strong>Why it matters</strong></th><th><strong>Fix</strong></th></tr></thead><tbody><tr><td>Shared interface is crowded</td><td>Seniors and caregivers need different things</td><td>Separate senior and caregiver apps</td></tr><tr><td>Ambiguous add button</td><td>Users could not tell whether they were adding a caregiver or a senior</td><td>Role-specific set-up</td></tr><tr><td>No role permissions</td><td>Any caregiver could change the senior’s contacts</td><td>Only the senior manages contacts</td></tr><tr><td>Redundant tone select</td><td>Tone matters only for soft check-ins</td><td>Remove it</td></tr><tr><td>Unneeded phone number field</td><td>Contacts are linked through the app</td><td>Remove it</td></tr></tbody></table></div></table-component>
 <p>The key finding was that seniors and caregivers need different interfaces. Letting caregivers edit the care team also undermined the Autonomy principle.</p><h4><span class="n">6.4.2</span>Version 2: Split Senior and Caregiver Flows</h4><p>Version 2 splits the app into senior and caregiver flows. The senior owns their care team and its tiers, and caregivers receive and acknowledge alerts.</p><h4><span class="n">6.4.3</span>Notification and Escalation Logic</h4><p>Each tier holds its own contacts and a wait time, set to two minutes in testing. An alert goes to Tier 1 (family). If no one acknowledges in time it moves to Tier 2 (care staff) and then Tier 3 (neighbours), who are asked to check in person. The first acknowledgement stops the escalation and turns the token’s LED green.</p></div></div></section><section class="w-sec" id="sec-7"><div class="w-head"><span class="w-eyebrow">Section 7</span><h2>Prototyping and Testing</h2><p>What we built, and what the tests showed.</p></div><div class="w-body"><div id="sec-7-1">
 <h3><span class="n">7.1</span>Prototype Build</h3>
 <p>Version 1 paired an ESP32-S3 DevKitC-1 with an MPU-6050 to develop
@@ -505,9 +460,7 @@ added the ML307A, powered from a 5 V, 2 A bench supply. All tests in
 Section 7.3 used Version 2.</p>
 <image-component source="assets/wishi/fig-7-1.jpg" subtitle="Figure 7.1. Electrical prototype, Versions 1 and
 2." tag="fig-7-1"></image-component>
-<p><strong>Why the MPU-6050.</strong> The prototype only had to develop
-the detection logic, and its thresholds are in g and carry over to any
-IMU.</p>
+<p><strong>Why the MPU-6050.</strong> The final token uses the LSM6DSO (Section 6.2.1), but the prototype only had to develop the detection logic. Its thresholds are in g and carry over to any IMU.</p>
 <div class="w-tilegrid"><div class="w-tile light" data-open="m-mpu0" role="button" tabindex="0"><span class="k">Reason 1</span><span class="t">Cost</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu1" role="button" tabindex="0"><span class="k">Reason 2</span><span class="t">Breadboard ready</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu2" role="button" tabindex="0"><span class="k">Reason 3</span><span class="t">Mature libraries</span><span class="plus">+</span></div><div class="w-tile light" data-open="m-mpu3" role="button" tabindex="0"><span class="k">Reason 4</span><span class="t">Proven</span><span class="plus">+</span></div></div>
 <p>Its 3.9 mA draw exceeds the whole power budget. We accepted this
 trade-off for faster development while the prototype ran from a bench
@@ -648,14 +601,45 @@ after two minutes when left unanswered.</p>
 contact." tag="fig-7-5"></image-component>
 </div><div id="sec-7-3-4">
 <h4><span class="n">7.3.4</span>Power</h4>
-<p>The idle prototype drew about <strong>31 mA</strong> against the 2.4
-mA target. Section
-6.2.3 sets out the fix.</p>
+<p><strong>Method.</strong> We measured the average current of the whole prototype while idle, waiting for a fall.</p>
+<table-component subtitle="Table 7.4. Measured idle current of the prototype.">
+<div class="w-scroll"><table class="wishi-table">
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>State</strong></th>
+<th><strong>Current</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ML307A-GSLN</td>
+<td>Standby, always on</td>
+<td>17.6 mA</td>
+</tr>
+<tr>
+<td>MPU-6050</td>
+<td>6-axis, always on</td>
+<td>3.9 mA</td>
+</tr>
+<tr>
+<td>XIAO ESP32-S3 and regulators</td>
+<td>Awake, polling the sensor</td>
+<td>≈9.5 mA</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>≈31 mA</strong></td>
+</tr>
+</tbody>
+</table></div>
+</table-component><p>The prototype drew about <strong>31 mA</strong>, thirteen times the 2.4 mA target. The modem in standby accounts for more than half. The MPU-6050 has to be polled for every sample, which keeps the microcontroller awake for most of the rest. Section 6.2.3 removes each of these loads.</p>
 </div><div id="sec-7-3-5"><h4><span class="n">7.3.5</span>Form, Comfort and Set-up</h4><p><strong>Method.</strong> Ten seniors aged 62 to 83 ranked four shape models, four clay weight models from 30 to 60 g and two charging methods.</p>
 <div class="w-chips"><div class="w-chip"><b>70%</b><span>chose the long cuboid first</span></div><div class="w-chip"><b>70%</b><span>rejected models over 40 g</span></div><div class="w-chip"><b>60%</b><span>preferred the 40 g model</span></div><div class="w-chip"><b>90%</b><span>preferred magnetic charging</span></div></div>
 <p>The 40 g ceiling is now a hard limit, and it caps the battery at about 500 mAh (Section 6.2.3). Comfort was rated 3.8 out of 5, and a family member set up the app in under five minutes. Ten seniors is a small sample, and week-long wear trials will retest these choices.</p></div><div id="sec-7-4">
 <h3><span class="n">7.4</span>Results Against Specifications</h3><div class="w-chips"><div class="w-chip"><b style="color:var(--green)">5</b><span>passed</span></div><div class="w-chip"><b style="color:#c62828">2</b><span>failed</span></div><div class="w-chip"><b>5</b><span>not yet tested</span></div></div>
-<table-component subtitle="Table 7.4. Results against specifications.">
+<table-component subtitle="Table 7.5. Results against specifications.">
 <div class="w-scroll"><table class="wishi-table">
 <thead>
 <tr>
