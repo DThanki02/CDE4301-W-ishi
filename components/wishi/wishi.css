@@ -49,12 +49,6 @@ strong { color: var(--ink); }
 .w-hero img { width: min(300px, 60vw); margin-top: 18px; filter: drop-shadow(0 30px 40px rgba(0,0,0,.18)); animation: w-float 7s ease-in-out infinite; }
 @keyframes w-float { 50% { transform: translateY(-12px) rotate(-1deg); } }
 
-/* ---------- big stats ---------- */
-.w-statband { background: var(--band); padding: 70px 20px; }
-.w-statrow { max-width: var(--wide); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 34px; text-align: center; }
-.w-big { font-size: clamp(2.6rem, 5vw, 3.6rem); font-weight: 700; letter-spacing: -.03em; background: linear-gradient(90deg, var(--blue-2), #00a156); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.w-biglab { color: var(--ink-2); font-size: .98rem; margin-top: 4px; }
-
 /* ---------- team ---------- */
 .w-team { padding: 70px 20px; text-align: center; }
 .w-team h2 { font-size: 2rem; margin: 0 0 24px; }
@@ -157,8 +151,6 @@ dialog.w-modal::backdrop { background: rgba(0,0,0,.45); backdrop-filter: blur(14
 /* ---------- HMW ---------- */
 blockquote { margin: 40px 0; padding: 0; border: 0; background: none; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.4; font-weight: 600; letter-spacing: -.015em; color: var(--ink); text-align: center; }
 blockquote p { font-size: inherit; line-height: inherit; color: inherit; text-align: center; }
-.w-phrase { border-bottom: 3px solid currentColor; cursor: pointer; position: relative; outline: none; }
-.w-phrase:hover::after, .w-phrase:focus::after { content: attr(data-tip); position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(100% + 10px); width: 270px; background: var(--ink); color: #fff; font-size: .82rem; font-weight: 400; line-height: 1.45; letter-spacing: 0; padding: 10px 12px; border-radius: 12px; z-index: 5; text-align: left; }
 .w-hint { font-size: .9rem; color: var(--ink-2); text-align: center; }
 
 /* ---------- charts ---------- */

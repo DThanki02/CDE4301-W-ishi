@@ -38,7 +38,7 @@
     }), { rootMargin: "0px 0px -40% 0px" });
     $$(".w-tl-item", tl).forEach(li => tio.observe(li));
   });
-  $$(".w-head, .w-body > *:not(dialog):not(.w-tl), .w-tile, .w-statrow > div").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
+  $$(".w-head, .w-body > *:not(dialog):not(.w-tl), .w-tile").forEach(el => { el.classList.add("w-reveal"); io.observe(el); });
   $$("[data-count]").forEach(el => io.observe(el));
   function countUp(el) {
     const end = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length;
