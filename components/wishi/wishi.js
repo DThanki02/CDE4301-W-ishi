@@ -160,12 +160,12 @@
         ["Alerts", alerts * 0.0119, "#d32f2f"],
         ["Regulators, protection, charger", 0.01, "#9aa5b1"]];
       const I = parts.reduce((t, p) => t + p[1], 0);
-      const usable = cap * 0.8, days = usable / I / 24;
+      const usable = cap * 0.9, days = usable / I / 24;
       calc.querySelectorAll("[data-show]").forEach(s => s.textContent = f(s.dataset.show).value);
       out("i").textContent = I < 1 ? I.toFixed(2) + " mA" : I.toFixed(1) + " mA";
       out("d").textContent = days < 1 ? (days * 24).toFixed(0) + " hours" : days.toFixed(days < 10 ? 1 : 0) + " days";
-      const ok = I <= 2.4, goal = I <= 1.2;
-      out("v").textContent = goal ? "Meets the design goal (≤ 1.2 mA)" : ok ? "Meets the requirement (≤ 2.4 mA)" : "Misses the 2.4 mA requirement";
+      const ok = I <= 2.7, goal = I <= 1.2;
+      out("v").textContent = goal ? "Meets the design goal (≤ 1.2 mA)" : ok ? "Meets the requirement (≤ 2.7 mA)" : "Misses the 2.7 mA requirement";
       out("v").style.color = goal ? C.green : ok ? "#b26a00" : C.red;
       const pct = Math.min(100, Math.log10(Math.max(I, 0.05) / 0.05) / Math.log10(50 / 0.05) * 100);
       const m = calc.querySelector(".w-meter i"); m.style.width = pct + "%"; m.style.background = goal ? C.green : ok ? C.amber : C.red;
