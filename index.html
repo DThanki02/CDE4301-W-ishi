@@ -37,12 +37,11 @@
     <p class="sub">A Personal Safety Device for Seniors Living Independently.</p>
     <p class="tag">A discreet token that detects falls, lets the senior cancel and reaches the right person wherever they are, without cameras, microphones or constant tracking.</p>
     <div class="cta"><a class="w-pill" href="#sec-1" style="text-decoration:none">Read the report</a><a class="w-pill ghost" href="#w-sim" style="text-decoration:none">See the simulation</a></div>
-    <img src="assets/wishi/hero-token.png" alt="Concept render of the W-ishi token: a fabric-faced long cuboid with a round SOS button and a small status LED">
   </div></header>
 
   <div class="w-team"><h2>Meet the team</h2><div class="w-members"><figure class="w-member"><img src="assets/wishi/team-dhruv.jpg" alt="Dhruv Thanki" loading="lazy"><figcaption><b>Dhruv Thanki</b><span>Electrical Engineering</span><em>App</em></figcaption></figure><figure class="w-member"><img src="assets/wishi/team-shishir.jpg" alt="Shishir Balasubramanian" loading="lazy"><figcaption><b>Shishir Balasubramanian</b><span>Electrical Engineering</span><em>Sensing</em></figcaption></figure><figure class="w-member"><img src="assets/wishi/team-bob.jpg" alt="Zhou Chunshi" loading="lazy"><figcaption><b>Zhou Chunshi</b><span>Mechanical Engineering</span><em>Mechanical</em></figcaption></figure><figure class="w-member"><img src="assets/wishi/team-genieve.jpg" alt="Chin Le Xuan Genieve" loading="lazy"><figcaption><b>Chin Le Xuan Genieve</b><span>Biomedical Engineering</span><em>Ergonomics</em></figcaption></figure></div></div>
 
-  <section class="w-sec" id="sec-1"><div class="w-head"><span class="w-eyebrow">Section 1</span><h2>Abstract</h2></div><div class="w-body"><p>Seniors aged 70–80 living independently in Singapore are at risk when an emergency, such as a fall, happens away from supervision, yet existing alarms are often costly, stigmatising or reliant on constant tracking. In September 2026 a resident waited two hours for help after her call button produced only an automated reply. This interim report presents <strong>W-ishi</strong>, a discreet safety token that detects falls automatically or raises an SOS at the press of a button. After a 15-second cancel window it sends an alert with the senior’s location over 4G and escalates from family to care staff to neighbours if no one responds. Co-design workshops with 40 residents at Lions Befrienders and Harmony Village shaped the design. The prototype caught 91% of simulated falls and ignored 90% of everyday movements. Outdoor location was accurate to about 5 m, and alerts reached caregivers in about 24 s (10/10 trials). Two main gaps remain: indoor location succeeded in only 2 of 10 trials, and a current draw of about 31 mA is more than 11 times the power target. Semester 2 addresses these through a low-power sensor and battery redesign, a custom PCB, drop and splash testing, and wear trials at both sites.</p></div></section><section class="w-sec" id="sec-2"><div class="w-head"><span class="w-eyebrow">Section 2</span><h2>Problem Background</h2></div><div class="w-body"><div id="sec-2-1"><h3><span class="n">2.1</span>Singapore’s Ageing Population</h3>
+  <section class="w-sec" id="sec-1"><div class="w-head"><span class="w-eyebrow">Section 1</span><h2>Abstract</h2></div><div class="w-body"><p>Seniors aged 70 - 80 living independently in Singapore are at risk when an emergency, such as a fall, happens away from supervision, yet existing alarms are often costly, stigmatising or reliant on constant tracking. In September 2026 a resident waited two hours for help after her call button produced only an automated reply. This interim report presents <strong>W-ishi</strong>, a discreet safety token that detects falls automatically or raises an SOS at the press of a button. After a 15-second cancel window it sends an alert with the senior’s location over 4G and escalates from family to care staff to neighbours if no one responds. Co-design workshops with 40 residents at Lions Befrienders and Harmony Village shaped the design. The prototype caught 91% of simulated falls and ignored 90% of everyday movements. Outdoor location was accurate to about 5 m, and alerts reached caregivers in about 24 s (10/10 trials). Two main gaps remain: indoor location succeeded in only 2 of 10 trials, and a current draw of about 31 mA is more than 11 times the power target. Semester 2 addresses these through a low-power sensor and battery redesign, a custom PCB, drop and splash testing, and wear trials at both sites.</p></div></section><section class="w-sec" id="sec-2"><div class="w-head"><span class="w-eyebrow">Section 2</span><h2>Problem Background</h2></div><div class="w-body"><div id="sec-2-1"><h3><span class="n">2.1</span>Singapore’s Ageing Population</h3>
 <p>Singapore is among the fastest-ageing societies in Asia. The proportion of citizens aged 65 and above is projected to reach about one in four (23.9%) by 2030 (Ministry of Health [MOH], n.d.; National Population and Talent Division [NPTD], 2025). The number of citizens aged 80 and above rose by about 60% between 2015 and 2025, from 91,000 to 145,000 (NPTD, 2025). Health and support systems will therefore need to serve not only more seniors but older and frailer ones, whose care needs are greater.</p>
 <p>This growth has been accompanied by a shift in how seniors live. In 2024, around 87,000 residents aged 65 and above lived alone (MOH, 2025; iMalive, 2025), up from about 58,000 in 2018, an increase of half in six years (Singapore Department of Statistics, 2025). Living alone is not in itself a risk, and for many seniors it reflects a valued preference for independence. However, it removes the person most likely to notice when something goes wrong. For these seniors, how quickly help arrives in an emergency depends on whether they can raise the alarm themselves and whether someone is available to respond.</p>
 <p>Falls are the emergency in which this dependence matters most. Falls account for 85% of all elderly trauma cases seen in Singapore's emergency departments (Matchar et al., 2017) and for 40% of injury-related deaths (Ang et al., 2020). About one in three community-dwelling adults aged 65 and above falls at least once a year, and many are "silent fallers" who do not report the fall unless they are injured (Ang et al., 2020). For a senior living alone, an injury that prevents them from getting up or reaching for a phone can mean lying on the floor for a long time, which may be associated with worse outcomes than the fall alone (CNA Insider, 2024).</p>
@@ -135,32 +134,32 @@ them.">
 <tbody>
 <tr>
 <td>Trust Gap</td>
-<td><strong>Responsive</strong></td>
+<td><strong style="color:var(--v-responsive)">Responsive</strong></td>
 <td>Alerts go to contacts the senior chooses and escalate if
       unanswered</td>
 <td>Time to first acknowledgement</td>
 </tr>
 <tr>
 <td>Privacy–Detection Paradox</td>
-<td><strong>Privacy</strong></td>
+<td><strong style="color:var(--v-privacy)">Privacy</strong></td>
 <td>No camera or microphone; location only during alerts</td>
 <td>Parts list and firmware review</td>
 </tr>
 <tr>
 <td>False Alarm Dilemma</td>
-<td><strong>Autonomy</strong></td>
+<td><strong style="color:var(--v-autonomy)">Autonomy</strong></td>
 <td>A 15-second cancel window before every alert</td>
 <td>Share of false alarms cancelled</td>
 </tr>
 <tr>
 <td>Accessibility Barrier</td>
-<td><strong>Accessible</strong></td>
+<td><strong style="color:var(--v-accessible)">Accessible</strong></td>
 <td>About $20 to buy and under $1 a month</td>
 <td>Cost against competitors</td>
 </tr>
 <tr>
 <td>Stigma Trap</td>
-<td><strong>Dignity</strong></td>
+<td><strong style="color:var(--v-dignity)">Dignity</strong></td>
 <td>Looks like an accessory, not a medical alarm</td>
 <td>Residents’ likelihood-to-wear ratings</td>
 </tr>
