@@ -384,12 +384,16 @@ canvas.trace { width: 100%; height: 130px; display: block; }
 .app-tabs { margin: 26px 0; }
 .app-ba { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
 .app-side { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-.app-side .app-phone { width: 170px; }
+.app-ba { flex-wrap: nowrap; }
+.app-side { flex-wrap: nowrap; min-width: 0; flex: 0 1 auto; }
+.app-side .app-phone { width: 215px; flex: 0 1 215px; min-width: 0; }
+.app-strip-lg > .app-phone { width: auto; flex: 1 1 0; max-width: 280px; min-width: 0; }
+@media (max-width: 600px) { .app-strip-lg { flex-wrap: nowrap; gap: 10px; } .app-strip-lg > .app-phone { width: auto; } }
 .app-arrow { font-size: 2rem; color: var(--ink-2); }
 .app-issue { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; max-width: 600px; margin: 22px auto 0; font-size: .92rem; line-height: 1.55; }
 .app-issue dt { font-weight: 600; color: var(--ink); }
 .app-issue dd { margin: 0; color: #333336; }
-@media (max-width: 600px) { .app-phone, .app-side .app-phone { width: 140px; } .app-arrow { transform: rotate(90deg); } }
+@media (max-width: 600px) { .app-phone { width: 140px; } .app-ba, .app-side { gap: 8px; } .app-arrow { font-size: 1.4rem; } }
 
 /* ---------- product comparison (3.6) ---------- */
 .cmp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin: 26px 0 6px; }
