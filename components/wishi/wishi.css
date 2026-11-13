@@ -438,3 +438,4 @@ canvas.trace { width: 100%; height: 130px; display: block; }
 /* ---------- fixes: morph table fits on desktop; timeline items never widen the page ---------- */
 @media (min-width: 760px) { .morph-table { min-width: 0; width: 100%; } .morph-table th:first-child { width: 112px; } .morph-table tbody th { font-size: .85rem; hyphens: auto; } .morph-table th:last-child { width: 150px; } .morph-table img { max-height: 70px; } .morph-lab { font-size: .78rem; } }
 .w-tl { overflow-x: clip; }
+.w-by { font-weight: 400; color: var(--ink-2); font-size: .6em; white-space: nowrap; }
